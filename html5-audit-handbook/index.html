@@ -20,7 +20,7 @@
   <body>
     <header>
       <h1> "The HTML5 Audit Handbook" &mdash; The Full Auditing Reference for HTML. </h1>
-      <p> An handbook for auditing modern HTML5 documents &mdash; Last updated on 15. August 2025</p>
+      <p> A handbook for auditing modern HTML5 documents &mdash; Last updated on 15. August 2025</p>
       <nav>
         <a href="#teachers">Why this Handbook exist?</a>
         <a href="#about">Download PDF</a>
@@ -43,13 +43,13 @@
           <p><em>HTML5</em> is an umbrella term that refers to the latest <a href="https://html.spec.whatwg.org/dev/" target="_blank">living standard of HTML</a>, maintained by WHATWG; as well as to a series of modern web technologies standards, such as the <a href="https://dom.spec.whatwg.org/" target="_blank">the DOM standard</a>, <a href="https://compat.spec.whatwg.org/" target="_blank">the compatibility standard</a>, or the <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch standard.</a> </p>
         
         <h3>Background</h3>
-          <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaboratibe and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the user overcome this inconvenience by providing a clear and consitent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
+          <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaborative and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the Author overcome this inconvenience by providing a clear and consitent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
       
         <h3>Audience</h3>
-          <p>This book is intended to be used as a auditing guideline of HTML best practices for consultors, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML documtent, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
+          <p>This book is intended to be used as a auditing guide of HTML best practices for consultors, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML documtent, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
         
         <h3>Extensibility</h3>
-          <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <i>data-*=""</i> attributes, using <i>script type=""</i>, or via microdata using <i>itemscope=""</i> and <i>temprop=""</i> attributes. Users can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
+          <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <code class="language-markup">data-*=""</code> attributes, using <code class="language-markup">&lt;script type=""&gt;</code>, or via microdata using <code class="language-markup">itemscope=""</code> and <code class="language-markup">temprop=""</code> attributes. Authors can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
         
         <h3>Document Structure</h3>
           <p>A basic HTML document looks like this:</p>
@@ -66,8 +66,8 @@
             &lt;/body&gt;
             &lt;/html&gt;
           </code></pre>
-          <p><b>Note:</b> <em>&lt;!DOCTYPE html&gt;</em> does <b>not</b> represent an element, but a "DocumentType" node.</p>
-          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains both semantic elements (&lt;html&gt;, &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, or &lt;h1&gt;) and a non-semantic element (&lt;a&gt;). Certain elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
+          <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node.</p>
+          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains both semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, or &lt;h1&gt;</code>) and a non-semantic element (<code class="language-markup>">&lt;a&gt;</code>). Certain elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
           <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
             <pre><code class="language-markup">
               &lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
@@ -97,15 +97,51 @@
           <p>This DOM tree can be manipulated from scripts in the page. Scripts (typically in JavaScript) are small programs that can be embedded using the script element or using event handler content attributes. Each element in the DOM tree is represented by an object, and these objects have APIs so that they can be manipulated. </p>
           <p>HTML documents represent a media-independent description of interactive content. HTML documents might be rendered to a screen, or through a speech synthesizer, or on a braille display. To influence exactly how such rendering takes place, authors can use a styling language such as CSS.</p>
         <h3>HTML Conformance Checker: v.Nu</h3>
-          <p>HTML conformance checkers, also called validators, are tools that help you catch unintended mistakes in HTML, CSS, and SVG. Running a conformance checker as a first audit layer is highly recommended, since they are a lightweight and easy tool to detect what otherwise would pass unnoticed. Of all conformance checkers v.Nu (Nu Html Checker) is the only one that supports up to date HTML5 consistently.
-          <p>Users can run v.Nu from the <a href="https://validator.w3.org/nu/" target="_blank">Official W3 Website</a>, or locally downloading it from <a href="https://github.com/validator/validator" target="_blank">GitHub</a>.</p>
+          <p>HTML conformance checkers, also called validators, are tools that help you catch unintended mistakes in HTML, CSS, and SVG. Running a conformance checker as a first audit layer is highly recommended, since they are a lightweight and easy tool to detect what otherwise would pass unnoticed. Of all conformance checkers v.Nu (Nu Html Checker) is the only one that supports up to date HTML5 consistently.</p>
+          <p>Authors can run v.Nu from the <a href="https://validator.w3.org/nu/" target="_blank">Official W3 Website</a>, or locally downloading it from <a href="https://github.com/validator/validator" target="_blank">GitHub</a>.</p>
         <h3>Security Basics</h3>
+          <p>When HTML is used to create interactive sites, care needs to be taken to avoid introducing vulnerabilities through which attackers can compromise the integrity of the site itself or of the site's users.</p>
           <h4>Origins</h4>
+            <p>The security model of the web is based on the concept of "origins", and correspondingly many of the potential attacks on the web involve cross-origin actions. Origins determine which content can interact with which—a core mechanism to stop malicious sites from accessing or messing with resources from other sites. An origin is, in the technical sense, a triple:</p>
+            <code class="language-markup">
+              origin = (scheme, host, port)
+            </code>
+            <p>Where:</p>
+            <ul>
+              <li>Scheme: The URI protocol (e.g. http, https, ftp)</li>
+              <li>Host: The domain or IP (e.g. example.com, 192.0.2.5)</li>
+              <li>Port: Explicit in the URL or the default for the scheme (80 for http, 443 for https)</li>
+            </ul>
+            <p>Two resources are same origin only if all three parts match exactly. Therefore, only when all three match exactly can two resources be considered "same origin".</p>
+          <h4>Same Origin Policy (SOP)</h4>
+            <p>The same-origin policy is a critical security mechanism that restricts how a document or script loaded by one origin can interact with a resource from another origin. It helps isolate potentially malicious documents, reducing possible attack vectors. Under SOP, a script loaded from one origin can read or modify content only from resources with the exact same. </p>
+            <p>For example, it prevents a malicious website on the Internet from running JS in a browser to read data from a third-party webmail service (which the user is signed into) or a company intranet (which is protected from direct access by the attacker by not having a public IP address) and relaying that data to the attacker.</p>
+          <h4>Cross-site scripting (XSS)</h4>
+            <p>Untrusted input (comments, URL parameters, third-party messages, etc.) must be validated before use and escaped before display. Without this, attackers could inject fake data, run malicious scripts on every page view (spreading the attack), or even wipe server data. Validation should be safelist-based because blocklists can't anticipate all future attack methods.</p>
+            <p>Attackers can hide code in many ways, so safelist filters must be strict:</p>
+              <ul>
+                <li>Even for safe-looking elements like <code class="language-markup">&lt;img&gt;</code>, only allow specific attributes. Otherwise attackers could use <code class="language-markup">onload</code> to run JS scripts.</li>
+                <li>If you accept URLs (e.g., in links), allow only specific schemes. Schemes like <code class="language-markup">javascript:</code> (and other custom ones) can execute malicious code.</li>
+                <li>Block <code class="language-markup">&lt;base&gt;</code>. Don't allow users to insert a <code class="language-markup">&lt;base&gt;</code> element. <code class="language-markup">&lt;base&gt;</code> elements rewrite how relative URLs resolve, letting attackers hijack <code class="language-markup">&lt;script src&gt;</code> and redirect <code class="language-markup">&lt;form action&gt;</code> to a hostile site.</li>
+              </ul>
           <h4>Cross-site request forgery (CSRF)</h4>
+            <p>If your site lets logged-in users do state-changing actions (post, purchase, apply, etc.), another site can trick them into submitting those actions unknowingly (classic CSRF). HTML forms can submit to other origins, so a malicious page can auto-submit a form to your site using the victim's session.</p> 
+            <p>An author should:</p>
+              <ul>
+                <li>Include user-specific hidden tokens in forms and validate them server-side.</li>
+                <li>Check the <code class="language-markup">origin</code> header on state-changing requests; reject when it's missing or doesn't match your site.</li>
+              </ul>
           <h4>Clickjacking</h4>
-          <h4>Common pitifalls with APIs</h4>
-          <h4>XSS</h4>
+              <p>A hostile site can embed your page in an iframe and trick users into clicking your controls (e.g., via a reaction game that moves the hidden iframe under the cursor). This makes users perform actions they didn't intend. Any page that lets users perform actions they might not want to (purchases, settings changes, admin actions, etc.).</p>
+              <p>If your page isn't meant to run in a frame, only enable the UI when you detect you're not framed (e.g., check <code class="language-markup">window === top</code> before activating controls).</p>
+          <h4>Common pitfalls with APIs</h4>
+              <p>JavaScript in browsers runs with <i>run-to-completion</i> semantics: once a script starts, nothing else (no new events, no further parsing) happens until it finishes. Meanwhile, HTML parsing is <em>incremental</em> and can pause to execute scripts, then resume. The consequence is timing: if you attach event handlers too late, an event could have already fired. To avoid missed events, either define handlers inline via HTML event attributes (so they exist as the element is parsed) or create the element and attach its handlers within the same synchronous script—because scripts run to completion, no events can slip in before your handler is registered.</p>
         <h3>Syntax Errors</h3>
+          <p>HTML syntax is deliberately constrained to prevent unintuitive DOM results, reduce ambiguity, and keep implementations interoperable. Parsers may halt on errors rather than performing convoluted recovery; constructs whose recovery behavior breaks streaming parsers are simply invalid. The spec also avoids situations that would force XML-based tools to coerce the HTML infoset, preserving consistency across processing models.</p>
+          <p>Rules prohibit patterns that cause disproportionate performance costs, rely on fragile historical quirks, or trigger known interoperability bugs in legacy user agents. Some restrictions exist purely for security (e.g., preventing encodings or patterns tied to XSS). Ambiguous markup, likely typos, and forms that could collide with future syntax are treated as errors to improve maintainability and forward-compatibility. For authors who prefer stricter discipline, conformance checkers can enforce conventions like always quoting attributes and including optional tags.</p>
+          <p>Beyond raw syntax, the spec restricts element content models and attribute values to preserve clear semantics. It forbids nesting or role combinations that contradict the elements' meanings, and blocks combinations whose default rendering or behavior would confuse users (for example, nesting interactive controls inside each other). These constraints steer authors toward structures that match the language's intent and users' expectations.</p>
+          <p>Additional limits exist to reduce author confusion and debugging pain: boolean attributes must be used correctly; duplicate IDs and similar pitfalls are disallowed because they lead to subtle script failures; and patterns with misleading parser behavior are flagged so authors don’t waste time chasing non-issues. Some rules simply simplify the language—removing redundant synonyms or edge cases—so it's easier to learn and teach.</p>
+          <p>Finally, to ease (limited) HTML↔XML migration, certain attributes and namespace rules are constrained so documents behave similarly in both serializations. The spec also reserves parts of the language for future expansion and aligns with other standards (e.g., requiring valid media queries), ensuring today's documents won't block tomorrow's features and remain consistent with the broader web platform.</p>
 
       <h2>Structure and Semantics</h2>
         <h3>Structure and Layouts</h3>
