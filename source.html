@@ -50,20 +50,33 @@
           &lt;/head&gt;
           &lt;body&gt;
             &lt;h1&gt;Sample page&lt;/h1&gt;
-            &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
+            &lt;div&gt;
+              &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
+            &lt;/div&gt;
             &lt;!-- this is a comment --&gt;
           &lt;/body&gt;
           &lt;/html&gt;
         </code></pre>
+        <p><b>Note:</b> <em>&lt;!DOCTYPE html&gt;</em> does <b>not</b> represent an element, but a "doctype" node.</p>
+        <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains both semantic elements (&lt;html&gt;, &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, or &lt;h1&gt;) and non-semantic elements (&lt;div&gt; and &lt;a&gt;). Certaing elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the parent element that nests all the document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
+        
+        <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
+        <pre><code class="language-markup">
+          &lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
+          &lt;p&gt;This &lt;em&gt;is &lt;strong&gt;correct&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+        </code></pre>
 
-        <h3>1.6 HTML Conformance Checker: v.Nu</h3>
-        <h3>1.7 Security Basics</h3>
-        <h4>1.7.1 Origins</h4>
-        <h4>1.7.2 Cross-site request forgery (CSRF)</h4>
-        <h4>1.7.3 Clickjacking</h4>
-        <h4>1.7.4 Common pitifalls with APIs</h4>
-        <h4>1.7.5 XSS</h4>
-        <h3>1.8 Syntax Errors</h3>
+        <p>Elements can have attributes, which control how the elements work. Attributes are placed inside the start tag, and consist of a name and a value, separated by an "=" character. The attribute value can remain unquoted if it doesn't contain whitespaces or ", ', `, =, &lt;, or &gt;. Regardless, you sould <em>always</em> quote your attribute values.</p>
+        
+        <h3>1.6 The DOM</h3>
+        <h3>1.7 HTML Conformance Checker: v.Nu</h3>
+        <h3>1.8 Security Basics</h3>
+        <h4>1.8.1 Origins</h4>
+        <h4>1.8.2 Cross-site request forgery (CSRF)</h4>
+        <h4>1.8.3 Clickjacking</h4>
+        <h4>1.8.4 Common pitifalls with APIs</h4>
+        <h4>1.8.5 XSS</h4>
+        <h3>1.9 Syntax Errors</h3>
       </section>
 
       <section id="chap2">

@@ -4,30 +4,22 @@
 
 The **HTML Audit Handbook** is a technical document designed to **review, audit, and optimize HTML codebases** according to the latest specifications, performance best practices, and accessibility standards.
 
-This is **not** a beginner's HTML tutorial.  
-Instead, it is a **reference and audit framework** for developers, consultants, and technical leads who want to ensure that HTML is:
+This is **not** a beginner's HTML tutorial. Instead, it is a **reference and audit framework** for developers, consultants, and technical leads who want to ensure that HTML is:
 
 - **Semantically correct**
 - **Accessible**
 - **Performance-oriented**
 - **Standards-compliant**
 
-## 📌 Purpose
-HTML is the foundation of the web, but most production HTML suffers from:
-- Misused or missing semantic elements
-- Accessibility gaps
-- Bloated, unoptimized markup
-- Compatibility issues across browsers
-
+## Purpose
 The goal of this handbook is to provide:
 - A **clear checklist** for HTML audits
 - Examples of **correct vs. incorrect patterns**
-- **Cross-references** to MDN, web.dev, and WHATWG specifications
+- **Cross-references** to MDN and WHATWG specifications
 - Guidance for **performance and SEO** improvements
 
-## 📚 Methodology
-- Based entirely on **official specifications** and documentation (WHATWG, W3C, MDN, Google web.dev)
-- **Practical examples** for each concept
+## Methodology
+- Based entirely on **official specifications** and documentation (WHATWG, W3C, MDN)
 - Focus on **real-world HTML code audits**
 - Includes **audit checklists** for quick reviews
 - Updated regularly as web standards evolve
@@ -55,7 +47,6 @@ You can use this handbook to:
 ## 🔗 Related Resources
 - [MDN Web Docs](https://developer.mozilla.org/)
 - [WHATWG HTML Living Standard](https://html.spec.whatwg.org/)
-- [Google web.dev](https://web.dev/)
 
 ---
 
