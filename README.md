@@ -5,7 +5,7 @@ This repository hosts the full set of **Web Audit** and **HTML5 Audit** handbook
 ## Read them Online!
 
 - HTML5 Audit Handbook → [docs.jbroldan.dev/html5-audit-handbook](https://docs.jbroldan.dev/html5-audit-handbook)  
-- Web Audit Handbook → [docs.jbroldan.dev/web-audit-handbook](https://docs.jbroldan.dev/web-audit-handbook)
+- Web Audit Handbook → [TBA](https://docs.jbroldan.dev/web-audit-handbook)
 
 ## The Handbooks
 
