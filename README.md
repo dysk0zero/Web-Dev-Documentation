@@ -7,11 +7,13 @@ This repository hosts the full set of **Web Audit** and **HTML5 Audit** handbook
 - HTML5 Audit Handbook → [docs.jbroldan.dev/html5-audit-handbook](https://docs.jbroldan.dev/html5-audit-handbook)  
 - Web Audit Handbook → [docs.jbroldan.dev/web-audit-handbook](https://docs.jbroldan.dev/web-audit-handbook)
 
-## Structure
+## The Handbooks
 
+### HTML5 Audit Handbook
 - [`/html5-audit-handbook`](./html5-audit-handbook/)  
   Covers the HTML5 specification essentials, DOM optimization, semantic markup, and best practices for accessibility, performance, and SEO.
 
+### Web Audit Handbook
 - [`/web-audit-handbook`](./web-audit-handbook/)  
   Focuses on broader web auditing, including asset optimization, loading strategies, Core Web Vitals, accessibility testing, and security checks.
 
