@@ -1,56 +1,23 @@
-# The HTML Audit Handbook
+# The complete Web Audit documentation
 
-**Auditing, Optimizing and Reviewing Web Markup to Modern Standards**
+This repository hosts the full set of **Web Audit** and **HTML5 Audit** handbooks, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
 
-The **HTML Audit Handbook** is a technical document designed to **review, audit, and optimize HTML codebases** according to the latest specifications, performance best practices, and accessibility standards.
+## Structure
 
-This is **not** a beginner's HTML tutorial. Instead, it is a **reference and audit framework** for developers, consultants, and technical leads who want to ensure that HTML is:
+- [`/html5-audit-handbook`](./html5-audit-handbook/)  
+  Covers the HTML5 specification essentials, DOM optimization, semantic markup, and best practices for accessibility, performance, and SEO.
 
-- **Semantically correct**
-- **Accessible**
-- **Performance-oriented**
-- **Standards-compliant**
+- [`/web-audit-handbook`](./web-audit-handbook/)  
+  Focuses on broader web auditing, including asset optimization, loading strategies, Core Web Vitals, accessibility testing, and security checks.
 
-## Purpose
-The goal of this handbook is to provide:
-- A **clear checklist** for HTML audits
-- Examples of **correct vs. incorrect patterns**
-- **Cross-references** to MDN and WHATWG specifications
-- Guidance for **performance and SEO** improvements
+## Access online
 
-## Methodology
-- Based entirely on **official specifications** and documentation (WHATWG, W3C, MDN)
-- Focus on **real-world HTML code audits**
-- Includes **audit checklists** for quick reviews
-- Updated regularly as web standards evolve
+- HTML5 Audit Handbook → [docs.jbroldan.dev/html5-audit-handbook](https://docs.jbroldan.dev/html5-audit-handbook)  
+- Web Audit Handbook → [docs.jbroldan.dev/web-audit-handbook](https://docs.jbroldan.dev/web-audit-handbook)
 
-## 📂 Structure
-1. **Fundamentals & Semantics** – Understanding ideal HTML structure
-2. **Common Patterns & Pitfalls** – Before/after examples
-3. **Specification Cross-References** – What the standard says
-4. **Audit Checklist** – Fast review of any HTML document
-5. **Optimization** – Accessibility, performance, SEO
+## License
 
-## 🛠 Usage
-You can use this handbook to:
-- Audit client websites
-- Perform code reviews
-- Train teams on HTML best practices
-- Self-check your own projects before deployment
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
 
-## 📄 Format
-- **Single HTML document** with internal table of contents
-- Fully navigable via anchor links
-- Exportable to **PDF** for offline use
-- Prepared with **print-optimized CSS**
-
-## 🔗 Related Resources
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [WHATWG HTML Living Standard](https://html.spec.whatwg.org/)
-
----
-
-**Author:** Javier Bellido Roldan  
-**License:** MIT  
-**Status:** Work in Progress
-
+You are free to share and adapt the content for non-commercial purposes, as long as you give appropriate credit.

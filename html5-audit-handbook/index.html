@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The HTML Audit Handbook</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="The HTML Audit Handbook: a technical guide to auditing, optimizing, and reviewing HTML code in accordance with modern standards, best practices for performance, and accessibility. Includes a checklist, examples, and references to MDN, and WHATWG." />
+    <link rel="stylesheet" src="/html5-audit-handbook/css/styles.css" />
+    <link rel="icon" type="/html5-audit-handbook/image/png" href="/images/favicon.png" />
+    <link rel="canonical" href="https://docs.jbroldan.dev/html5-audit-handbook" />
+    <link href="/html5-audit-handbook/css/prism.css" rel="stylesheet" />
+    <style>
+      body { font-family: sans-serif; }
+      nav { margin-bottom: 2em; }
+      nav a { display: block; margin: 0.2em 0; }
+      .toc-h3 { margin-left: 1em; font-size: 0.9em; }
+      .toc-h4 { margin-left: 2em; font-size: 0.9em; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1> "The HTML5 Audit Handbook" &mdash; The Full Auditing Reference for HTML5. </h1>
+      <p> An handbook for auditing modern HTML5 documents &mdash; Last updated on 15. August 2025</p>
+      <nav>
+        <a href="#teachers">Why this Handbook exist?</a>
+        <a href="#about">Download PDF</a>
+        <a href="#feedback">About the Author</a>
+      </nav>
+    <header>
+    <main>
+
+      <header>
+        <h1>The HTML Audit Handbook</h1>
+      </header>
+
+      <nav id="toc">
+        <h2>Table of Contents</h2>
+        <!-- JS will insert links here -->
+      </nav>
+      
+      <h2>Introduction</h2>
+        <h3>What is HTML5?</h3>
+          <p><em>HTML5</em> is an umbrella term that refers to the latest <a href="https://html.spec.whatwg.org/dev/" target="_blank">living standard of HTML</a>, maintained by WHATWG; as well as to a series of modern web technologies standards, such as the <a href="https://dom.spec.whatwg.org/" target="_blank">the DOM standard</a>, <a href="https://compat.spec.whatwg.org/" target="_blank">the compatibility standard</a>, or the <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch standard.</a> </p>
+        
+        <h3>Background</h3>
+          <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaboratibe and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the user overcome this inconvenience by providing a clear and consitent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
+      
+        <h3>Audience</h3>
+          <p>This book is intended to be used as a auditing guideline of HTML best practices for consultors, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML documtent, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
+        
+        <h3>Extensibility</h3>
+          <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <i>data-*=""</i> attributes, using <i>script type=""</i>, or via microdata using <i>itemscope=""</i> and <i>temprop=""</i> attributes. Users can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
+        
+        <h3>Document Structure</h3>
+          <p>A basic HTML document looks like this:</p>
+          <pre><code class="language-markup">
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang=&quot;en&quot;&gt;
+            &lt;head&gt;
+              &lt;title&gt;Sample page&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;h1&gt;Sample page&lt;/h1&gt;
+              &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
+              &lt;!-- this is a comment --&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+          </code></pre>
+          <p><b>Note:</b> <em>&lt;!DOCTYPE html&gt;</em> does <b>not</b> represent an element, but a "DocumentType" node.</p>
+          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains both semantic elements (&lt;html&gt;, &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, or &lt;h1&gt;) and a non-semantic element (&lt;a&gt;). Certain elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
+          <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
+            <pre><code class="language-markup">
+              &lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
+              &lt;p&gt;This &lt;em&gt;is &lt;strong&gt;correct&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+            </code></pre>
+          <p>Elements can have attributes, which control how the elements work. Attributes are placed inside the start tag, and consist of a name and a value, separated by an "=" character. The attribute value can remain unquoted if it doesn't contain whitespaces or ", ', `, =, &lt;, or &gt;. Regardless, you should <em>always</em> quote your attribute values.</p>
+        
+        <h3>The DOM</h3>
+          <p>Web browsers then parse this markup from the HTML document, turning it into a DOM (Document Object Model) tree. A DOM tree is an in-memory representation of a document.<br>DOM trees contain several kinds of nodes, in particular a <i>DocumentType</i> node, <i>Element</i> nodes, <i>Text</i> nodes, <i>Comment</i> nodes, and in some cases <i>ProcessingInstruction</i> nodes. The markup snippet at the top of this section would be turned into the following DOM tree:</p>
+          <github-md>
+            DOCTYPE html
+            html lang="en"
+            ├── head
+            │   └── title
+            │       └── "Sample page"
+            └── body
+                ├── h1
+                │   └── "Sample page"
+                ├──  p
+                │    ├── "This is a "
+                │    ├── a href="demo.html"
+                │    │   └── "simple"
+                │    └── " sample."
+                └── <!-- this is a comment -->
+          </github-md>
+          <p>The document element of this tree is the html element, which is the element always found in that position in HTML documents. It contains two elements, head and body.</p>
+          <p>This DOM tree can be manipulated from scripts in the page. Scripts (typically in JavaScript) are small programs that can be embedded using the script element or using event handler content attributes. Each element in the DOM tree is represented by an object, and these objects have APIs so that they can be manipulated. </p>
+          <p>HTML documents represent a media-independent description of interactive content. HTML documents might be rendered to a screen, or through a speech synthesizer, or on a braille display. To influence exactly how such rendering takes place, authors can use a styling language such as CSS.</p>
+        <h3>HTML Conformance Checker: v.Nu</h3>
+        <h3>Security Basics</h3>
+          <h4>Origins</h4>
+          <h4>Cross-site request forgery (CSRF)</h4>
+          <h4>Clickjacking</h4>
+          <h4>Common pitifalls with APIs</h4>
+          <h4>XSS</h4>
+        <h3>Syntax Errors</h3>
+
+      <h2>Structure and Semantics</h2>
+        <h3>Structure and Layouts</h3>
+          <h4>Sections</h4>
+          <h4>Section headings</h4>
+          <h4>The Layout</h4>
+        <h3>Structured Data</h3>
+          <h4>JSON LD, Microdata, and RDFa</h4>
+        <h3>Semantic HTML</h3>
+        <h3>Beyond the DOM: CSSOM, and AOM</h3>
+
+      <h2>HTML Elements and Syntax</h2>
+        <h3>Document Metadata</h3>
+        <h3>Sections</h3>
+        <h3>Headings and Text</h3>
+        <h3>Main Elements</h3>
+          <h4>Grouping</h4>
+          <h4>Links</h4>
+          <h4>Navigation</h4>
+          <h4>Tables</h4>
+          <h4>Forms</h4>
+          <h4>Graphics</h4>
+          <h4>Multimedia</h4>
+        <h3>Templates</h3>
+        <h3>Custom Elements and Shadow DOM</h3>
+        <h3>Other Elements</h3>
+          <h4>Inline text elements</h4>
+          <h4>Full list of elements</h4>
+        <h3>Attributes</h3>
+
+      <h2>User Interaction and Web APIs</h2>
+        <h3>PWAs</h3>
+
+      <h2>Common Patterns & Pitfalls</h2>
+        <h3>Metadata Keywords</h3>
+        <h3></h3>
+          
+      <h2>Auditing</h2>
+        <h3>Developer Tools</h3>
+        <h3>Step by Step</h3>
+        <h3>Audit Checklist</h3>
+
+      <h2>Optimization</h2>
+        <h3>DOM Structure</h3>
+        <h3>Semantic HTML</h3>
+        <h3>Image Handling</h3>
+          <h4>Lazy loading</h4>
+          <h4>Setting image size</h4>
+        <h3>Script Loading</h3>
+        <h3>Font Optimization</h3>
+        <h3>Preloading</h3>
+
+      
+
+    </main>
+
+     <footer>
+      <p>&copy;2025 Javier Bellido Roldan.</p>
+     </footer>
+
+     <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js" defer></script>
+     <script src="html5-audit-handbook/js/prism.js"></script>
+     <script src="html5-audit-handbook/js/toc.js"></script>
+  </body>
+</html>
