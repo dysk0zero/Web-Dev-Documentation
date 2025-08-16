@@ -144,13 +144,18 @@
           <p>Finally, to ease (limited) HTML↔XML migration, certain attributes and namespace rules are constrained so documents behave similarly in both serializations. The spec also reserves parts of the language for future expansion and aligns with other standards (e.g., requiring valid media queries), ensuring today's documents won't block tomorrow's features and remain consistent with the broader web platform.</p>
 
       <h2>Structure and Semantics</h2>
+        <p>As we saw in chaper 1 section 5, a HTML document includes a document type declaration and a <code>&lt;html&gt;</code> element at root, which contains nested on it the document head and document body. The head of the document is not visible to the viewer, but it is crucial, as it contains all the meta information, as well as icons for the browser tab and mobile home screen shortcut, and the behavior and presentation of the content. Moreover, the <code>&lt;head&gt;</code> element is where you include styles for your document. We will cover all of the elements that are nested inside the head element in Chapter 3.  </p>
         <h3>Structure and Layouts</h3>
+          <p>The visible content of the document is located in the <code>&lt;body&gt;</code>, and it is there where most of our attention of good and proper struture should go.  </p>
           <h4>Sections</h4>
           <h4>Section headings</h4>
           <h4>The Layout</h4>
         <h3>Structured Data</h3>
           <h4>JSON LD, Microdata, and RDFa</h4>
         <h3>Semantic HTML</h3>
+          <p>HTML is a language that is semantic <em>by design</em>. What this means is that the reason why W3C decided on using HTML to display content, instead of let's say, LaTeX for example, is that HTML excels at semantic structure. Every element in HTML is designed with meaning in mind, to give crawlers and browsers the necessary information about what the content of an element is.</p>
+          <p>To understand and exemplify how important is this, let's use as an example the most well known accesisibility attribute, the <code>&lt;alt=" "&gt;</code>, that specifies an alternate text for an image. Most authors are familiar with the fact that crawlers care a lot about this attribute, and how critical it is for SEO and good practices. The reason is simple: Without the <code>&lt;alt=" "&gt;</code> attribute crawlers cannot "see" how the image looks like. However few are aware that this same logic applies for most content present in your HTML, and that one should be able to tell .</p>
+          
         <h3>Beyond the DOM: CSSOM, and AOM</h3>
 
       <h2>HTML Elements and Syntax</h2>
@@ -168,6 +173,7 @@
         <h3>Templates</h3>
         <h3>Custom Elements and Shadow DOM</h3>
         <h3>Other Elements</h3>
+          <h4>Styling elements</h4>
           <h4>Inline text elements</h4>
           <h4>Full list of elements</h4>
         <h3>Attributes</h3>
