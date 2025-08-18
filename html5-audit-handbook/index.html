@@ -5,38 +5,34 @@
     <title>The HTML5 Audit Handbook</title>
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="The HTML Audit Handbook: a technical guide to auditing, optimizing, and reviewing HTML code in accordance with modern standards, best practices for performance, and accessibility. Includes a checklist, examples, and references to MDN, and WHATWG." />
-    <link rel="stylesheet" src="./css/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/prism.css" />
     <link rel="icon" type="./images/png" href="/images/favicon.png" />
     <link rel="canonical" href="https://docs.jbroldan.dev/html5-audit-handbook" />
-    <link href="./css/prism.css" rel="stylesheet" />
-    <style>
-      body { font-family: sans-serif; }
-      nav { margin-bottom: 2em; }
-      nav a { display: block; margin: 0.2em 0; }
-      .toc-h3 { margin-left: 1em; font-size: 0.9em; }
-      .toc-h4 { margin-left: 2em; font-size: 0.9em; }
-    </style>
   </head>
   <body>
     <header>
-      <h1> "The HTML5 Audit Handbook" &mdash; The Full Auditing Reference for HTML. </h1>
-      <p> A handbook for auditing modern HTML5 documents &mdash; Last updated on 15. August 2025</p>
-      <nav>
-        <a href="#teachers">Why this Handbook exist?</a>
-        <a href="#about">Download PDF</a>
-        <a href="#feedback">About the Author</a>
-      </nav>
+      <h1> "Contemporary Web Technical Auditing" &mdash; The Full Auditing Reference Handbook</h1>
+      <p> A collection to audit modern websites &mdash; Last updated on 18. August 2025</p>
+  <nav>
+    <a href="#why">Why this handbook exist?</a>
+    <a href="#download">Download PDF</a>
+    <a href="#about">About the Author</a>
+  </nav>
+
     </header>
+    <div class="wrapper">
+    <nav id="toc" class="sidebar">
+      <h2>Table of Contents</h2>
+      <!-- JS will insert links here -->
+    </nav>
     <main>
 
       <header>
-        <h1>The HTML5 Audit Handbook</h1>
+        <h1>Vol. 1: HTML5</h1>
       </header>
 
-      <nav id="toc">
-        <h2>Table of Contents</h2>
-        <!-- JS will insert links here -->
-      </nav>
+
       
       <h2>Introduction</h2>
         <h3>What is HTML5?</h3>
@@ -46,7 +42,7 @@
           <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaborative and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the Author overcome this inconvenience by providing a clear and consitent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
       
         <h3>Audience</h3>
-          <p>This book is intended to be used as a auditing guide of HTML best practices for consultors, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML documtent, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
+          <p>This book is intended to be used as a auditing guide of HTML5 best practices for consultors, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. This handbook is designed to be framework agnostic, as the auditing process must evaluate the end HTML document and DOM created by the browser, not the actual original code &mdash; which might be written in plain React, Vue, or any other framework. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML documtent, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
         
         <h3>Extensibility</h3>
           <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <code class="language-markup">data-*=""</code> attributes, using <code class="language-markup">&lt;script type=""&gt;</code>, or via microdata using <code class="language-markup">itemscope=""</code> and <code class="language-markup">temprop=""</code> attributes. Authors can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
@@ -67,7 +63,7 @@
             &lt;/html&gt;
           </code></pre>
           <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node.</p>
-          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains both semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, or &lt;h1&gt;</code>) and a non-semantic element (<code class="language-markup>">&lt;a&gt;</code>). Certain elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
+          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains a number of semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, &lt;h1&gt;</code>, and <code class="language-markup>">&lt;a&gt;</code>) which helps crawlers and text-assisted devices understand the meaning and structure of the content displayed. Certain elements are mandatory for any HTML document, such as &lt;head&gt; and &lt;body&gt;. The &lt;html&gt; element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not</em> recommended, since it contains the language attribute. You should <em>always</em> include the &lt;html&gt; element in your document.</p>
           <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
             <pre><code class="language-markup">
               &lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
@@ -144,18 +140,37 @@
           <p>Finally, to ease (limited) HTML↔XML migration, certain attributes and namespace rules are constrained so documents behave similarly in both serializations. The spec also reserves parts of the language for future expansion and aligns with other standards (e.g., requiring valid media queries), ensuring today's documents won't block tomorrow's features and remain consistent with the broader web platform.</p>
 
       <h2>Structure and Semantics</h2>
-        <p>As we saw in chaper 1 section 5, a HTML document includes a document type declaration and a <code>&lt;html&gt;</code> element at root, which contains nested on it the document head and document body. The head of the document is not visible to the viewer, but it is crucial, as it contains all the meta information, as well as icons for the browser tab and mobile home screen shortcut, and the behavior and presentation of the content. Moreover, the <code>&lt;head&gt;</code> element is where you include styles for your document. We will cover all of the elements that are nested inside the head element in Chapter 3.  </p>
+        <h3>Semantic HTML</h3>
+          <p>HTML is semantic <em>by design</em>. What this means is that the reason why W3C and browsers use HTML to display content, instead of any other markup language, is that HTML excels at semantic structure. Every element in HTML is designed with meaning in mind, to give crawlers and browsers the necessary information about what the content of an element is.</p>
+          <p>To understand this, let's use as an example the most well known accessibility attribute, the <code class="language-markup">alt="This is an alternate description of an image."</code>, that specifies an alternate text for an image. Most authors and auditors are familiar with the fact that crawlers care a lot about this attribute, and that it is critical for SEO and accessibility. The reason is simple: Without the <code class="language-markup">alt=" "</code> attribute crawlers cannot "see" how the image looks like. However few are aware that this same logic applies for most content present in your HTML, as crawlers and text-reading devices <i>would like to know</i> what is the structure and the meaning of the content of the document.</p>
         <h3>Structure and Layouts</h3>
-          <p>The visible content of the document is located in the <code>&lt;body&gt;</code>, and it is there where most of our attention of good and proper struture should go.  </p>
-          <h4>Sections</h4>
+          <p>As we saw in Chapter 1, section 5, a HTML document includes a document type declaration and a <code class="language-markup">&lt;html&gt;</code> element at root, which contains nested on it the document head and document body. The head of the document is not visible to the viewer, but it is crucial, as it contains all the meta information, as well as icons for the browser tab and mobile home screen shortcut, and the behavior and styling of the content. We will cover all of the elements that can be nested inside the <code class="language-markup">&lt;head&gt;</code> element in Chapter 3.  </p>
+          <p>The visible content of the document is located in the <code class="language-markup">&lt;body&gt;</code>. From this point onwards, HTML lets the user have complete freedom upon the structure of the visible content. One could, if desired, fill the content of the <code class="language-markup">&lt;body&gt;</code> element with a long uncomprehensible list of nested <code class="language-markup">&lt;div&gt;</code> elements. This is, however, highly undesirable, as it gives no information about the <em>meaning and structure</em> of the content to the crawlers and accessibility devices. </p>
+          <p>More often than not, the nested elements inside <code class="language-markup">&lt;body&gt;</code> are very well defined. One can normally find at least these three elements nested inside:
+            <ul>
+              <li>A <code class="language-markup">&lt;header&gt;</code> element: The site header. It contains the header of the page. In contemporary web development this element tends to stay unchanged across multiple pages. Most of the time it carries the main navigation links and crucial site information.  </li>
+              <li>A <code class="language-markup">&lt;main&gt;</code> element: There should be one <code class="language-markup">&lt;main&gt;</code> element per page. It identifies identifies the main content of the document.. If no other element is nested inside of <code class="language-markup">&lt;body&gt;</code>, then <code class="language-markup">&lt;main&gt;</code> should be the only element inside of it.</li>
+              <li>A <code class="language-markup">&lt;footer&gt;</code> element: The site footer. It contains the footer of the page. In contemporary web development this element also tends to stay unchanged across multiple pages. It often carries navigation links and site information that are not present in the header site. </li>
+            </ul>
+            When nested inside <code class="language-markup">&lt;body&gt;</code>, all of these three elements are landmarks. Landmarks are special nodes in the AOM that carry semantinc meaning and give out key information about the structure of the document. They are indispensable for accessibility. We will dive deeper in what landmarks are and what is the AOM in the section 5 of the present Chapter.
+            
+          </p>
+          <h4>Layouts</h4>  
+            <p>As we saw previously, inside the &lt;body&gt; element we will always find the &lt;main&gt; section, which contains most of the content, as well as a number of other sections. Together they form the <em>layout</em> of the page.</p>
+            <p>There are many different layouts, and most of the time the &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; layout provides a clean and simple layout, perfect for mobile screens and scrolling down. However, for content heavy sites like blogs or newspapers, or web apps with dashboards, we tend to see more often the <em>holy grail layout</em>, consisting of:</p> 
+              <ul>
+                <li>A <code class="language-markup">&lt;header&gt;</code> element: The site header. It contains the header of the page. In contemporary web development this element tends to stay unchanged across multiple pages. Most of the time it carries the main navigation links and crucial site information.  </li>
+                <li>A <code class="language-markup">&lt;nav&gt;</code> element: </li>
+                <li>A <code class="language-markup">&lt;main&gt;</code> element: There can be only one <code class="language-markup">&lt;main&gt;</code> element per page. It contains the majority of the page's content. If no other element is nested inside of <code class="language-markup">&lt;body&gt;</code>, then <code class="language-markup">&lt;main&gt;</code> must be the only element inside of it.</li>
+                <li>A <code class="language-markup">&lt;footer&gt;</code> element: The site footer. It contains the footer of the page. In contemporary web development this element also tends to stay unchanged across multiple pages. It often carries navigation links and site information that are not present in the header site. </li>
+                <li>An <code class="language-markup">&lt;aside&gt;</code> element: </li>              
+              </ul>          
+            <h4>Sections</h4>
+            <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> We will use this definition to refer to the different parts in which authors can structure the content inside a document.</p>
           <h4>Section headings</h4>
-          <h4>The Layout</h4>
         <h3>Structured Data</h3>
           <h4>JSON LD, Microdata, and RDFa</h4>
-        <h3>Semantic HTML</h3>
-          <p>HTML is a language that is semantic <em>by design</em>. What this means is that the reason why W3C decided on using HTML to display content, instead of let's say, LaTeX for example, is that HTML excels at semantic structure. Every element in HTML is designed with meaning in mind, to give crawlers and browsers the necessary information about what the content of an element is.</p>
-          <p>To understand and exemplify how important is this, let's use as an example the most well known accesisibility attribute, the <code>&lt;alt=" "&gt;</code>, that specifies an alternate text for an image. Most authors are familiar with the fact that crawlers care a lot about this attribute, and how critical it is for SEO and good practices. The reason is simple: Without the <code>&lt;alt=" "&gt;</code> attribute crawlers cannot "see" how the image looks like. However few are aware that this same logic applies for most content present in your HTML, and that one should be able to tell .</p>
-          
+        <h3>On-Page SEO</h3>
         <h3>Beyond the DOM: CSSOM, and AOM</h3>
 
       <h2>HTML Elements and Syntax</h2>
@@ -203,9 +218,10 @@
       
 
     </main>
+    </div>
 
      <footer>
-      <p>&copy;2025 Javier Bellido Roldan.</p>
+      <p>&copy;2025 Javier Bellido Roldan</p>
      </footer>
 
      <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js" defer></script>

@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;  
+}
+.sidebar {
+  padding-left: 4px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex: 0 0 300px;
+  overflow-y: auto;  
+}
+
+main {
+  overflow-x: auto;
+}
+
+.sidebar a {
+  display: block;
+}
+
+body { font-family: sans-serif; }
+header {text-align: center;}
+footer {text-align: center;}
+
+nav { margin-bottom: 2em; }
+nav a { margin: 0.2em 0; }
+.toc-h3 { margin-left: 1em; font-size: 0.9em; }
+.toc-h4 { margin-left: 2em; font-size: 0.9em; }
