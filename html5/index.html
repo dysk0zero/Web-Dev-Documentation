@@ -62,7 +62,7 @@
             &lt;/body&gt;
             &lt;/html&gt;
           </code></pre>
-          <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node.</p>
+          <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node. </p>
           <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains a number of semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, &lt;h1&gt;</code>, and <code class="language-markup>">&lt;a&gt;</code>) which helps crawlers and text-assisted devices understand the meaning and structure of the content displayed. Certain elements are mandatory for any HTML document, such as <code class="language-markup">&lt;head&gt;</code> and <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;html&gt;</code> element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not recommended</em>, since it contains the language attribute. You should <em>always include</em> the <code class="language-markup">&lt;html&gt;</code> element in your document.</p>
           <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
             <pre><code class="language-markup">
@@ -155,18 +155,17 @@
               <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>
             </ul>
             <div>
-              <img src="./images/layout.png" width="400px"/>
+              <img src="./images/layout.png" width="400px" alt="The Standard Layout in HTML."/>
               <p class="caption"><em>The standard layout</em></p>    
             </div> 
           </div>
-          <p>
-            There should be <em>only one</em> <code class="language-markup">&lt;main&gt;</code> element per page, and every document should contain this element. As its name suggests <code class="language-markup">&lt;main&gt;</code> identifies the main content of the document, and it is crucial for semantic purposes.
-            The site header is the <code class="language-markup">&lt;header&gt;</code> element. The content of <code class="language-markup">&lt;header&gt;</code> tends to often remain static across multiple pages, carrying most of the time the main navigation links and crucial site information.
-            Lastly, the site footer is the <code class="language-markup">&lt;footer&gt;</code> element; which content remains most of the time static across multiple pages, often carrying the navigation links and site information that are not present in the header site.
-          </p>
+          <p>There should be <em>only one</em> <code class="language-markup">&lt;main&gt;</code> element per page, and every document should contain this element. As its name suggests <code class="language-markup">&lt;main&gt;</code> identifies the main content of the document, and it is crucial for semantic purposes. </p>
+          <p>The site header is the <code class="language-markup">&lt;header&gt;</code> element. The content of <code class="language-markup">&lt;header&gt;</code> tends to often remain static across multiple pages, carrying most of the time the main navigation links and crucial site information. </p>
+          <p>Lastly, the site footer is the <code class="language-markup">&lt;footer&gt;</code> element; which content remains most of the time static across multiple pages, often carrying the navigation links and site information that are not present in the header site. </p>
           <p>When nested inside <code class="language-markup">&lt;body&gt;</code>, all of these three elements are landmarks. Landmarks are special nodes in the AOM that carry semantic meaning and give out key information about the structure of the document. They are indispensable for accessibility. We will dive deeper in what landmarks are and what is the AOM in the section 5 of the present Chapter. </p>
-            <p>As we just stated, nested inside the <code class="language-markup">&lt;body&gt;</code> element we must always find the <code class="language-markup">&lt;main&gt;</code> section, which contains most of the content, as well as a number of other sections. Together they form the <em>layout</em> of the page.</p>
-            <p>There are many different layouts, but for most websites the standard layout involves a <code class="language-markup">&lt;header&gt;</code>, a <code class="language-markup">&lt;main&gt;</code>, and a <code class="language-markup">&lt;footer&gt;</code> elements nested inside <code class="language-markup">&lt;body&gt;</code>. This layout provides a clean and simple structure, perfect for mobile screens and scrolling down. However, for very content heavy sites like blogs or newspapers, e-commerce shop pages, or dashboards pages in web apps, we tend to see more often the <em>holy grail layout</em>, or a variation of it. This layout typically consists of: </p> 
+          <p><b>Note:</b> The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are not always landmarks. More information about the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code>, and <code class="language-markup">&lt;footer&gt;</code> elements can be found in Chapter 3, section 3. </Section></p>
+          <p>As we just stated, nested inside the <code class="language-markup">&lt;body&gt;</code> element we must always find the <code class="language-markup">&lt;main&gt;</code> section, which contains most of the content, as well as a number of other sections. Together they form the <em>layout</em> of the page.</p>
+          <p>There are many different layouts, but for most websites the standard layout involves a <code class="language-markup">&lt;header&gt;</code>, a <code class="language-markup">&lt;main&gt;</code>, and a <code class="language-markup">&lt;footer&gt;</code> elements nested inside <code class="language-markup">&lt;body&gt;</code>. This layout provides a clean and simple structure, perfect for mobile screens and scrolling down. However, for very content heavy sites like blogs or newspapers, e-commerce shop pages, or dashboards pages in web apps, we tend to see more often the <em>holy grail layout</em>, or a variation of it. This layout typically consists of: </p> 
           <div class="content-wrapper">  
             <ul>
               <li>A <code class="language-markup">&lt;header&gt;</code> element on top </li>
@@ -176,35 +175,57 @@
               <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>            
             </ul>
             <div>
-              <img src="./images/holy-grail-layout.png" width="400px"/>
+              <img src="./images/holy-grail-layout.png" width="400px" alt="The Holy Grail Layout in HTML."/>
               <p class="caption"><em>The holy-grail layout</em></p>    
-            </div>   
+            </div>  
           </div>  
           <p>The <code class="language-markup">&lt;nav&gt;</code> element identifies content as navigation. When <code class="language-markup">&lt;nav&gt;</code> nested in the <code class="language-markup">&lt;body&gt;</code> or in the site heading, it is the main navigation for the site. If it was nested in an <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>, it would be internal navigation for that section only. </p>
           <p>The <code class="language-markup">&lt;aside&gt;</code> element is for content that is indirectly or tangentially related to the document's main content. It is specially common on content-heavy sites, like blogs or newspapers. </p>
           <p>For styling purposes we will often find in this layout the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code> and <code class="language-markup">&lt;aside&gt;</code> elements wrapped inside the same <code class="language-markup">&lt;div&gt;</code> element. This, however, doesn't have a negative impact on the SEO nor the semantics of the document. </p> 
-
         <h3>Sections</h3>
-          <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> We will use this definition to refer to the different parts in which authors can structure the content inside a document. </p>
+          <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> In an HTML we can use certain elements to structure the content into different sections. Those elements are: </p>
+          <ul>
+            <li><code class="language-markup">&lt;section&gt;</code> </li>
+            <li><code class="language-markup">&lt;article&gt;</code> </li>
+            <li><code class="language-markup">&lt;nav&gt;</code> </li>
+            <li><code class="language-markup">&lt;aside&gt;</code> </li>
+          </ul>        
+          <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
+          <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
+          <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
         <h3>Section headings</h3>
         <h3>Structured Data</h3>
           <h4>JSON LD, Microdata, and RDFa</h4>
-        <h3>Beyond the DOM: CSSOM, and AOM</h3>
-        <p>By using semantic elements, you built a meaningful accessibility object model, or AOM. The AOM enables the screen reader to inform the user that this section consists of a major navigation block that they can either navigate through or skip. </p>
+        <h3>The AOM</h3>
+          <p>By using semantic elements, you built a meaningful accessibility object model, or AOM. The AOM enables the screen reader to inform the user that this section consists of a major navigation block that they can either navigate through or skip. </p>
+          <p><code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are directly nested under <code class="language-markup">&lt;body&gt;</code>. A <code class="language-markup">&lt;section&gt;</code> isn't a landmark unless it has an accessible name; if it has an accessible name, the implicit role is <em>region</em>. </p>
+
+          <pre><code class="language-markup">
+            &lt;section&gt;
+              &lt;p&gt;This section is not a landmark in the AOM.&lt;/p&gt;
+            &lt;/section&gt;
+
+            &lt;section aria-label="Section Name"&gt;
+              &lt;p&gt;This section is now a landmark with role="region" in the AOM.&lt;/p&gt;
+            &lt;/section&gt;
+          </code></pre>
+
         <h3>On-Page SEO</h3>
 
       <h2>HTML Elements and Syntax</h2>
         <h3>Document Metadata</h3>
-        <h3>Sections</h3>
-        <h3>Headings and Text</h3>
         <h3>Main Elements</h3>
-          <h4>Grouping</h4>
-          <h4>Links</h4>
-          <h4>Navigation</h4>
-          <h4>Tables</h4>
-          <h4>Forms</h4>
-          <h4>Graphics</h4>
-          <h4>Multimedia</h4>
+          <h4>Sectioning elements </h4>
+          <h4>Sectioning root elements </h4>
+          <h4>Content sectioning-related elements </h4>
+          <h4>Headings and Text </h4>
+          <h4>Grouping </h4>
+          <h4>Links </h4>
+          <h4>Navigation </h4>
+          <h4>Tables </h4>
+          <h4>Forms </h4>
+          <h4>Graphics </h4>
+          <h4>Multimedia </h4>
         <h3>Templates</h3>
         <h3>Custom Elements and Shadow DOM</h3>
         <h3>Other Elements</h3>
@@ -212,6 +233,10 @@
           <h4>Inline text elements</h4>
           <h4>Full list of elements</h4>
         <h3>Attributes</h3>
+          <h4>Boolean attributes </h4>
+          <h4>Enumerated attributes </h4>
+          <h4>Global attributes </h4>
+          <h4>Custom attributes </h4>
 
       <h2>User Interaction and Web APIs</h2>
         <h3>PWAs</h3>
