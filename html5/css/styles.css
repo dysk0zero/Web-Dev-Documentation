@@ -3,8 +3,8 @@
 }
 .content-wrapper {
   display: flex;  
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin-top: 4em;
   margin-bottom: 4em;
 }
@@ -14,6 +14,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  width: 300px;
   flex: 0 0 300px;
   overflow-y: auto;  
 }
@@ -44,4 +45,20 @@ img{
 }
 li + li{
   margin-top: 1em;
+}
+@media (max-width:992px){
+  .wrapper {
+    display: block;
+  }
+  header {
+    min-height: max-content;
+  }
+  .sidebar{
+    column-count: 2;  
+    flex-wrap: wrap;
+    position: static;
+    font-size: 0.9em;
+    height: auto;
+    width: auto;
+  }
 }
