@@ -32,6 +32,7 @@ main {
   overflow-x: auto;
   max-width: 900px;
   margin: auto;
+  padding: 1em;
 }
 header { text-align: center; }
 footer { text-align: center; }

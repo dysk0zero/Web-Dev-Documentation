@@ -77,7 +77,7 @@
           <p>Elements can have attributes, which control how the elements work. Attributes are placed inside the start tag, and consist of a name and a value, separated by an "=" character. The attribute value can remain unquoted if it doesn't contain whitespaces or ", ', `, =, &lt;, or &gt;. Regardless, you should <em>always</em> quote your attribute values.</p>
         
         <h3>The DOM</h3>
-          <p>Web browsers then parse this markup from the HTML document, turning it into a DOM (Document Object Model) tree. A DOM tree is an in-memory representation of a document.<br>DOM trees contain several kinds of nodes, in particular a <i>DocumentType</i> node, <i>Element</i> nodes, <i>Text</i> nodes, <i>Comment</i> nodes, and in some cases <i>ProcessingInstruction</i> nodes. The markup snippet at the top of this section would be turned into the following DOM tree:</p>
+          <p>Web browsers then parse this markup from the HTML document, turning it into a DOM (Document Object Model) tree. A DOM tree is an in-memory representation of a document. The <strong>Document Object Model</strong> (DOM) is an API for manipulating DOM trees of HTML and XML documents. This API serves as a base for scripting on the web. <br>DOM trees contain several kinds of nodes, in particular a <i>DocumentType</i> node, <i>Element</i> nodes, <i>Text</i> nodes, <i>Comment</i> nodes, and in some cases <i>ProcessingInstruction</i> nodes. The markup snippet at the top of this section would be turned into the following DOM tree:</p>
           <github-md>
             DOCTYPE html
             html lang="en"
@@ -160,7 +160,7 @@
               <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>
             </ul>
             <div>
-              <img src="./images/layout.png" width="400px" alt="The Standard Layout in HTML."/>
+              <img src="./images/layout.png" class="responsive-img" alt="The Standard Layout in HTML."/>
               <p class="caption"><em>The standard layout</em></p>    
             </div> 
           </div>
@@ -180,7 +180,7 @@
               <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>            
             </ul>
             <div>
-              <img src="./images/holy-grail-layout.png" width="400px" alt="The Holy Grail Layout in HTML."/>
+              <img src="./images/holy-grail-layout.png" class="responsive-img" alt="The Holy Grail Layout in HTML."/>
               <p class="caption"><em>The holy-grail layout</em></p>    
             </div>  
           </div>  
@@ -197,7 +197,46 @@
           </ul>        
           <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
           <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
+          <p>An example of a properly structured document is the following: </p>
+        
+          <pre><code class="language-markup">
+            &lt;body&gt;
+              &lt;header&gt;
+                &lt;h1&gt;This is the Page Title of the Document with Good Structure &lt;/h1&gt;
+                &lt;nav&gt;
+                &lt;/nav&gt;
+              &lt;/header&gt;
+
+              &lt;main&gt;
+                &lt;header&gt;
+                  &lt;h2&gt;This is the Content Title &lt;/h2&gt;
+                &lt;/header&gt;
+
+                &lt;section id="intro"&gt;
+                  &lt;h3&gt;This is the header of a section "intro". &lt;/h3&gt;
+                &lt;/section&gt;
+
+                &lt;section id="about"&gt;
+                  &lt;h3&gt;This is the header of the section "about". &lt;/h3&gt;
+                &lt;/section&gt;
+
+                &lt;section id="cards"&gt;
+                  &lt;h3&gt;This is the header of the section "cards". &lt;/h3&gt;
+                  &lt;h4&gt;Hey! This is a a subheader. &lt;/h4&gt;
+                &lt;/section&gt;
+
+                &lt;section id="feedback"&gt;
+                  &lt;h3&gt;This is the header of the section "feedback". &lt;/h3&gt;
+                &lt;/section&gt;
+              &lt;/main&gt;
+
+              &lt;footer&gt;
+                &lt;h2&gt;Delivering accessible, performant, standards-compliant websites since 2023. &lt;/h2&gt;
+              &lt;/footer&gt;
+            &lt;/body&gt;
+          </code></pre>
           <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
+          
         <h3>Section headings</h3>
           <p>The <code class="language-markup">&lt;h1&gt;</code> to <code class="language-markup">&lt;h6&gt;</code> HTML elements represent six levels of section headings. <code class="language-markup">&lt;h1&gt;</code> is the highest section level and <code class="language-markup">&lt;h6&gt;</code> is the lowest. By default, all heading elements create a block-level box in the layout, starting on a new line and taking up the full width available in their containing block. While using multiple <code class="language-markup">&lt;h1&gt;</code> elements on one page is allowed by the HTML standard (as long as they are not nested), this is not considered a best practice. A page should have a single <code class="language-markup">&lt;h1&gt;</code> element that describes the content of the page. </p>
           <p>A common navigation technique for users of screen reading software is to quickly jump from heading to heading in order to determine the content of the page. Because of this, it is important to not skip one or more heading levels. </p>
@@ -239,11 +278,30 @@
           <p><strong>Microdata</strong> is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata from a web page and use it to provide a richer browsing experience for users. microdata consists of a group of name-value pairs. The groups are called items, and each name-value pair is a property. Items and properties are represented by regular elements. Authors can create items using the <code class="language-markup">itemscope</code> attribute, and add properties using the <code class="language-markup">itemprop</code> attribute. </p>
           <p>Nowadays the use of microdata is not recommended for purely SEO-purposes, and the use of JSON-LD is encouraged instead. </p>
         <h3>The CSSOM and AOM </h3>
-          <p>By using semantic elements, you built a meaningful accessibility object model, or AOM. The AOM enables the screen reader to inform the user that this section consists of a major navigation block that they can either navigate through or skip. </p>
-          <p><code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are directly nested under <code class="language-markup">&lt;body&gt;</code>. A <code class="language-markup">&lt;section&gt;</code> isn't a landmark unless it has an accessible name; if it has an accessible name, the implicit role is <em>region</em>. </p>
+          <p>Similar to the DOM,the <strong>CSS Object Model</strong> (CSSOM) is a set of APIs that allow JavaScript to manipulate the CSS of a document, allowing users to read and modify CSS style dynamically. </p>
+          <p>The <strong>Accessibility Object Model</strong>, or AOM, is an accessibility tree based on the DOM tree semantics. It is used by accessibility APIs to provide a document representation that can be understood by text-assisted technologies. The AOM contains information on element properties and interactivity. There are four semantic properties in an accessibility tree object: </p>
+          <ul>
+            <li>Name</li>
+            <li>Description</li>
+            <li>Role</li>
+            <li>State</li>
+          </ul>
+          <p>The Accessibility Object Model (AOM) is still a work in progress that aims to incubate APIs that make it easier to express accessibility semantics and potentially allow read access to the computed accessibility tree. In this section we will present a limited overview of <em>landmark roles</em>, for more information about the AOM and an in-depth dive in AOM roles and states, see Volume 2. </p>
+          <p>Landmark roles are a category of ARIA roles that provide a way to identify the organization and structure of a web page in the AOM. By classifying and labeling sections of a page, structural information conveyed visually through layout is represented programmatically. Screen readers use landmark roles to provide keyboard navigation to important sections of a page. There are the following landmark roles: </p>
+          <ul>
+            <li>banner (<code class="language-markup">&lt;header&gt;</code>)</li>
+            <li>complementary (<code class="language-markup">&lt;aside&gt;</code>)</li>
+            <li>contentinfo (<code class="language-markup">&lt;footer&gt;</code>)</li>
+            <li>form (<code class="language-markup">&lt;form&gt;</code>)</li>
+            <li>main (<code class="language-markup">&lt;main&gt;</code>)</li>
+            <li>navigation (<code class="language-markup">&lt;nav&gt;</code>)</li>
+            <li>region (<code class="language-markup">&lt;section&gt;</code>)</li>
+            <li>search (<code class="language-markup">&lt;search&gt;</code>)</li>
+          </ul>
+          <p>Some landmark roles are always automatically added by browsers, like the roles for <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code>, and <code class="language-markup">&lt;search&gt;</code>. In the other cases the landmark role is only added when certain conditions are met. The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are direct children of <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;aside&gt;</code> element is only a landmark when it is used outside of <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>. <code class="language-markup">&lt;section&gt;</code>, <code class="language-markup">&lt;article&gt;</code>, and <code class="language-markup">&lt;form&gt;</code> elements aren't landmarks unless they have an accessible name, in which case the role is automatically added by the browser. </p>
           
           <pre><code class="language-markup">
-            &lt;section&gt;
+            &lt;section role="region"&gt;
               &lt;p&gt;This section is not a landmark in the AOM.&lt;/p&gt;
             &lt;/section&gt;
 
@@ -252,45 +310,8 @@
             &lt;/section&gt;
           </code></pre>
 
+          <p><b>Note:</b> Use landmarks sparingly. Too many landmark roles make it difficult for screen readers to understand the overall layout of the page. </p>
         <h3>On-Page SEO</h3>
-        <p>An example of a document with good semantic structure is the following: </p>
-        
-        <pre><code class="language-markup">
-          &lt;body&gt;
-            &lt;header&gt;
-              &lt;h1&gt;This is the Page Title of the Document with Good Structure &lt;/h1&gt;
-              &lt;nav&gt;
-              &lt;/nav&gt;
-            &lt;/header&gt;
-
-            &lt;main&gt;
-              &lt;header&gt;
-                &lt;h2&gt;This is the Content Title &lt;/h2&gt;
-              &lt;/header&gt;
-
-              &lt;section id="intro"&gt;
-                &lt;h3&gt;This is the header of a section "intro". &lt;/h3&gt;
-              &lt;/section&gt;
-
-              &lt;section id="about"&gt;
-                &lt;h3&gt;This is the header of the section "about". &lt;/h3&gt;
-              &lt;/section&gt;
-
-              &lt;section id="cards"&gt;
-                &lt;h3&gt;This is the header of the section "cards". &lt;/h3&gt;
-                &lt;h4&gt;Hey! This is a a subheader. &lt;/h4&gt;
-              &lt;/section&gt;
-
-              &lt;section id="feedback"&gt;
-                &lt;h3&gt;This is the header of the section "feedback". &lt;/h3&gt;
-              &lt;/section&gt;
-            &lt;/main&gt;
-
-            &lt;footer&gt;
-              &lt;h2&gt;Delivering accessible, performant, standards-compliant websites since 2023. &lt;/h2&gt;
-            &lt;/footer&gt;
-          &lt;/body&gt;
-        </code></pre>
 
       <h2>HTML Elements and Syntax</h2>
         <h3>Document Metadata</h3>

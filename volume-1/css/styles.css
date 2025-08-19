@@ -30,6 +30,7 @@ body {
 }
 main {
   overflow-x: auto;
+  padding: 1em;
 }
 header { text-align: center; }
 footer { text-align: center; }
@@ -64,5 +65,14 @@ li + li{
     display: grid;
     justify-content: center;
   }
-
+  .responsive-img {
+    max-width: 300px;
+  }
 }
+  .responsive-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    max-width: 500px; /* desktop default */
+  }
