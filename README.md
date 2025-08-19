@@ -1,21 +1,20 @@
 # The complete Web Audit documentation
 
-This repository hosts the full set of **Web Audit** and **HTML5 Audit** handbooks, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
+This repository hosts the full set of **HTML5, Accessibility, and Performance** auditing handbooks, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
 
 ## Read them Online!
 
-- HTML5 Audit Handbook → [docs.jbroldan.dev/html5](https://docs.jbroldan.dev/html5)  
-- Accessibility Audit Handbook → [TBA](https://docs.jbroldan.dev/web-audit-handbook)
+- HTML5 Audit Handbook → [docs.jbroldan.dev/volume-1](https://docs.jbroldan.dev/volume-1)  
+- Accessibility Handbook → [TBA](https://docs.jbroldan.dev/volume-2)
+- Auditing and Performance Handbook → [TBA](https://docs.jbroldan.dev/volume-3)
 
 ## The Handbooks
 
-### HTML5 Audit Handbook
-- [`/html5`](./html5/)  
+### Volume 1: HTML5
+- [`/volume-1`](./volume-1/)  
   Covers the HTML5 specification essentials, DOM optimization, semantic markup, and best practices for accessibility, performance, and SEO.
 
-### Web Audit Handbook
-- [`/web-audit-handbook`](./web-audit-handbook/)  
-  Focuses on broader web auditing, including asset optimization, loading strategies, Core Web Vitals, accessibility testing, and security checks.
+### Volume 2 and 3: TBA
 
 ## Find in GitHub
 
