@@ -194,12 +194,43 @@
           <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
           <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
         <h3>Section headings</h3>
-        <h3>Structured Data</h3>
+          <p>The <code class="language-markup">&lt;h1&gt;</code> to <code class="language-markup">&lt;h6&gt;</code> HTML elements represent six levels of section headings. <code class="language-markup">&lt;h1&gt;</code> is the highest section level and <code class="language-markup">&lt;h6&gt;</code> is the lowest. By default, all heading elements create a block-level box in the layout, starting on a new line and taking up the full width available in their containing block. While using multiple <code class="language-markup">&lt;h1&gt;</code> elements on one page is allowed by the HTML standard (as long as they are not nested), this is not considered a best practice. A page should have a single <code class="language-markup">&lt;h1&gt;</code> element that describes the content of the page. </p>
+          <p>A common navigation technique for users of screen reading software is to quickly jump from heading to heading in order to determine the content of the page. Because of this, it is important to not skip one or more heading levels. </p>
+          <pre><code class="language-markup">
+            &lt;h1&gt;Heading level 1&lt;/h1&gt;
+            &lt;h2&gt;Heading level 2&lt;/h2&gt;
+            &lt;h3&gt;Heading level 3&lt;/h3&gt;
+          </code></pre>
+          <p>Headings may be nested as subsections to reflect the organization of the content of the page. Most screen readers can also generate an ordered list of all the headings on a page, which can help a person quickly determine the content hierarchy and navigate to different headings.   Another example with heading nesting is the following: </p>
+          <pre><code class="language-markup">
+            &lt;h1&gt;Beetles&lt;/h1&gt;
+
+            &lt;h2&gt;Etymology&lt;/h2&gt;
+
+            &lt;h2&gt;Distribution and Diversity&lt;/h2&gt;
+
+            &lt;h2&gt;Evolution&lt;/h2&gt;
+              &lt;h3&gt;Late Paleozoic&lt;/h3&gt;
+              &lt;h3&gt;Jurassic&lt;/h3&gt;
+              &lt;h3&gt;Cretaceous&lt;/h3&gt;
+              &lt;h3&gt;Cenozoic&lt;/h3&gt;
+
+            &lt;h2&gt;External Morphology&lt;/h2&gt;
+              &lt;h3&gt;Head&lt;/h3&gt;
+                &lt;h4&gt;Mouthparts&lt;/h4&gt;
+              &lt;h3&gt;Thorax&lt;/h3&gt;
+                &lt;h4&gt;Prothorax&lt;/h4&gt;
+                &lt;h4&gt;Pterothorax&lt;/h4&gt;
+              &lt;h3&gt;Legs&lt;/h3&gt;
+              &lt;h3&gt;Wings&lt;/h3&gt;
+              &lt;h3&gt;Abdomen&lt;/h3&gt;
+          </code></pre>
+          <h3>Structured Data</h3>
           <h4>JSON LD, Microdata, and RDFa</h4>
         <h3>The AOM</h3>
           <p>By using semantic elements, you built a meaningful accessibility object model, or AOM. The AOM enables the screen reader to inform the user that this section consists of a major navigation block that they can either navigate through or skip. </p>
           <p><code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are directly nested under <code class="language-markup">&lt;body&gt;</code>. A <code class="language-markup">&lt;section&gt;</code> isn't a landmark unless it has an accessible name; if it has an accessible name, the implicit role is <em>region</em>. </p>
-
+          
           <pre><code class="language-markup">
             &lt;section&gt;
               &lt;p&gt;This section is not a landmark in the AOM.&lt;/p&gt;
@@ -208,6 +239,26 @@
             &lt;section aria-label="Section Name"&gt;
               &lt;p&gt;This section is now a landmark with role="region" in the AOM.&lt;/p&gt;
             &lt;/section&gt;
+          </code></pre>
+          
+          <p>Another common navigation technique for users of screen reading software is to generate a list of sectioning content and use it to determine the page's layout. Sectioning content can be labeled using a combination of the <code class="language-markup">aria-labelledby</code> and <code class="language-markup">id</code> attributes, with the label concisely describing the purpose of the section. </p>
+
+          <pre><code class="language-markup">
+            &lt;header&gt;
+              &lt;nav aria-labelledby="primary-navigation"&gt;
+                &lt;h2 id="primary-navigation"&gt;Primary navigation&lt;/h2&gt;
+                &lt;!-- navigation items --&gt;
+              &lt;/nav&gt;
+            &lt;/header&gt;
+
+            &lt;!-- page content --&gt;
+
+            &lt;footer&gt;
+              &lt;nav aria-labelledby="footer-navigation"&gt;
+                &lt;h2 id="footer-navigation"&gt;Footer navigation&lt;/h2&gt;
+                &lt;!-- navigation items --&gt;
+              &lt;/nav&gt;
+            &lt;/footer&gt;
           </code></pre>
 
         <h3>On-Page SEO</h3>
