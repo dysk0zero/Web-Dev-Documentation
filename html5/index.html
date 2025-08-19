@@ -225,9 +225,15 @@
               &lt;h3&gt;Wings&lt;/h3&gt;
               &lt;h3&gt;Abdomen&lt;/h3&gt;
           </code></pre>
-          <h3>Structured Data</h3>
-          <h4>JSON LD, Microdata, and RDFa</h4>
-        <h3>The AOM</h3>
+        <h3>Structured Data </h3>
+          <p><strong>Structured data</strong> is information organized in a consistent, machine-readable format. On the web, structured data makes content understandable not just for humans, but also for software such as search engines and crawlers.</p>
+          <p><strong>Linked data</strong> is structured data which is associated with &mdash;linked to&mdash; other data, enabling semantic queries. By providing semantics, linked data allows machines to interpret not only the content, but also the relationships between entities. </p>
+          <h4>JSON LD </h4>
+            <p><strong>JSON-LD</strong> is a lightweight Linked Data format that is easy for humans to read and write. It is based on the already successful JSON format and provides a way to help JSON data interoperate at Web-scale. It is a decoupled, script-based format that doesn't clutter HTML document. JSON-LD is the most recommended and SEO-friendly way to structure data and provide with extra semantics to crawlers. </p>
+          <h4>Microdata </h4>
+          <p><strong>Microdata</strong> is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata from a web page and use it to provide a richer browsing experience for users. microdata consists of a group of name-value pairs. The groups are called items, and each name-value pair is a property. Items and properties are represented by regular elements. Authors can create items using the <code class="language-markup">itemscope</code> attribute, and add properties using the <code class="language-markup">itemprop</code> attribute. </p>
+          <p>Nowadays the use of microdata is not recommended for purely SEO-purposes, and the use of JSON-LD is encouraged instead. </p>
+        <h3>The CSSOM and AOM </h3>
           <p>By using semantic elements, you built a meaningful accessibility object model, or AOM. The AOM enables the screen reader to inform the user that this section consists of a major navigation block that they can either navigate through or skip. </p>
           <p><code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are directly nested under <code class="language-markup">&lt;body&gt;</code>. A <code class="language-markup">&lt;section&gt;</code> isn't a landmark unless it has an accessible name; if it has an accessible name, the implicit role is <em>region</em>. </p>
           
@@ -239,26 +245,6 @@
             &lt;section aria-label="Section Name"&gt;
               &lt;p&gt;This section is now a landmark with role="region" in the AOM.&lt;/p&gt;
             &lt;/section&gt;
-          </code></pre>
-          
-          <p>Another common navigation technique for users of screen reading software is to generate a list of sectioning content and use it to determine the page's layout. Sectioning content can be labeled using a combination of the <code class="language-markup">aria-labelledby</code> and <code class="language-markup">id</code> attributes, with the label concisely describing the purpose of the section. </p>
-
-          <pre><code class="language-markup">
-            &lt;header&gt;
-              &lt;nav aria-labelledby="primary-navigation"&gt;
-                &lt;h2 id="primary-navigation"&gt;Primary navigation&lt;/h2&gt;
-                &lt;!-- navigation items --&gt;
-              &lt;/nav&gt;
-            &lt;/header&gt;
-
-            &lt;!-- page content --&gt;
-
-            &lt;footer&gt;
-              &lt;nav aria-labelledby="footer-navigation"&gt;
-                &lt;h2 id="footer-navigation"&gt;Footer navigation&lt;/h2&gt;
-                &lt;!-- navigation items --&gt;
-              &lt;/nav&gt;
-            &lt;/footer&gt;
           </code></pre>
 
         <h3>On-Page SEO</h3>
@@ -333,24 +319,7 @@
       <h2>Common Patterns & Pitfalls</h2>
         <h3>Metadata Keywords</h3>
         <h3><i>Divitis</i> and <i>Classitis</i></h3>
-          
-      <h2>Auditing</h2>
-        <h3>Developer Tools</h3>
-        <h3>Step by Step</h3>
-        <h3>Audit Checklist</h3>
-
-      <h2>Optimization</h2>
-        <h3>DOM Structure</h3>
-        <h3>Semantic HTML</h3>
-        <h3>Image Handling</h3>
-          <h4>Lazy loading</h4>
-          <h4>Setting image size</h4>
-        <h3>Script Loading</h3>
-        <h3>Font Optimization</h3>
-        <h3>Preloading</h3>
-
-      
-
+        
     </main>
     </div>
 

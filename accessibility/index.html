@@ -1,0 +1,35 @@
+      <h2>Auditing</h2>
+        <h3>Developer Tools</h3>
+        <h3>Step by Step</h3>
+        <h3>Audit Checklist</h3>
+
+      <h2>Optimization</h2>
+        <h3>DOM Structure</h3>
+        <h3>Semantic</h3>
+        <h3>Accessibility</h3>
+          <p>Another common navigation technique for users of screen reading software is to generate a list of sectioning content and use it to determine the page's layout. Sectioning content can be labeled using a combination of the <code class="language-markup">aria-labelledby</code> and <code class="language-markup">id</code> attributes, with the label concisely describing the purpose of the section. </p>
+
+          <pre><code class="language-markup">
+            &lt;header&gt;
+              &lt;nav aria-labelledby="primary-navigation"&gt;
+                &lt;h2 id="primary-navigation"&gt;Primary navigation&lt;/h2&gt;
+                &lt;!-- navigation items --&gt;
+              &lt;/nav&gt;
+            &lt;/header&gt;
+
+            &lt;!-- page content --&gt;
+
+            &lt;footer&gt;
+              &lt;nav aria-labelledby="footer-navigation"&gt;
+                &lt;h2 id="footer-navigation"&gt;Footer navigation&lt;/h2&gt;
+                &lt;!-- navigation items --&gt;
+              &lt;/nav&gt;
+            &lt;/footer&gt;
+          </code></pre>
+
+        <h3>Image Handling</h3>
+          <h4>Lazy loading</h4>
+          <h4>Setting image size</h4>
+        <h3>Script Loading</h3>
+        <h3>Font Optimization</h3>
+        <h3>Preloading</h3>
