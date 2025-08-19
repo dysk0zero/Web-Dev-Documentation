@@ -1,6 +1,6 @@
 # The complete Web Audit documentation
 
-This repository hosts the full set of **HTML5, Accessibility, and Performance** auditing handbooks, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
+This repository hosts a full set of **HTML5, Accessibility, and Performance** auditing handbooks, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
 
 ## Read them Online!
 
