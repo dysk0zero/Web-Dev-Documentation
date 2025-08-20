@@ -317,25 +317,81 @@
 
   <h2>HTML Elements and Syntax</h2>
     <h3>Metadata</h3>
-      <p>Metadata is a type of data that describes data. In an HTML document the metadata is located in the <code class="language-markup">&lt;head&gt;</code> element. The different elements that can be used to add metadata to a document are <code class="language-markup">&lt;meta&gt;</code>, <code class="language-markup">&lt;title&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, and <code class="language-markup">&lt;base&gt;</code>. </p>
-      <p>The <code class="language-markup">&lt;meta&gt;</code> element.</p>
-      <p>The <code class="language-markup">&lt;title&gt;</code> element.</p>
-      <p>The <code class="language-markup">&lt;link&gt;</code> element.</p>
-      <p>The <code class="language-markup">&lt;base&gt;</code> element.</p>
-    <h3>Main Elements</h3>
-      <h4>Sectioning elements </h4>
-      <h4>Sectioning root elements </h4>
-      <h4>Content sectioning-related elements </h4>
-      <h4>Headings and Text </h4>
+      <p>Metadata is a type of data that describes data. In an HTML document the metadata is located in the <code class="language-markup">&lt;head&gt;</code> element. The different elements that can be used to add metadata to a document are <code class="language-markup">&lt;title&gt;</code>, <code class="language-markup">&lt;meta&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, and <code class="language-markup">&lt;base&gt;</code>. </p>
+      <h4>The <code class="language-markup">&lt;title&gt;</code> element </h4>
+        <p>The <code class="language-markup">&lt;title&gt;</code> element defines the document's title that is shown in the browse and it only contains text. It is very important for SEO and traffic purposes. </p>
+      <h4>The <code class="language-markup">&lt;meta&gt;</code> element </h4>
+        <p>The <code class="language-markup">&lt;meta&gt;</code> element represents metadata that cannot be represented by other meta-related elements. The attributes in the <code class="language-markup">&lt;meta&gt;</code> element define the type of metadata provided by this element.</p>
+        <h5><code class="language-markup">charset</code> </h5> 
+          <p>This attribute declares the document's character encoding. If the attribute is present, its value must be an ASCII case-insensitive match for the string <code class="language-markup">"utf-8"</code>, because UTF-8 is the only valid encoding for HTML5 documents. If the <code class="language-markup">charset</code> attribute is set, the <code class="language-markup">&lt;meta&gt;</code> element is a charset declaration. </p> 
+        <h5><code class="language-markup">name</code> </h5>  
+          <p>The <code class="language-markup">name</code> and <code class="language-markup">content</code> attributes are used together to provide document metadata in terms of name-value pairs, with the <code class="language-markup">name</code> attribute giving the metadata name, and the <code class="language-markup">content</code> attribute giving the value. If the <code class="language-markup">name</code> attribute is set, the <code class="language-markup">&lt;meta&gt;</code>  element provides document-level metadata. </p>
+        <h5><code class="language-markup">http-equiv</code> </h5>  
+          <p>Defines a pragma directive, which are instructions for the browser for processing the document. If the <code class="language-markup">http-equiv</code> attribute is set, the <code class="language-markup">&lt;meta&gt;</code> element acts as a pragma directive.</p>
+        <h5><code class="language-markup">content</code> </h5>
+          <p>This attribute contains the value for the <code class="language-markup">http-equiv</code> or <code class="language-markup">name</code> attribute, depending on which is used. </p>  
+        <h5><code class="language-markup">media</code> </h5>  
+          <p>The <code class="language-markup">media</code> attribute defines which media the theme color defined in the <code class="language-markup">content</code> attribute should be applied to. </p>
+      <h4>The <code class="language-markup">&lt;link&gt;</code> element </h4>
+        <p><code class="language-markup">&lt;link&gt;</code> links the document with external resources. Is is typically used to link to stylesheets, stablish the site icons, and many other things. We can use certain attributes to define the functionality of <code class="language-markup">&lt;link&gt;</code>: </p>
+        <h5><code class="language-markup">href</code> and <code class="language-markup">hreflang</code> </h5>  
+          <p><code class="language-markup">href</code> specifies the URL &mdash;absolute or relative&mdash; of the linked resource. <code class="language-markup">hreflang</code> indicates the language of the linked resource and it is purely advisory. </p>
+        <h5><code class="language-markup">rel</code> </h5>  
+          <p>One of the key features of <code class="language-markup">&lt;link&gt;</code> is the <code class="language-markup">rel</code> attribute. <code class="language-markup">rel</code> stands for "relationship", and it defines the relationship between the document and the linked external resource. You can find the full list of <code class="language-markup">rel</code> values on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#value" target="_blank" rel="External" >MDN</a>. The <code class="language-markup">rel</code> keywords that are the most relevant for the <code class="language-markup">&lt;link&gt;</code> element are:  </p>
+          <dl>
+            <dt><code class="language-markup">stylesheet</code></dt>
+            <dd>To import a style sheet. </dd>
+            <dt><code class="language-markup">icon</code></dt>
+            <dd>To import an icon to represent the current document. </dd>
+            <dt><code class="language-markup">canonical</code></dt>
+            <dd>To define the preferred URL for the current document. </dd>
+            <dt><code class="language-markup">alternate</code></dt>
+            <dd>To define an alternate representation of the current document. </dd>
+            <dt><code class="language-markup">manifest</code></dt>
+            <dd>To define a PWA manifest. </dd>
+            <dt><code class="language-markup">preload</code></dt>
+            <dd>To order the browser to preemptively fetch and cache the target resource. It needs the <code class="language-markup">as</code> as attribute to correctly function. More information about the <code class="language-markup">as</code> attribute and its keywords can be found at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link#as" target="_blank" rel="external">MDN</a>. </dd>
+          </dl>  
+        <h5><code class="language-markup">media</code> </h5> 
+          <p>This attribute specifies the media that the linked resource applies to. Its value must be a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries" rel="external" target="_blank">CSS media query</a>.  </p>
+        <h5><code class="language-markup">sizes</code> </h5>  
+          <p>This attribute defines the sizes of the icons for visual media contained in the resource. It must be present only if the rel contains a value of <code class="language-markup">icon</code>. </p>
+      <h4>The <code class="language-markup">&lt;base&gt;</code> element </h4>
+        <p>The <code class="language-markup">&lt;base&gt;</code> element specifies the base URL to use for all relative URLs in a document. There can be only one <code class="language-markup">&lt;base&gt;</code> element in a document, and it must have a have an <code class="language-markup">href</code> attribute, a <code class="language-markup">target</code> attribute, or both. </p>
+      <h4>Boilerplate</h4>
+<pre><code class="language-markup">
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;meta name="description" content="Short description of the page" /&gt;
+  &lt;link rel="stylesheet" href="css/styles.css" /&gt;
+  &lt;link rel="icon" type="image/png" href="/images/favicon.png" /&gt;
+  &lt;link rel="alternate" href="https://example.com/fr/" hreflang="fr-FR" /&gt;
+  &lt;link rel="alternate" href="https://example.com/pt/" hreflang="pt-BR" /&gt;
+  &lt;link rel="canonical" href="https://example.com/page" /&gt;
+  &lt;link rel="manifest" href="/site.webmanifest" /&gt;
+&lt;/head&gt;
+
+</code></pre>
+    <h3>Content Sectioning</h3>
+      <h4>Sectioning Elements </h4>
+      <h4>Sectioning Root Elements </h4>
+      <h4>Related Elements </h4>
+    <h3>Text Content</h3>
+      <h4>Headings & Paragraphs </h4>
         <p>As previously seen in <a href="#section-headings">Section Headings</a>, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
         <p>Paragraphs are marked up with the <code class="language-markup">&lt;p&gt;</code> tag. </p>  
+      <h4>Quotes & Citations</h4>
         <p>For quotes and citations the corresponding elements are <code class="language-markup">&lt;blockquote&gt;</code>, <code class="language-markup">&lt;q&gt;</code>, and <code class="language-markup">&lt;cite&gt;</code>. <code class="language-markup">&lt;blockquote&gt;</code> displays a quote which is its own block, whereas <code class="language-markup">&lt;q&gt;</code> displays an inline quote. The <code class="language-markup">&lt;cite&gt;</code> element displays a visible citation on screen; using instead the attribute <code class="language-markup">cite</code> makes the citation only visible to crawlers. </p>        
-      <h4>Grouping </h4>
-      <h4>Links </h4>
-        <p>Links represent a connection between two resources, one of which is the current document. Links can be created by <code class="language-markup">&lt;a&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, <code class="language-markup">&lt;area&gt;</code>, and <code class="language-markup">&lt;form&gt;</code>. This section will only cover the <code class="language-markup">&lt;a&gt;</code> element in depth. </p>
-        <h5><code class="language-markup">&lt;a&gt;</code></h5>
-          <p>The <code class="language-markup">&lt;a&gt;</code> element creates a hyperlink to a given web address via URL. While not required, the <code class="language-markup">href</code> attribute is found in almost all <code class="language-markup">&lt;a&gt;</code> tags. </p>
-          <p>The <code class="language-markup">href</code> attribute can link to any URL schema supported by modern browsers, including <code class="language-markup">tel:</code>, <code class="language-markup">mailto:</code>, and <code class="language-markup">sms:</code>. It can also link to other elements of the document using <code class="language-markup">#</code> followed by the <code class="language-markup">id</code> attribute of said element. For accessibility purposes authors can use a <code class="language-markup">hreflang</code> element to indicate to screen-read devices the language of the linked URL. </p>
+      <h4>Inline Text</h4>
+        <p>HTML includes many elements that provide text semantics for documentation. Among others, the most important elements&mdash;that have not been previously discussed in this text&mdash; are <code class="language-markup">&lt;data&gt;</code>, <code class="language-markup">&lt;time&gt;</code>, <code class="language-markup">&lt;code&gt;</code>, or <code class="language-markup">&lt;pre&gt;</code>. </p>
+      <h4>HTML Entities</h4>
+    <h3>Grouping & Lists </h3>
+    <h3>Links </h3>
+      <p>Links represent a connection between two resources, one of which is the current document. Links can be created by <code class="language-markup">&lt;a&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, <code class="language-markup">&lt;area&gt;</code>, and <code class="language-markup">&lt;form&gt;</code>. This section will only cover the <code class="language-markup">&lt;a&gt;</code> element in depth. </p>
+        <p>The <code class="language-markup">&lt;a&gt;</code> element creates a hyperlink to a given web address via URL. While not required, the <code class="language-markup">href</code> attribute is found in almost all <code class="language-markup">&lt;a&gt;</code> tags. </p>
+        <p>The <code class="language-markup">href</code> attribute can link to any URL schema supported by modern browsers, including <code class="language-markup">tel:</code>, <code class="language-markup">mailto:</code>, and <code class="language-markup">sms:</code>. It can also link to other elements of the document using <code class="language-markup">#</code> followed by the <code class="language-markup">id</code> attribute of said element. For accessibility purposes authors can use a <code class="language-markup">hreflang</code> element to indicate to screen-read devices the language of the linked URL. </p>
 <pre><code class="language-markup">
 &lt;a href="https://docs.jbroldan.dev"&gt;Access my documentation webpage! &lt;/a&gt;
 &lt;a href="#links"&gt;Links section. &lt;/a&gt;
@@ -382,17 +438,13 @@
           <p>The <code class="language-markup">&lt;area&gt;</code> element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext links. This element can only be used nested within a <code class="language-markup">&lt;map&gt;</code> element. You can find more information about image maps in the <a href="#graphics">Graphics section</a>. </p>
         <h5><code class="language-markup">&lt;form&gt;</code> </h5>
           <p>The <code class="language-markup">&lt;form&gt;</code> element represents a document section containing interactive controls for submitting information. An in-depth review of the <code class="language-markup">&lt;form&gt;</code> element and its attributes can be found under the <a href="#forms">Forms section</a>. </p>
-      <h4>Navigation </h4>
-      <h4>Tables </h4>
-      <h4>Forms </h4>
-      <h4>Graphics </h4>
-      <h4>Multimedia </h4>
-    <h3>Templates</h3>
-    <h3>Custom Elements and Shadow DOM</h3>
-    <h3>Other Elements</h3>
-      <h4>Styling elements</h4>
-      <h4>Inline text elements</h4>
-      <h4>Full list of elements</h4>
+    <h3>Tables </h3>
+    <h3>Forms </h3>
+    <h3>Graphics </h3>
+    <h3>Multimedia </h3>
+    <h3>Scripting & Styling</h3>
+      <p>Other important HTML elements include <code class="language-markup">&lt;style&gt;</code> or <code class="language-markup">&lt;script&gt;</code>, among many others. A full list of all HTML elements can be found at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements" target="_blank" rel="external">MDN</a>. </p>
+    <h3>Templates & Custom Elements</h3>
     <h3>Attributes</h3>
       <p>Attributes are names and name/value pairs appearing in the opening tag of an element, changing its behavior or providing metadata. Attributes are normally formed by a name and a value; values should always be quoted.</p>
       <h4>Boolean attributes </h4>
@@ -443,7 +495,8 @@
       <h4>Custom attributes </h4>
         <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
         <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
-
+  <h2>Forms</h2>
+  <h2>Images</h2>
   <h2>User Interaction and Web APIs</h2>
     <h3>PWAs</h3>
 
