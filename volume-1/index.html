@@ -1,405 +1,464 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <title>HTML5 Handbook</title>
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="The HTML Audit Handbook: a technical guide to auditing, optimizing, and reviewing HTML code in accordance with modern standards, best practices for performance, and accessibility. Includes a checklist, examples, and references to MDN, and WHATWG." />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/prism.css" />
-    <link rel="icon" type="./images/png" href="/images/favicon.png" />
-    <link rel="canonical" href="https://docs.jbroldan.dev/volume-1" />
-  </head>
-  <body>
-    <header>
-      <h1> "Contemporary Web Dev Auditing" &mdash; Full Web Reference Handbook</h1>
-      <p> A collection to audit modern websites &mdash; Last updated on 18. August 2025</p>
-      <nav>
-        <a href="https://docs.jbroldan.dev">Home</a>
-        <a href="#why">Why this handbook exist?</a>
-        <a href="#download">Download PDF</a>
-        <a href="../about/index.html">About the Author</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 Handbook</title>
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content="The HTML Audit Handbook: a technical guide to auditing, optimizing, and reviewing HTML code in accordance with modern standards, best practices for performance, and accessibility. Includes a checklist, examples, and references to MDN, and WHATWG." />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/prism.css" />
+  <link rel="icon" type="./images/png" href="/images/favicon.png" />
+  <link rel="canonical" href="https://docs.jbroldan.dev/volume-1" />
+</head>
+<body>
+<header>
+  <h1> "Contemporary Web Dev Auditing" &mdash; Full Web Reference Handbook</h1>
+  <p> A collection to audit modern websites &mdash; Last updated on 18. August 2025</p>
+  <nav>
+    <a href="https://docs.jbroldan.dev">Home</a>
+    <a href="#why">Why this handbook exist?</a>
+    <a href="#download">Download PDF</a>
+    <a href="../about/index.html">About the Author</a>
+  </nav>
+</header>
 
-    <div class="wrapper">
-      <div id="wrapper">
-        <h2>Table of Contents</h2>
-        <nav id="toc" class="sidebar">
-          
-          <!-- JS will insert links here -->
-        </nav>    
+<div class="wrapper">
+<div id="toc-wrapper">
+  <h2>Table of Contents</h2>
+  <nav id="toc" class="sidebar">
+    
+    <!-- JS will insert links here -->
+  </nav>    
+</div>
+
+<main>
+  <header>
+    <h2>Vol. 1: HTML5</h2>
+  </header>
+
+  <h2>Introduction</h2>
+    <h3>What is HTML5?</h3>
+      <p><strong>HTML5</strong> is an umbrella term that refers to the latest <a href="https://html.spec.whatwg.org/dev/" target="_blank">living standard of HTML</a>, maintained by WHATWG; as well as to a series of modern web technologies standards, such as the <a href="https://dom.spec.whatwg.org/" target="_blank">the DOM standard</a>, <a href="https://compat.spec.whatwg.org/" target="_blank">the compatibility standard</a>, or the <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch standard, among many others.</a> </p>
+    
+    <h3>Background</h3>
+      <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browsers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaborative and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the Author overcome this inconvenience by providing a clear and consistent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
+  
+    <h3>Audience</h3>
+      <p>This book is intended to be used as a auditing guide of HTML5 best practices for consultants, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. This handbook is designed to be framework agnostic, as the auditing process must evaluate the end HTML document and DOM created by the browser, not the actual original code &mdash; which might be written in plain React, Vue, or any other framework. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML document, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
+    
+    <h3>Extensibility</h3>
+      <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <code class="language-markup">data-*=""</code> attributes, using <code class="language-markup">&lt;script type=""&gt;</code>, or via microdata using <code class="language-markup">itemscope=""</code> and <code class="language-markup">temprop=""</code> attributes. Authors can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
+    
+    <h3>Document Structure</h3>
+      <p>A basic HTML document looks like this:</p>
+<pre><code class="language-markup">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;Sample page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Sample page&lt;/h1&gt;
+&lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
+&lt;!-- this is a comment --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+      <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node. </p>
+      <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains a number of semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, &lt;h1&gt;</code>, and <code class="language-markup>">&lt;a&gt;</code>) which helps crawlers and text-assisted devices understand the meaning and structure of the content displayed. Certain elements are mandatory for any HTML document, such as <code class="language-markup">&lt;head&gt;</code> and <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;html&gt;</code> element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not recommended</em>, since it contains the language attribute. You should <em>always include</em> the <code class="language-markup">&lt;html&gt;</code> element in your document.</p>
+      <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
+<pre><code class="language-markup">
+&lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
+&lt;p&gt;This &lt;em&gt;is &lt;strong&gt;correct&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+
+</code></pre>
+      <p>Elements can have attributes, which control how the elements work. Attributes are placed inside the start tag, and consist of a name and a value, separated by an "=" character. The attribute value can remain unquoted if it doesn't contain whitespaces or ", ', `, =, &lt;, or &gt;. Regardless, you should <em>always</em> quote your attribute values.</p>
+    
+    <h3>The DOM</h3>
+      <p>Web browsers then parse this markup from the HTML document, turning it into a DOM (Document Object Model) tree. A DOM tree is an in-memory representation of a document. The <strong>Document Object Model</strong> (DOM) is an API for manipulating DOM trees of HTML and XML documents. This API serves as a base for scripting on the web. <br>DOM trees contain several kinds of nodes, in particular a <i>DocumentType</i> node, <i>Element</i> nodes, <i>Text</i> nodes, <i>Comment</i> nodes, and in some cases <i>ProcessingInstruction</i> nodes. The markup snippet at the top of this section would be turned into the following DOM tree:</p>
+      <github-md>
+        DOCTYPE html
+        html lang="en"
+        ├── head
+        │   └── title
+        │       └── "Sample page"
+        └── body
+            ├── h1
+            │   └── "Sample page"
+            ├──  p
+            │    ├── "This is a "
+            │    ├── a href="demo.html"
+            │    │   └── "simple"
+            │    └── " sample."
+            └── <!-- this is a comment -->
+      </github-md>
+      <p>The document element of this tree is the html element, which is the element always found in that position in HTML documents. It contains two elements, head and body.</p>
+      <p>This DOM tree can be manipulated from scripts in the page. Scripts (typically in JavaScript) are small programs that can be embedded using the script element or using event handler content attributes. Each element in the DOM tree is represented by an object, and these objects have APIs so that they can be manipulated. </p>
+      <p>HTML documents represent a media-independent description of interactive content. HTML documents might be rendered to a screen, or through a speech synthesizer, or on a braille display. To influence exactly how such rendering takes place, authors can use a styling language such as CSS.</p>
+      <p>Similar to the DOM,the <strong>CSS Object Model</strong> (CSSOM) is a set of APIs that allow JavaScript to manipulate the CSS of a document, allowing users to read and modify CSS style dynamically. </p>
+    <h3>HTML Conformance Checker: v.Nu</h3>
+      <p>HTML conformance checkers, also called validators, are tools that help you catch unintended mistakes in HTML, CSS, and SVG. Running a conformance checker as a first audit layer is highly recommended, since they are a lightweight and easy tool to detect what otherwise would pass unnoticed. Of all conformance checkers v.Nu (Nu Html Checker) is the only one that supports up to date HTML5 consistently.</p>
+      <p>Authors can run v.Nu from the <a href="https://validator.w3.org/nu/" target="_blank">Official W3 Website</a>, or locally downloading it from <a href="https://github.com/validator/validator" target="_blank">GitHub</a>.</p>
+    <h3>Security Basics</h3>
+      <p>When HTML is used to create interactive sites, care needs to be taken to avoid introducing vulnerabilities through which attackers can compromise the integrity of the site itself or of the site's users.</p>
+      <h4>Origins</h4>
+        <p>The security model of the web is based on the concept of "origins", and correspondingly many of the potential attacks on the web involve cross-origin actions. Origins determine which content can interact with which—a core mechanism to stop malicious sites from accessing or messing with resources from other sites. An origin is, in the technical sense, a triple:</p>
+        <code class="language-markup">
+          origin = (scheme, host, port)
+        </code>
+        <p>Where:</p>
+        <ul>
+          <li>Scheme: The URI protocol (e.g. http, https, ftp)</li>
+          <li>Host: The domain or IP (e.g. example.com, 192.0.2.5)</li>
+          <li>Port: Explicit in the URL or the default for the scheme (80 for http, 443 for https)</li>
+        </ul>
+        <p>Two resources are same origin only if all three parts match exactly. Therefore, only when all three match exactly can two resources be considered "same origin".</p>
+      <h4>Same Origin Policy (SOP)</h4>
+        <p>The same-origin policy is a critical security mechanism that restricts how a document or script loaded by one origin can interact with a resource from another origin. It helps isolate potentially malicious documents, reducing possible attack vectors. Under SOP, a script loaded from one origin can read or modify content only from resources with the exact same. </p>
+        <p>For example, it prevents a malicious website on the Internet from running JS in a browser to read data from a third-party webmail service (which the user is signed into) or a company intranet (which is protected from direct access by the attacker by not having a public IP address) and relaying that data to the attacker.</p>
+      <h4>Cross-site scripting (XSS)</h4>
+        <p>Untrusted input (comments, URL parameters, third-party messages, etc.) must be validated before use and escaped before display. Without this, attackers could inject fake data, run malicious scripts on every page view (spreading the attack), or even wipe server data. Validation should be safelist-based because blocklists can't anticipate all future attack methods.</p>
+        <p>Attackers can hide code in many ways, so safelist filters must be strict:</p>
+          <ul>
+            <li>Even for safe-looking elements like <code class="language-markup">&lt;img&gt;</code>, only allow specific attributes. Otherwise attackers could use <code class="language-markup">onload</code> to run JS scripts.</li>
+            <li>If you accept URLs (e.g., in links), allow only specific schemes. Schemes like <code class="language-markup">javascript:</code> (and other custom ones) can execute malicious code.</li>
+            <li>Block <code class="language-markup">&lt;base&gt;</code>. Don't allow users to insert a <code class="language-markup">&lt;base&gt;</code> element. <code class="language-markup">&lt;base&gt;</code> elements rewrite how relative URLs resolve, letting attackers hijack <code class="language-markup">&lt;script src&gt;</code> and redirect <code class="language-markup">&lt;form action&gt;</code> to a hostile site.</li>
+          </ul>
+      <h4>Cross-site request forgery (CSRF)</h4>
+        <p>If your site lets logged-in users do state-changing actions (post, purchase, apply, etc.), another site can trick them into submitting those actions unknowingly (classic CSRF). HTML forms can submit to other origins, so a malicious page can auto-submit a form to your site using the victim's session.</p> 
+        <p>An author should:</p>
+          <ul>
+            <li>Include user-specific hidden tokens in forms and validate them server-side.</li>
+            <li>Check the <code class="language-markup">origin</code> header on state-changing requests; reject when it's missing or doesn't match your site.</li>
+          </ul>
+      <h4>Clickjacking</h4>
+          <p>A hostile site can embed your page in an iframe and trick users into clicking your controls (e.g., via a reaction game that moves the hidden iframe under the cursor). This makes users perform actions they didn't intend. Any page that lets users perform actions they might not want to (purchases, settings changes, admin actions, etc.).</p>
+          <p>If your page isn't meant to run in a frame, only enable the UI when you detect you're not framed (e.g., check <code class="language-markup">window === top</code> before activating controls).</p>
+      <h4>Common pitfalls with APIs</h4>
+          <p>JavaScript in browsers runs with <i>run-to-completion</i> semantics: once a script starts, nothing else (no new events, no further parsing) happens until it finishes. Meanwhile, HTML parsing is <em>incremental</em> and can pause to execute scripts, then resume. The consequence is timing: if you attach event handlers too late, an event could have already fired. To avoid missed events, either define handlers inline via HTML event attributes (so they exist as the element is parsed) or create the element and attach its handlers within the same synchronous script—because scripts run to completion, no events can slip in before your handler is registered.</p>
+    <h3>Syntax Errors</h3>
+      <p>HTML syntax is deliberately constrained to prevent unintuitive DOM results, reduce ambiguity, and keep implementations interoperable. Parsers may halt on errors rather than performing convoluted recovery; constructs whose recovery behavior breaks streaming parsers are simply invalid. The spec also avoids situations that would force XML-based tools to coerce the HTML infoset, preserving consistency across processing models.</p>
+      <p>Rules prohibit patterns that cause disproportionate performance costs, rely on fragile historical quirks, or trigger known interoperability bugs in legacy user agents. Some restrictions exist purely for security (e.g., preventing encodings or patterns tied to XSS). Ambiguous markup, likely typos, and forms that could collide with future syntax are treated as errors to improve maintainability and forward-compatibility. For authors who prefer stricter discipline, conformance checkers can enforce conventions like always quoting attributes and including optional tags.</p>
+      <p>Beyond raw syntax, the spec restricts element content models and attribute values to preserve clear semantics. It forbids nesting or role combinations that contradict the elements' meanings, and blocks combinations whose default rendering or behavior would confuse users (for example, nesting interactive controls inside each other). These constraints steer authors toward structures that match the language's intent and users' expectations.</p>
+      <p>Additional limits exist to reduce author confusion and debugging pain: boolean attributes must be used correctly; duplicate IDs and similar pitfalls are disallowed because they lead to subtle script failures; and patterns with misleading parser behavior are flagged so authors don't waste time chasing non-issues. Some rules simply simplify the language—removing redundant synonyms or edge cases—so it's easier to learn and teach.</p>
+      <p>Finally, to ease HTML↔XML migration, certain attributes and namespace rules are constrained so documents behave similarly in both serializations. The spec also reserves parts of the language for future expansion and aligns with other standards (e.g., requiring valid media queries), ensuring today's documents won't block tomorrow's features and remain consistent with the broader web platform.</p>
+
+  <h2>Structure and Semantics</h2>
+    <h3>Semantic HTML</h3>
+      <p>HTML is <em>semantic by design</em>. One of the reasons why W3C recommends the use of HTML to display content on the internet&mdash;instead of using another markup language, e.g., XML&mdash; is that HTML excels at semantic structure. Every element in HTML is designed with meaning in mind, to give crawlers and browsers the necessary information about what the content of an element is.</p>
+      <p>To understand this, let's use as an example the most well known accessibility attribute, <code class="language-markup">alt="This is an alternate description of an image."</code>, that specifies an alternate text for an image. Most authors and auditors are familiar with the fact that crawlers care a lot about this attribute, and that it is critical for SEO and accessibility. The reason is simple: Without the <code class="language-markup">alt=" "</code> attribute crawlers cannot "see" how the image looks like. However few are aware that this same logic applies for most content present in your HTML, as crawlers and text-reading devices <i>would like to know</i> what is the structure and the meaning of the content of the document.</p>
+      <p>Thus, a code with proper semantics is not only easier to read and maintain, but it also improves your on-page SEO and accessibility, which are critical for ranking in search engine results.</p>
+    <h3>Structure and Layouts</h3>
+      <p>As we saw under the <a href="#document-structure">Document Structure</a> section, a HTML document includes a document type declaration and a <code class="language-markup">&lt;html&gt;</code> element at root, which contains nested on it the document head and document body. The head of the document is not visible to the viewer, but it is crucial, as it contains all the metadata, as well as icons for the browser tab and mobile home screen shortcut, and the behavior and styling of the content. We will cover all of the elements that can be nested inside the <code class="language-markup">&lt;head&gt;</code> element under the <a href="#metadata">Metadata</a> section.  </p>
+      <p>The visible content of the document is located in the <code class="language-markup">&lt;body&gt;</code>. From this point onwards, HTML lets the user have complete freedom upon the structure of the visible content. One could, if desired, fill the content of the <code class="language-markup">&lt;body&gt;</code> element with a long incomprehensible list of nested <code class="language-markup">&lt;div&gt;</code> elements. This is, however, highly undesirable, as it gives no information about the <em>meaning and structure</em> of the content to the crawlers and accessibility devices. </p>
+      <p>More often than not, the nested elements inside <code class="language-markup">&lt;body&gt;</code> are very well defined. One can normally find at least these three elements nested inside:</p>
+      <div class="content-wrapper"> 
+        <ul>
+          <li>A <code class="language-markup">&lt;header&gt;</code> element on top </li>
+          <li>A <code class="language-markup">&lt;main&gt;</code> element in the middle </li>
+          <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>
+        </ul>
+        <div>
+          <img src="./images/layout.png" class="responsive-img" loading="lazy" alt="The Standard Layout in HTML."/>
+          <p class="caption"><em>The standard layout</em></p>    
+        </div> 
       </div>
+      <p>There should be <em>only one</em> <code class="language-markup">&lt;main&gt;</code> element per page, and every document should contain this element. As its name suggests <code class="language-markup">&lt;main&gt;</code> identifies the main content of the document, and it is crucial for semantic purposes. </p>
+      <p>The site header is the <code class="language-markup">&lt;header&gt;</code> element. The content of <code class="language-markup">&lt;header&gt;</code> tends to often remain static across multiple pages, carrying most of the time the main navigation links and crucial site information. </p>
+      <p>Lastly, the site footer is the <code class="language-markup">&lt;footer&gt;</code> element; which content remains most of the time static across multiple pages, often carrying the navigation links and site information that are not present in the header site. </p>
+      <p>When nested inside <code class="language-markup">&lt;body&gt;</code>, all of these three elements are landmarks. Landmarks are special nodes in the AOM that carry semantic meaning and give out key information about the structure of the document. They are indispensable for accessibility. We will dive deeper in what landmarks are and what is the AOM in the section <a href="#the-aom">The AOM</a> . </p>
+      <p><b>Note:</b> The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are not always landmarks. More information about the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code>, and <code class="language-markup">&lt;footer&gt;</code> elements can be found in <a href="#sections">Sections</a>. </p>
+      <p>As we just stated, nested inside the <code class="language-markup">&lt;body&gt;</code> element we must always find the <code class="language-markup">&lt;main&gt;</code> section, which contains most of the content, as well as a number of other sections. Together they form the <em>layout</em> of the page.</p>
+      <p>There are many different layouts, but for most websites the standard layout involves a <code class="language-markup">&lt;header&gt;</code>, a <code class="language-markup">&lt;main&gt;</code>, and a <code class="language-markup">&lt;footer&gt;</code> elements nested inside <code class="language-markup">&lt;body&gt;</code>. This layout provides a clean and simple structure, perfect for mobile screens and scrolling down. However, for very content heavy sites like blogs or newspapers, e-commerce shop pages, or dashboards pages in web apps, we tend to see more often the <em>holy grail layout</em>, or a variation of it. This layout typically consists of: </p> 
+      <div class="content-wrapper">  
+        <ul>
+          <li>A <code class="language-markup">&lt;header&gt;</code> element on top </li>
+          <li>A <code class="language-markup">&lt;nav&gt;</code> element on one side </li>
+          <li>A <code class="language-markup">&lt;main&gt;</code> element in the middle </li>
+          <li>A <code class="language-markup">&lt;aside&gt;</code> element on the other side </li>  
+          <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>            
+        </ul>
+        <div>
+          <img src="./images/holy-grail-layout.png" class="responsive-img" loading="lazy" alt="The Holy Grail Layout in HTML."/>
+          <p class="caption"><em>The holy-grail layout</em></p>    
+        </div>  
+      </div>  
+      <p>The <code class="language-markup">&lt;nav&gt;</code> element identifies content as navigation. When <code class="language-markup">&lt;nav&gt;</code> nested in the <code class="language-markup">&lt;body&gt;</code> or in the site heading, it is the main navigation for the site. If it was nested in an <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>, it would be internal navigation for that section only. </p>
+      <p>The <code class="language-markup">&lt;aside&gt;</code> element is for content that is indirectly or tangentially related to the document's main content. It is specially common on content-heavy sites, like blogs or newspapers. </p>
+      <p>For styling purposes we will often find in this layout the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code> and <code class="language-markup">&lt;aside&gt;</code> elements wrapped inside the same <code class="language-markup">&lt;div&gt;</code> element. This, however, doesn't have a negative impact on the SEO nor the semantics of the document. </p> 
+    <h3>Sections</h3>
+      <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> In an HTML we can use certain elements to structure the content into different sections. Those elements are: </p>
+      <ul>
+        <li><code class="language-markup">&lt;section&gt;</code> </li>
+        <li><code class="language-markup">&lt;article&gt;</code> </li>
+        <li><code class="language-markup">&lt;nav&gt;</code> </li>
+        <li><code class="language-markup">&lt;aside&gt;</code> </li>
+      </ul>        
+      <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
+      <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
+      <p>An example of a properly structured document is the following: </p>
+    
+<pre><code class="language-markup">
+&lt;body&gt;
+&lt;header&gt;
+  &lt;h1&gt;This is the Page Title of the Document with Good Structure &lt;/h1&gt;
+  &lt;nav&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
 
-    <main>
+&lt;main&gt;
+  &lt;header&gt;
+    &lt;h2&gt;This is the Content Title &lt;/h2&gt;
+  &lt;/header&gt;
 
-      <header>
-        <h2>Vol. 1: HTML5</h2>
-      </header>
+  &lt;section id="intro"&gt;
+    &lt;h3&gt;This is the header of a section "intro". &lt;/h3&gt;
+  &lt;/section&gt;
 
-      <h2>Introduction</h2>
-        <h3>What is HTML5?</h3>
-          <p><strong>HTML5</strong> is an umbrella term that refers to the latest <a href="https://html.spec.whatwg.org/dev/" target="_blank">living standard of HTML</a>, maintained by WHATWG; as well as to a series of modern web technologies standards, such as the <a href="https://dom.spec.whatwg.org/" target="_blank">the DOM standard</a>, <a href="https://compat.spec.whatwg.org/" target="_blank">the compatibility standard</a>, or the <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch standard, among many others.</a> </p>
-        
-        <h3>Background</h3>
-          <p>HTML, or <i>Hypertext Markup Language</i>, is the World Wide Web's core markup language. First developed to write scientific documents at CERN in 1990, HTML now is a fundamental tool in how the World Wide Web operates and how internet browsers &mdash;such as Chrome, Safari, or Firefox&mdash; read and display content.<br>Due to the collaborative and open source nature of HTML5 and the WHATWG project, HTML can be seen as inconsistent &mdash;which is a factually true statement&mdash;, and in this document we will try to help the Author overcome this inconvenience by providing a clear and consistent structure across the whole text. Also it is worth to add the adaptive nature of this declarative language, in which not only the standard was law, but also user behaviour forced browsers many times in the past to accept or recognize blatant syntax errors that were committed too often. </p>
+  &lt;section id="about"&gt;
+    &lt;h3&gt;This is the header of the section "about". &lt;/h3&gt;
+  &lt;/section&gt;
+
+  &lt;section id="cards"&gt;
+    &lt;h3&gt;This is the header of the section "cards". &lt;/h3&gt;
+    &lt;h4&gt;Hey! This is a a subheader. &lt;/h4&gt;
+  &lt;/section&gt;
+
+  &lt;section id="feedback"&gt;
+    &lt;h3&gt;This is the header of the section "feedback". &lt;/h3&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;h2&gt;Delivering accessible, performant, standards-compliant websites since 2023. &lt;/h2&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+
+</code></pre>
+      <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
       
-        <h3>Audience</h3>
-          <p>This book is intended to be used as a auditing guide of HTML5 best practices for consultants, freelancers, and agencies, that work in the area of web development. Clients often have a myriad of legacy systems, often poorly maintained, that don't follow the latest HTML5 practices and that would greatly benefit from it. This handbook is designed to be framework agnostic, as the auditing process must evaluate the end HTML document and DOM created by the browser, not the actual original code &mdash; which might be written in plain React, Vue, or any other framework. Chapters 2, 3, and 4 are mainly dedicated to best practices and advice on multiple topics that conform the HTML living standard. Chapters 5, 6 and 7 are specially focused on recognizing bad practices quickly, auditing an HTML document, and coming up with improvements for maintainability, compatibility, accessibility and SEO.</p>
-        
-        <h3>Extensibility</h3>
-          <p>HTML allows the user to extend semantics and elements beyond the living standard, via the class attribute, custom elements, or using custom metadata content. Users have several tools for accessing data with HTML, such with <code class="language-markup">data-*=""</code> attributes, using <code class="language-markup">&lt;script type=""&gt;</code>, or via microdata using <code class="language-markup">itemscope=""</code> and <code class="language-markup">temprop=""</code> attributes. Authors can also extend APIs using JavaScript.<br>This means than in practice there are infinite possibilities in how to structure and organize an HTML document. However, that one <i>can</i> structure HTML as they wish, doesn't mean that one <i>should</i>. And that is exactly why this handbook exists.</p>
-        
-        <h3>Document Structure</h3>
-          <p>A basic HTML document looks like this:</p>
-          <pre><code class="language-markup">
-            &lt;!DOCTYPE html&gt;
-            &lt;html lang=&quot;en&quot;&gt;
-            &lt;head&gt;
-              &lt;title&gt;Sample page&lt;/title&gt;
-            &lt;/head&gt;
-            &lt;body&gt;
-              &lt;h1&gt;Sample page&lt;/h1&gt;
-              &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
-              &lt;!-- this is a comment --&gt;
-            &lt;/body&gt;
-            &lt;/html&gt;
-          </code></pre>
-          <p><b>Note:</b> <code class="language-markup">&lt;!DOCTYPE html&gt;</code> does <b>not</b> represent an element, but a "DocumentType" node. </p>
-          <p>HTML documents consist of a tree of elements and text. Each element is denoted in the source by a start tag and an end tag. The above example contains a number of semantic elements (<code class="language-markup"> &lt;head&gt;, &lt;body&gt;, &lt;title&gt;, &lt;h1&gt;</code>, and <code class="language-markup>">&lt;a&gt;</code>) which helps crawlers and text-assisted devices understand the meaning and structure of the content displayed. Certain elements are mandatory for any HTML document, such as <code class="language-markup">&lt;head&gt;</code> and <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;html&gt;</code> element, which is the root element that contains the entire document, can be omitted. This is, however, <em>not recommended</em>, since it contains the language attribute. You should <em>always include</em> the <code class="language-markup">&lt;html&gt;</code> element in your document.</p>
-          <p>Tags have to be nested such that elements are all completely within each other, without overlapping:</p>
-            <pre><code class="language-markup">
-              &lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong>&lt;/p&gt;
-              &lt;p&gt;This &lt;em&gt;is &lt;strong&gt;correct&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
-            </code></pre>
-          <p>Elements can have attributes, which control how the elements work. Attributes are placed inside the start tag, and consist of a name and a value, separated by an "=" character. The attribute value can remain unquoted if it doesn't contain whitespaces or ", ', `, =, &lt;, or &gt;. Regardless, you should <em>always</em> quote your attribute values.</p>
-        
-        <h3>The DOM</h3>
-          <p>Web browsers then parse this markup from the HTML document, turning it into a DOM (Document Object Model) tree. A DOM tree is an in-memory representation of a document. The <strong>Document Object Model</strong> (DOM) is an API for manipulating DOM trees of HTML and XML documents. This API serves as a base for scripting on the web. <br>DOM trees contain several kinds of nodes, in particular a <i>DocumentType</i> node, <i>Element</i> nodes, <i>Text</i> nodes, <i>Comment</i> nodes, and in some cases <i>ProcessingInstruction</i> nodes. The markup snippet at the top of this section would be turned into the following DOM tree:</p>
-          <github-md>
-            DOCTYPE html
-            html lang="en"
-            ├── head
-            │   └── title
-            │       └── "Sample page"
-            └── body
-                ├── h1
-                │   └── "Sample page"
-                ├──  p
-                │    ├── "This is a "
-                │    ├── a href="demo.html"
-                │    │   └── "simple"
-                │    └── " sample."
-                └── <!-- this is a comment -->
-          </github-md>
-          <p>The document element of this tree is the html element, which is the element always found in that position in HTML documents. It contains two elements, head and body.</p>
-          <p>This DOM tree can be manipulated from scripts in the page. Scripts (typically in JavaScript) are small programs that can be embedded using the script element or using event handler content attributes. Each element in the DOM tree is represented by an object, and these objects have APIs so that they can be manipulated. </p>
-          <p>HTML documents represent a media-independent description of interactive content. HTML documents might be rendered to a screen, or through a speech synthesizer, or on a braille display. To influence exactly how such rendering takes place, authors can use a styling language such as CSS.</p>
-          <p>Similar to the DOM,the <strong>CSS Object Model</strong> (CSSOM) is a set of APIs that allow JavaScript to manipulate the CSS of a document, allowing users to read and modify CSS style dynamically. </p>
-        <h3>HTML Conformance Checker: v.Nu</h3>
-          <p>HTML conformance checkers, also called validators, are tools that help you catch unintended mistakes in HTML, CSS, and SVG. Running a conformance checker as a first audit layer is highly recommended, since they are a lightweight and easy tool to detect what otherwise would pass unnoticed. Of all conformance checkers v.Nu (Nu Html Checker) is the only one that supports up to date HTML5 consistently.</p>
-          <p>Authors can run v.Nu from the <a href="https://validator.w3.org/nu/" target="_blank">Official W3 Website</a>, or locally downloading it from <a href="https://github.com/validator/validator" target="_blank">GitHub</a>.</p>
-        <h3>Security Basics</h3>
-          <p>When HTML is used to create interactive sites, care needs to be taken to avoid introducing vulnerabilities through which attackers can compromise the integrity of the site itself or of the site's users.</p>
-          <h4>Origins</h4>
-            <p>The security model of the web is based on the concept of "origins", and correspondingly many of the potential attacks on the web involve cross-origin actions. Origins determine which content can interact with which—a core mechanism to stop malicious sites from accessing or messing with resources from other sites. An origin is, in the technical sense, a triple:</p>
-            <code class="language-markup">
-              origin = (scheme, host, port)
-            </code>
-            <p>Where:</p>
-            <ul>
-              <li>Scheme: The URI protocol (e.g. http, https, ftp)</li>
-              <li>Host: The domain or IP (e.g. example.com, 192.0.2.5)</li>
-              <li>Port: Explicit in the URL or the default for the scheme (80 for http, 443 for https)</li>
-            </ul>
-            <p>Two resources are same origin only if all three parts match exactly. Therefore, only when all three match exactly can two resources be considered "same origin".</p>
-          <h4>Same Origin Policy (SOP)</h4>
-            <p>The same-origin policy is a critical security mechanism that restricts how a document or script loaded by one origin can interact with a resource from another origin. It helps isolate potentially malicious documents, reducing possible attack vectors. Under SOP, a script loaded from one origin can read or modify content only from resources with the exact same. </p>
-            <p>For example, it prevents a malicious website on the Internet from running JS in a browser to read data from a third-party webmail service (which the user is signed into) or a company intranet (which is protected from direct access by the attacker by not having a public IP address) and relaying that data to the attacker.</p>
-          <h4>Cross-site scripting (XSS)</h4>
-            <p>Untrusted input (comments, URL parameters, third-party messages, etc.) must be validated before use and escaped before display. Without this, attackers could inject fake data, run malicious scripts on every page view (spreading the attack), or even wipe server data. Validation should be safelist-based because blocklists can't anticipate all future attack methods.</p>
-            <p>Attackers can hide code in many ways, so safelist filters must be strict:</p>
-              <ul>
-                <li>Even for safe-looking elements like <code class="language-markup">&lt;img&gt;</code>, only allow specific attributes. Otherwise attackers could use <code class="language-markup">onload</code> to run JS scripts.</li>
-                <li>If you accept URLs (e.g., in links), allow only specific schemes. Schemes like <code class="language-markup">javascript:</code> (and other custom ones) can execute malicious code.</li>
-                <li>Block <code class="language-markup">&lt;base&gt;</code>. Don't allow users to insert a <code class="language-markup">&lt;base&gt;</code> element. <code class="language-markup">&lt;base&gt;</code> elements rewrite how relative URLs resolve, letting attackers hijack <code class="language-markup">&lt;script src&gt;</code> and redirect <code class="language-markup">&lt;form action&gt;</code> to a hostile site.</li>
-              </ul>
-          <h4>Cross-site request forgery (CSRF)</h4>
-            <p>If your site lets logged-in users do state-changing actions (post, purchase, apply, etc.), another site can trick them into submitting those actions unknowingly (classic CSRF). HTML forms can submit to other origins, so a malicious page can auto-submit a form to your site using the victim's session.</p> 
-            <p>An author should:</p>
-              <ul>
-                <li>Include user-specific hidden tokens in forms and validate them server-side.</li>
-                <li>Check the <code class="language-markup">origin</code> header on state-changing requests; reject when it's missing or doesn't match your site.</li>
-              </ul>
-          <h4>Clickjacking</h4>
-              <p>A hostile site can embed your page in an iframe and trick users into clicking your controls (e.g., via a reaction game that moves the hidden iframe under the cursor). This makes users perform actions they didn't intend. Any page that lets users perform actions they might not want to (purchases, settings changes, admin actions, etc.).</p>
-              <p>If your page isn't meant to run in a frame, only enable the UI when you detect you're not framed (e.g., check <code class="language-markup">window === top</code> before activating controls).</p>
-          <h4>Common pitfalls with APIs</h4>
-              <p>JavaScript in browsers runs with <i>run-to-completion</i> semantics: once a script starts, nothing else (no new events, no further parsing) happens until it finishes. Meanwhile, HTML parsing is <em>incremental</em> and can pause to execute scripts, then resume. The consequence is timing: if you attach event handlers too late, an event could have already fired. To avoid missed events, either define handlers inline via HTML event attributes (so they exist as the element is parsed) or create the element and attach its handlers within the same synchronous script—because scripts run to completion, no events can slip in before your handler is registered.</p>
-        <h3>Syntax Errors</h3>
-          <p>HTML syntax is deliberately constrained to prevent unintuitive DOM results, reduce ambiguity, and keep implementations interoperable. Parsers may halt on errors rather than performing convoluted recovery; constructs whose recovery behavior breaks streaming parsers are simply invalid. The spec also avoids situations that would force XML-based tools to coerce the HTML infoset, preserving consistency across processing models.</p>
-          <p>Rules prohibit patterns that cause disproportionate performance costs, rely on fragile historical quirks, or trigger known interoperability bugs in legacy user agents. Some restrictions exist purely for security (e.g., preventing encodings or patterns tied to XSS). Ambiguous markup, likely typos, and forms that could collide with future syntax are treated as errors to improve maintainability and forward-compatibility. For authors who prefer stricter discipline, conformance checkers can enforce conventions like always quoting attributes and including optional tags.</p>
-          <p>Beyond raw syntax, the spec restricts element content models and attribute values to preserve clear semantics. It forbids nesting or role combinations that contradict the elements' meanings, and blocks combinations whose default rendering or behavior would confuse users (for example, nesting interactive controls inside each other). These constraints steer authors toward structures that match the language's intent and users' expectations.</p>
-          <p>Additional limits exist to reduce author confusion and debugging pain: boolean attributes must be used correctly; duplicate IDs and similar pitfalls are disallowed because they lead to subtle script failures; and patterns with misleading parser behavior are flagged so authors don't waste time chasing non-issues. Some rules simply simplify the language—removing redundant synonyms or edge cases—so it's easier to learn and teach.</p>
-          <p>Finally, to ease HTML↔XML migration, certain attributes and namespace rules are constrained so documents behave similarly in both serializations. The spec also reserves parts of the language for future expansion and aligns with other standards (e.g., requiring valid media queries), ensuring today's documents won't block tomorrow's features and remain consistent with the broader web platform.</p>
+    <h3>Section headings</h3>
+      <p>The <code class="language-markup">&lt;h1&gt;</code> to <code class="language-markup">&lt;h6&gt;</code> HTML elements represent six levels of section headings. <code class="language-markup">&lt;h1&gt;</code> is the highest section level and <code class="language-markup">&lt;h6&gt;</code> is the lowest. By default, all heading elements create a block-level box in the layout, starting on a new line and taking up the full width available in their containing block. While using multiple <code class="language-markup">&lt;h1&gt;</code> elements on one page is allowed by the HTML standard (as long as they are not nested), this is not considered a best practice. A page should have a single <code class="language-markup">&lt;h1&gt;</code> element that describes the content of the page. </p>
+      <p>A common navigation technique for users of screen reading software is to quickly jump from heading to heading in order to determine the content of the page. Because of this, it is important to not skip one or more heading levels. </p>
+<pre><code class="language-markup">
+&lt;h1&gt;Heading level 1&lt;/h1&gt;
+&lt;h2&gt;Heading level 2&lt;/h2&gt;
+&lt;h3&gt;Heading level 3&lt;/h3&gt;
 
-      <h2>Structure and Semantics</h2>
-        <h3>Semantic HTML</h3>
-          <p>HTML is <em>semantic by design</em>. One of the reasons why W3C recommends the use of HTML to display content on the internet&mdash;instead of using another markup language, e.g., XML&mdash; is that HTML excels at semantic structure. Every element in HTML is designed with meaning in mind, to give crawlers and browsers the necessary information about what the content of an element is.</p>
-          <p>To understand this, let's use as an example the most well known accessibility attribute, <code class="language-markup">alt="This is an alternate description of an image."</code>, that specifies an alternate text for an image. Most authors and auditors are familiar with the fact that crawlers care a lot about this attribute, and that it is critical for SEO and accessibility. The reason is simple: Without the <code class="language-markup">alt=" "</code> attribute crawlers cannot "see" how the image looks like. However few are aware that this same logic applies for most content present in your HTML, as crawlers and text-reading devices <i>would like to know</i> what is the structure and the meaning of the content of the document.</p>
-          <p>Thus, a code with proper semantics is not only easier to read and maintain, but it also improves your on-page SEO and accessibility, which are critical for ranking in search engine results.</p>
-          <h3>Structure and Layouts</h3>
-          <p>As we saw in Chapter 1, section 5, a HTML document includes a document type declaration and a <code class="language-markup">&lt;html&gt;</code> element at root, which contains nested on it the document head and document body. The head of the document is not visible to the viewer, but it is crucial, as it contains all the meta information, as well as icons for the browser tab and mobile home screen shortcut, and the behavior and styling of the content. We will cover all of the elements that can be nested inside the <code class="language-markup">&lt;head&gt;</code> element in Chapter 3.  </p>
-          <p>The visible content of the document is located in the <code class="language-markup">&lt;body&gt;</code>. From this point onwards, HTML lets the user have complete freedom upon the structure of the visible content. One could, if desired, fill the content of the <code class="language-markup">&lt;body&gt;</code> element with a long incomprehensible list of nested <code class="language-markup">&lt;div&gt;</code> elements. This is, however, highly undesirable, as it gives no information about the <em>meaning and structure</em> of the content to the crawlers and accessibility devices. </p>
-          <p>More often than not, the nested elements inside <code class="language-markup">&lt;body&gt;</code> are very well defined. One can normally find at least these three elements nested inside:</p>
-          <div class="content-wrapper"> 
-            <ul>
-              <li>A <code class="language-markup">&lt;header&gt;</code> element on top </li>
-              <li>A <code class="language-markup">&lt;main&gt;</code> element in the middle </li>
-              <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>
-            </ul>
-            <div>
-              <img src="./images/layout.png" class="responsive-img" loading="lazy" alt="The Standard Layout in HTML."/>
-              <p class="caption"><em>The standard layout</em></p>    
-            </div> 
-          </div>
-          <p>There should be <em>only one</em> <code class="language-markup">&lt;main&gt;</code> element per page, and every document should contain this element. As its name suggests <code class="language-markup">&lt;main&gt;</code> identifies the main content of the document, and it is crucial for semantic purposes. </p>
-          <p>The site header is the <code class="language-markup">&lt;header&gt;</code> element. The content of <code class="language-markup">&lt;header&gt;</code> tends to often remain static across multiple pages, carrying most of the time the main navigation links and crucial site information. </p>
-          <p>Lastly, the site footer is the <code class="language-markup">&lt;footer&gt;</code> element; which content remains most of the time static across multiple pages, often carrying the navigation links and site information that are not present in the header site. </p>
-          <p>When nested inside <code class="language-markup">&lt;body&gt;</code>, all of these three elements are landmarks. Landmarks are special nodes in the AOM that carry semantic meaning and give out key information about the structure of the document. They are indispensable for accessibility. We will dive deeper in what landmarks are and what is the AOM in the section 5 of the present Chapter. </p>
-          <p><b>Note:</b> The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are not always landmarks. More information about the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code>, and <code class="language-markup">&lt;footer&gt;</code> elements can be found in Chapter 3, section 3. </Section></p>
-          <p>As we just stated, nested inside the <code class="language-markup">&lt;body&gt;</code> element we must always find the <code class="language-markup">&lt;main&gt;</code> section, which contains most of the content, as well as a number of other sections. Together they form the <em>layout</em> of the page.</p>
-          <p>There are many different layouts, but for most websites the standard layout involves a <code class="language-markup">&lt;header&gt;</code>, a <code class="language-markup">&lt;main&gt;</code>, and a <code class="language-markup">&lt;footer&gt;</code> elements nested inside <code class="language-markup">&lt;body&gt;</code>. This layout provides a clean and simple structure, perfect for mobile screens and scrolling down. However, for very content heavy sites like blogs or newspapers, e-commerce shop pages, or dashboards pages in web apps, we tend to see more often the <em>holy grail layout</em>, or a variation of it. This layout typically consists of: </p> 
-          <div class="content-wrapper">  
-            <ul>
-              <li>A <code class="language-markup">&lt;header&gt;</code> element on top </li>
-              <li>A <code class="language-markup">&lt;nav&gt;</code> element on one side </li>
-              <li>A <code class="language-markup">&lt;main&gt;</code> element in the middle </li>
-              <li>A <code class="language-markup">&lt;aside&gt;</code> element on the other side </li>  
-              <li>A <code class="language-markup">&lt;footer&gt;</code> element at the bottom </li>            
-            </ul>
-            <div>
-              <img src="./images/holy-grail-layout.png" class="responsive-img" loading="lazy" alt="The Holy Grail Layout in HTML."/>
-              <p class="caption"><em>The holy-grail layout</em></p>    
-            </div>  
-          </div>  
-          <p>The <code class="language-markup">&lt;nav&gt;</code> element identifies content as navigation. When <code class="language-markup">&lt;nav&gt;</code> nested in the <code class="language-markup">&lt;body&gt;</code> or in the site heading, it is the main navigation for the site. If it was nested in an <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>, it would be internal navigation for that section only. </p>
-          <p>The <code class="language-markup">&lt;aside&gt;</code> element is for content that is indirectly or tangentially related to the document's main content. It is specially common on content-heavy sites, like blogs or newspapers. </p>
-          <p>For styling purposes we will often find in this layout the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code> and <code class="language-markup">&lt;aside&gt;</code> elements wrapped inside the same <code class="language-markup">&lt;div&gt;</code> element. This, however, doesn't have a negative impact on the SEO nor the semantics of the document. </p> 
-        <h3>Sections</h3>
-          <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> In an HTML we can use certain elements to structure the content into different sections. Those elements are: </p>
-          <ul>
-            <li><code class="language-markup">&lt;section&gt;</code> </li>
-            <li><code class="language-markup">&lt;article&gt;</code> </li>
-            <li><code class="language-markup">&lt;nav&gt;</code> </li>
-            <li><code class="language-markup">&lt;aside&gt;</code> </li>
-          </ul>        
-          <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
-          <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
-          <p>An example of a properly structured document is the following: </p>
-        
-          <pre><code class="language-markup">
-            &lt;body&gt;
-              &lt;header&gt;
-                &lt;h1&gt;This is the Page Title of the Document with Good Structure &lt;/h1&gt;
-                &lt;nav&gt;
-                &lt;/nav&gt;
-              &lt;/header&gt;
+</code></pre>
+      <p>Headings may be nested as subsections to reflect the organization of the content of the page. Most screen readers can also generate an ordered list of all the headings on a page, which can help a person quickly determine the content hierarchy and navigate to different headings.   Another example with heading nesting is the following: </p>
+<pre><code class="language-markup">
+&lt;h1&gt;Beetles&lt;/h1&gt;
 
-              &lt;main&gt;
-                &lt;header&gt;
-                  &lt;h2&gt;This is the Content Title &lt;/h2&gt;
-                &lt;/header&gt;
+&lt;h2&gt;Etymology&lt;/h2&gt;
 
-                &lt;section id="intro"&gt;
-                  &lt;h3&gt;This is the header of a section "intro". &lt;/h3&gt;
-                &lt;/section&gt;
+&lt;h2&gt;Distribution and Diversity&lt;/h2&gt;
 
-                &lt;section id="about"&gt;
-                  &lt;h3&gt;This is the header of the section "about". &lt;/h3&gt;
-                &lt;/section&gt;
+&lt;h2&gt;Evolution&lt;/h2&gt;
+&lt;h3&gt;Late Paleozoic&lt;/h3&gt;
+&lt;h3&gt;Jurassic&lt;/h3&gt;
+&lt;h3&gt;Cretaceous&lt;/h3&gt;
+&lt;h3&gt;Cenozoic&lt;/h3&gt;
 
-                &lt;section id="cards"&gt;
-                  &lt;h3&gt;This is the header of the section "cards". &lt;/h3&gt;
-                  &lt;h4&gt;Hey! This is a a subheader. &lt;/h4&gt;
-                &lt;/section&gt;
+&lt;h2&gt;External Morphology&lt;/h2&gt;
+&lt;h3&gt;Head&lt;/h3&gt;
+  &lt;h4&gt;Mouthparts&lt;/h4&gt;
+&lt;h3&gt;Thorax&lt;/h3&gt;
+  &lt;h4&gt;Prothorax&lt;/h4&gt;
+  &lt;h4&gt;Pterothorax&lt;/h4&gt;
+&lt;h3&gt;Legs&lt;/h3&gt;
+&lt;h3&gt;Wings&lt;/h3&gt;
+&lt;h3&gt;Abdomen&lt;/h3&gt;
 
-                &lt;section id="feedback"&gt;
-                  &lt;h3&gt;This is the header of the section "feedback". &lt;/h3&gt;
-                &lt;/section&gt;
-              &lt;/main&gt;
+</code></pre>
+    <h3>Structured Data </h3>
+      <p><strong>Structured data</strong> is information organized in a consistent, machine-readable format. On the web, structured data makes content understandable not just for humans, but also for software such as search engines and crawlers.</p>
+      <p><strong>Linked data</strong> is structured data which is associated with &mdash;linked to&mdash; other data, enabling semantic queries. By providing semantics, linked data allows machines to interpret not only the content, but also the relationships between entities. </p>
+      <h4>JSON LD </h4>
+        <p><strong>JSON-LD</strong> is a lightweight Linked Data format that is easy for humans to read and write. It is based on the already successful JSON format and provides a way to help JSON data interoperate at Web-scale. It is a decoupled, script-based format that doesn't clutter HTML document. JSON-LD is the most recommended and SEO-friendly way to structure data and provide with extra semantics to crawlers. </p>
+      <h4>Microdata </h4>
+      <p><strong>Microdata</strong> is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata from a web page and use it to provide a richer browsing experience for users. microdata consists of a group of name-value pairs. The groups are called items, and each name-value pair is a property. Items and properties are represented by regular elements. Authors can create items using the <code class="language-markup">itemscope</code> attribute, and add properties using the <code class="language-markup">itemprop</code> attribute. </p>
+      <p>Nowadays the use of microdata is not recommended for purely SEO-purposes, and the use of JSON-LD is encouraged instead. </p>
+    <h3>The AOM </h3>
+      <p>The <strong>Accessibility Object Model</strong>, or AOM, is an accessibility tree based on the DOM tree semantics. It is used by accessibility APIs to provide a document representation that can be understood by text-assisted technologies. The AOM contains information on element properties and interactivity. There are four semantic properties in an accessibility tree object: </p>
+      <ul>
+        <li>Name</li>
+        <li>Description</li>
+        <li>Role</li>
+        <li>State</li>
+      </ul>
+      <p>The Accessibility Object Model (AOM) is still a work in progress that aims to incubate APIs that make it easier to express accessibility semantics and potentially allow read access to the computed accessibility tree. In this section we will present a limited overview of <em>landmark roles</em>, for more information about the AOM and an in-depth dive in AOM roles and states, see Volume 2. </p>
+      <p>Landmark roles are a category of ARIA roles that provide a way to identify the organization and structure of a web page in the AOM. By classifying and labeling sections of a page, structural information conveyed visually through layout is represented programmatically. Screen readers use landmark roles to provide keyboard navigation to important sections of a page. There are the following landmark roles: </p>
+      <ul>
+        <li>banner (<code class="language-markup">&lt;header&gt;</code>)</li>
+        <li>complementary (<code class="language-markup">&lt;aside&gt;</code>)</li>
+        <li>contentinfo (<code class="language-markup">&lt;footer&gt;</code>)</li>
+        <li>form (<code class="language-markup">&lt;form&gt;</code>)</li>
+        <li>main (<code class="language-markup">&lt;main&gt;</code>)</li>
+        <li>navigation (<code class="language-markup">&lt;nav&gt;</code>)</li>
+        <li>region (<code class="language-markup">&lt;section&gt;</code>)</li>
+        <li>search (<code class="language-markup">&lt;search&gt;</code>)</li>
+      </ul>
+      <p>Some landmark roles are always automatically added by browsers, like the roles for <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code>, and <code class="language-markup">&lt;search&gt;</code>. In the other cases the landmark role is only added when certain conditions are met. The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are direct children of <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;aside&gt;</code> element is only a landmark when it is used outside of <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>. <code class="language-markup">&lt;section&gt;</code>, <code class="language-markup">&lt;article&gt;</code>, and <code class="language-markup">&lt;form&gt;</code> elements aren't landmarks unless they have an accessible name, in which case the role is automatically added by the browser. </p>
+      
+<pre><code class="language-markup">
+&lt;section role="region"&gt;
+&lt;p&gt;This section is not a landmark in the AOM.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section aria-label="Section Name"&gt;
+&lt;p&gt;This section is now a landmark with role="region" in the AOM.&lt;/p&gt;
+&lt;/section&gt;
 
-              &lt;footer&gt;
-                &lt;h2&gt;Delivering accessible, performant, standards-compliant websites since 2023. &lt;/h2&gt;
-              &lt;/footer&gt;
-            &lt;/body&gt;
-          </code></pre>
-          <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
-          
-        <h3>Section headings</h3>
-          <p>The <code class="language-markup">&lt;h1&gt;</code> to <code class="language-markup">&lt;h6&gt;</code> HTML elements represent six levels of section headings. <code class="language-markup">&lt;h1&gt;</code> is the highest section level and <code class="language-markup">&lt;h6&gt;</code> is the lowest. By default, all heading elements create a block-level box in the layout, starting on a new line and taking up the full width available in their containing block. While using multiple <code class="language-markup">&lt;h1&gt;</code> elements on one page is allowed by the HTML standard (as long as they are not nested), this is not considered a best practice. A page should have a single <code class="language-markup">&lt;h1&gt;</code> element that describes the content of the page. </p>
-          <p>A common navigation technique for users of screen reading software is to quickly jump from heading to heading in order to determine the content of the page. Because of this, it is important to not skip one or more heading levels. </p>
-          <pre><code class="language-markup">
-            &lt;h1&gt;Heading level 1&lt;/h1&gt;
-            &lt;h2&gt;Heading level 2&lt;/h2&gt;
-            &lt;h3&gt;Heading level 3&lt;/h3&gt;
-          </code></pre>
-          <p>Headings may be nested as subsections to reflect the organization of the content of the page. Most screen readers can also generate an ordered list of all the headings on a page, which can help a person quickly determine the content hierarchy and navigate to different headings.   Another example with heading nesting is the following: </p>
-          <pre><code class="language-markup">
-            &lt;h1&gt;Beetles&lt;/h1&gt;
+</code></pre>
 
-            &lt;h2&gt;Etymology&lt;/h2&gt;
+      <p><b>Note:</b> Use landmarks sparingly. Too many landmark roles make it difficult for screen readers to understand the overall layout of the page. </p>
+    <h3>On-Page SEO</h3>
 
-            &lt;h2&gt;Distribution and Diversity&lt;/h2&gt;
+  <h2>HTML Elements and Syntax</h2>
+    <h3>Metadata</h3>
+      <p>Metadata is a type of data that describes data. In an HTML document the metadata is located in the <code class="language-markup">&lt;head&gt;</code> element. The different elements that can be used to add metadata to a document are <code class="language-markup">&lt;meta&gt;</code>, <code class="language-markup">&lt;title&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, and <code class="language-markup">&lt;base&gt;</code>. </p>
+      <p>The <code class="language-markup">&lt;meta&gt;</code> element.</p>
+      <p>The <code class="language-markup">&lt;title&gt;</code> element.</p>
+      <p>The <code class="language-markup">&lt;link&gt;</code> element.</p>
+      <p>The <code class="language-markup">&lt;base&gt;</code> element.</p>
+    <h3>Main Elements</h3>
+      <h4>Sectioning elements </h4>
+      <h4>Sectioning root elements </h4>
+      <h4>Content sectioning-related elements </h4>
+      <h4>Headings and Text </h4>
+        <p>As previously seen in <a href="#section-headings">Section Headings</a>, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
+        <p>Paragraphs are marked up with the <code class="language-markup">&lt;p&gt;</code> tag. </p>  
+        <p>For quotes and citations the corresponding elements are <code class="language-markup">&lt;blockquote&gt;</code>, <code class="language-markup">&lt;q&gt;</code>, and <code class="language-markup">&lt;cite&gt;</code>. <code class="language-markup">&lt;blockquote&gt;</code> displays a quote which is its own block, whereas <code class="language-markup">&lt;q&gt;</code> displays an inline quote. The <code class="language-markup">&lt;cite&gt;</code> element displays a visible citation on screen; using instead the attribute <code class="language-markup">cite</code> makes the citation only visible to crawlers. </p>        
+      <h4>Grouping </h4>
+      <h4>Links </h4>
+        <p>Links represent a connection between two resources, one of which is the current document. Links can be created by <code class="language-markup">&lt;a&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, <code class="language-markup">&lt;area&gt;</code>, and <code class="language-markup">&lt;form&gt;</code>. This section will only cover the <code class="language-markup">&lt;a&gt;</code> element in depth. </p>
+        <h5><code class="language-markup">&lt;a&gt;</code></h5>
+          <p>The <code class="language-markup">&lt;a&gt;</code> element creates a hyperlink to a given web address via URL. While not required, the <code class="language-markup">href</code> attribute is found in almost all <code class="language-markup">&lt;a&gt;</code> tags. </p>
+          <p>The <code class="language-markup">href</code> attribute can link to any URL schema supported by modern browsers, including <code class="language-markup">tel:</code>, <code class="language-markup">mailto:</code>, and <code class="language-markup">sms:</code>. It can also link to other elements of the document using <code class="language-markup">#</code> followed by the <code class="language-markup">id</code> attribute of said element. For accessibility purposes authors can use a <code class="language-markup">hreflang</code> element to indicate to screen-read devices the language of the linked URL. </p>
+<pre><code class="language-markup">
+&lt;a href="https://docs.jbroldan.dev"&gt;Access my documentation webpage! &lt;/a&gt;
+&lt;a href="#links"&gt;Links section. &lt;/a&gt;
+&lt;a href="https://docs.jbroldan.dev/volume-1/#links"&gt;Links section. &lt;/a&gt;
+&lt;a href="mailto:contact@jbroldan.dev"&gt;Email Me&lt;/a&gt;
+&lt;a href="tel:8005551212"&gt;Call Me&lt;/a&gt;
 
-            &lt;h2&gt;Evolution&lt;/h2&gt;
-              &lt;h3&gt;Late Paleozoic&lt;/h3&gt;
-              &lt;h3&gt;Jurassic&lt;/h3&gt;
-              &lt;h3&gt;Cretaceous&lt;/h3&gt;
-              &lt;h3&gt;Cenozoic&lt;/h3&gt;
+</code></pre>
+          <p>The <code class="language-markup">&lt;a&gt;</code> element allows a long list of other global attributes, from which one should highlight the <code class="language-markup">download</code>, <code class="language-markup">rel</code>, <code class="language-markup">target</code>, <code class="language-markup">type</code> and <code class="language-markup">ping</code> attributes. </p>
+          <p>The <code class="language-markup">download</code> attribute causes the browser to link to a downloadable resource. Using a <code class="language-markup">filename</code> value gives a name to the downloaded resource; without it, the browser will suggest a filename/extension to the user. </p>
+          <p>The <code class="language-markup">rel</code> attribute controls what kinds of links the link creates, defining the relationship between the current document and the resource linked to in the hyperlink. It is a valid attribute for any link element, but not all its possible values are allowed for every element. Differently from a <code class="language-markup">class</code>  name, which does not express semantics, the <code class="language-markup">rel</code>  attribute must express tokens that are semantically valid for both machines and humans. The <code class="language-markup">rel</code> attribute is of extreme importance for metadata and routing in the HTML document. You can find the full list of <code class="language-markup">rel</code> values on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#value" target="_blank" rel="External" >MDN</a>. The <code class="language-markup">rel</code> values that are the most relevant for the <code class="language-markup">&lt;a&gt;</code> element are: </p>
+          <dl>
+            <dt><code class="language-markup">nofollow</code></dt>
+            <dd>Indicates that the publisher does not endorse the referenced document. Spiders won't follow this link. </dd>
+            <dt><code class="language-markup">external</code></dt>
+            <dd>Indicates that the link directs to an external URL. </dd>
+            <dt><code class="language-markup">prev</code> and <code class="language-markup">next</code> </dt>
+            <dd>Indicate that the links point to the previous and next document in a series. </dd>
+            <dt><code class="language-markup">alternate</code></dt>
+            <dd>Indicates that the link follows an alternate representation of the current document. </dd>
+          </dl>  
+          <p>The <code class="language-markup">target</code> attribute tells the browser where to display the linked URL; it is an enumerated attribute that can take the following values: </p>
+          <dl>
+            <dt><code class="language-markup">_self</code></dt>
+            <dd>Default value. Opens the new link in the current browser context. </dd>
+            <dt><code class="language-markup">_blank</code></dt>
+            <dd>Opens the new link in a new browser page. </dd>
+            <dt><code class="language-markup">_parent</code></dt>
+            <dd>Opens the parent browsing context of the current one. </dd>
+            <dt><code class="language-markup">_top</code></dt>
+            <dd>Opens the topmost browsing context ancestor of the current one. </dd>
+            <dt><code class="language-markup">_unfencedTop</code></dt>
+            <dd>Allows embedded fenced frames to navigate the top-level frame. </dd>
+          </dl>
+          <p>The <code class="language-markup">type</code> attribute can describe the linked URL content's format with a MIME type. It works as a filename extension for purely semantic purposes. </p>
+<pre><code class="language-markup">
+&lt;a href="/es.pdf" hreflang="es-ES" rel="alternate" lang="es-ES" type="application/x-pdf" download="Manual-HTML5.pdf"&gt;Manual de HTML5 (pdf) &lt;/a&gt;
 
-            &lt;h2&gt;External Morphology&lt;/h2&gt;
-              &lt;h3&gt;Head&lt;/h3&gt;
-                &lt;h4&gt;Mouthparts&lt;/h4&gt;
-              &lt;h3&gt;Thorax&lt;/h3&gt;
-                &lt;h4&gt;Prothorax&lt;/h4&gt;
-                &lt;h4&gt;Pterothorax&lt;/h4&gt;
-              &lt;h3&gt;Legs&lt;/h3&gt;
-              &lt;h3&gt;Wings&lt;/h3&gt;
-              &lt;h3&gt;Abdomen&lt;/h3&gt;
-          </code></pre>
-        <h3>Structured Data </h3>
-          <p><strong>Structured data</strong> is information organized in a consistent, machine-readable format. On the web, structured data makes content understandable not just for humans, but also for software such as search engines and crawlers.</p>
-          <p><strong>Linked data</strong> is structured data which is associated with &mdash;linked to&mdash; other data, enabling semantic queries. By providing semantics, linked data allows machines to interpret not only the content, but also the relationships between entities. </p>
-          <h4>JSON LD </h4>
-            <p><strong>JSON-LD</strong> is a lightweight Linked Data format that is easy for humans to read and write. It is based on the already successful JSON format and provides a way to help JSON data interoperate at Web-scale. It is a decoupled, script-based format that doesn't clutter HTML document. JSON-LD is the most recommended and SEO-friendly way to structure data and provide with extra semantics to crawlers. </p>
-          <h4>Microdata </h4>
-          <p><strong>Microdata</strong> is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata from a web page and use it to provide a richer browsing experience for users. microdata consists of a group of name-value pairs. The groups are called items, and each name-value pair is a property. Items and properties are represented by regular elements. Authors can create items using the <code class="language-markup">itemscope</code> attribute, and add properties using the <code class="language-markup">itemprop</code> attribute. </p>
-          <p>Nowadays the use of microdata is not recommended for purely SEO-purposes, and the use of JSON-LD is encouraged instead. </p>
-        <h3>The AOM </h3>
-          <p>The <strong>Accessibility Object Model</strong>, or AOM, is an accessibility tree based on the DOM tree semantics. It is used by accessibility APIs to provide a document representation that can be understood by text-assisted technologies. The AOM contains information on element properties and interactivity. There are four semantic properties in an accessibility tree object: </p>
-          <ul>
-            <li>Name</li>
-            <li>Description</li>
-            <li>Role</li>
-            <li>State</li>
-          </ul>
-          <p>The Accessibility Object Model (AOM) is still a work in progress that aims to incubate APIs that make it easier to express accessibility semantics and potentially allow read access to the computed accessibility tree. In this section we will present a limited overview of <em>landmark roles</em>, for more information about the AOM and an in-depth dive in AOM roles and states, see Volume 2. </p>
-          <p>Landmark roles are a category of ARIA roles that provide a way to identify the organization and structure of a web page in the AOM. By classifying and labeling sections of a page, structural information conveyed visually through layout is represented programmatically. Screen readers use landmark roles to provide keyboard navigation to important sections of a page. There are the following landmark roles: </p>
-          <ul>
-            <li>banner (<code class="language-markup">&lt;header&gt;</code>)</li>
-            <li>complementary (<code class="language-markup">&lt;aside&gt;</code>)</li>
-            <li>contentinfo (<code class="language-markup">&lt;footer&gt;</code>)</li>
-            <li>form (<code class="language-markup">&lt;form&gt;</code>)</li>
-            <li>main (<code class="language-markup">&lt;main&gt;</code>)</li>
-            <li>navigation (<code class="language-markup">&lt;nav&gt;</code>)</li>
-            <li>region (<code class="language-markup">&lt;section&gt;</code>)</li>
-            <li>search (<code class="language-markup">&lt;search&gt;</code>)</li>
-          </ul>
-          <p>Some landmark roles are always automatically added by browsers, like the roles for <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code>, and <code class="language-markup">&lt;search&gt;</code>. In the other cases the landmark role is only added when certain conditions are met. The <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> elements are only landmarks when they are direct children of <code class="language-markup">&lt;body&gt;</code>. The <code class="language-markup">&lt;aside&gt;</code> element is only a landmark when it is used outside of <code class="language-markup">&lt;article&gt;</code> or <code class="language-markup">&lt;section&gt;</code>. <code class="language-markup">&lt;section&gt;</code>, <code class="language-markup">&lt;article&gt;</code>, and <code class="language-markup">&lt;form&gt;</code> elements aren't landmarks unless they have an accessible name, in which case the role is automatically added by the browser. </p>
-          
-          <pre><code class="language-markup">
-            &lt;section role="region"&gt;
-              &lt;p&gt;This section is not a landmark in the AOM.&lt;/p&gt;
-            &lt;/section&gt;
+</code></pre>
+          <p>Using the <code class="language-markup">ping</code> attribute in a URL, authors track user interaction when the link is clicked. It includes a space-separated list of URLs. When the link is followed, the browser will send <code class="language-markup">POST</code> requests with the body <code class="language-markup">PING</code> to these URLs.  </p>
+        <h5><code class="language-markup">&lt;link&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;link&gt;</code> element specifies relationships between the current document and an external resource. It is classified as a metadata content element. A further review of this element can be found under <a href="#metadata">Metadata</a>. </p>
+        <h5><code class="language-markup">&lt;area&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;area&gt;</code> element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext links. This element can only be used nested within a <code class="language-markup">&lt;map&gt;</code> element. You can find more information about image maps in the <a href="#graphics">Graphics section</a>. </p>
+        <h5><code class="language-markup">&lt;form&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;form&gt;</code> element represents a document section containing interactive controls for submitting information. An in-depth review of the <code class="language-markup">&lt;form&gt;</code> element and its attributes can be found under the <a href="#forms">Forms section</a>. </p>
+      <h4>Navigation </h4>
+      <h4>Tables </h4>
+      <h4>Forms </h4>
+      <h4>Graphics </h4>
+      <h4>Multimedia </h4>
+    <h3>Templates</h3>
+    <h3>Custom Elements and Shadow DOM</h3>
+    <h3>Other Elements</h3>
+      <h4>Styling elements</h4>
+      <h4>Inline text elements</h4>
+      <h4>Full list of elements</h4>
+    <h3>Attributes</h3>
+      <p>Attributes are names and name/value pairs appearing in the opening tag of an element, changing its behavior or providing metadata. Attributes are normally formed by a name and a value; values should always be quoted.</p>
+      <h4>Boolean attributes </h4>
+        <p>If a boolean attribute is present, it is <em>always true</em>, if it is absent, then it is <em>false</em>. The list of boolean attributes is the following: </p>
+        <ul class="multi-column">
+          <li>autofocus</li>
+          <li>inert</li>
+          <li>checked</li>
+          <li>disabled</li>
+          <li>required</li>
+          <li>reversed</li>
+          <li>allowfullscreen</li>
+          <li>default</li>
+          <li>loop</li>
+          <li>autoplay</li>
+          <li>controls</li>
+          <li>muted</li>
+          <li>readonly</li>
+          <li>multiple</li>
+          <li>selected</li>
+        </ul>
+<pre><code class="language-markup">
+&lt;input disabled&gt;
+&lt;input disabled="disabled"&gt;
+&lt;input disabled="false"&gt; &lt;!-- still true! --&gt;
+&lt;input disabled="0"&gt;     &lt;!-- still true! --&gt;
 
-            &lt;section aria-label="Section Name"&gt;
-              &lt;p&gt;This section is now a landmark with role="region" in the AOM.&lt;/p&gt;
-            &lt;/section&gt;
-          </code></pre>
+</code></pre>
+        When toggling between true and false, add and remove the attribute altogether with JavaScript rather than toggling the value.
+      <h4>Enumerated attributes </h4>
+        <p>Some attributes, called enumerated attributes, take on a finite set of states. Like boolean attributes, they have a default value if the attribute is present but the value is missing. Unlike boolean attributes, though, omitting the attribute doesn't mean it's false, and attributes aren't automatically "true" if present. In most cases with enumerated attributes, missing and invalid values are the same. For example, if the <code class="language-markup">attribute</code> on an <code class="language-markup">&lt;input&gt;</code> is missing, present but without a value, or has an invalid value, it defaults to <code class="language-markup">text</code>. </p>
+      <h4>Global attributes </h4>
+        <p>Global attributes are attributes that can be set on any HTML element, including elements in the <code class="language-markup">&lt;head&gt;</code>. There are more than <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes#list_of_global_attributes" type="_blank">30 global attributes</a>. </p>
+        <h5><code class="language-markup">id</code> </h5>
+          <p>The global attribute <code class="language-markup">id</code> is used to define a unique identifier for an element. Its value is a string with no spaces, and it should always be unique. Stick to a naming convention, as <code class="language-markup">id</code> values are case sensitive. </p>
+          <p>If a <code class="language-markup">href</code> attribute has as a value the <code class="language-markup">id</code> of an element preceded by <code class="language-markup">#</code>, then upon interacting with the hyperlink the page will scroll to the position of that element. </p>
+          <p>In CSS, you can target each section using an <code class="language-markup">id</code> selector. </p>
+        <h5><code class="language-markup">class</code> </h5>
+          <p>The <code class="language-markup">class</code> attribute provides an additional way of targeting elements with CSS (and JavaScript), but serves no other purpose in HTML. </p>
+        <h5><code class="language-markup">style</code> </h5>
+          <p>The <code class="language-markup">style</code> attribute enables applying inline styles, which are styles applied to the single element on which the attribute is set. The <code class="language-markup">style</code> attribute takes as its value CSS property value pairs, with the value's syntax being the same as the contents of a CSS style block: properties are followed by a colon, just like in CSS, and semicolons end each declaration, coming after the value. While <code class="language-markup">style</code> is indeed a global attribute, using it is not recommended. Rather, define styles in a separate file or files. That said, it can come in handy during development to enable quick styling such as for testing purposes. </p>
+        <h5><code class="language-markup">tabindex</code> </h5>
+          <p>The <code class="language-markup">tabindex</code> attribute can be added to any element to enable it to receive focus. The <code class="language-markup">tabindex</code> value defines whether it gets added to the tab order, and, optionally, into a non-default tabbing order. This attribute takes as its value an integer. A negative value (the convention is to use <code class="language-markup">-1</code>) makes an element capable of receiving focus, such as via JavaScript, but does not add the element to the tabbing sequence. A tabindex value of <code class="language-markup">0</code> makes the element focusable and reachable via tabbing, adding it to the default tab order of the page in source code order. A value of <code class="language-markup">1</code> or more puts the element into a prioritized focus sequence and is not recommended.</p>
+        <h5><code class="language-markup">role</code> </h5>
+          <p>The <code class="language-markup">role</code> attribute is part of the ARIA specification. As seen previously in <a href="#the-aom">The AOM</a> it can be used to provide semantic meaning to content, enabling screen readers to inform site users of an object's expected user interaction. There are a few common UI widgets, such as <code class="language-markup">comboboxes</code>, <code class="language-markup">menubars</code>, <code class="language-markup">tablists</code>, and <code class="language-markup">treegrids</code>, that have no native HTML equivalent; in such cases, using the <code class="language-markup">role</code> attribute can help the AOM of the document. </p>
+        <h5><code class="language-markup">contenteditable</code> </h5>
+          <p>An element with the <code class="language-markup">contenteditable</code> attribute set to <code class="language-markup">true</code> is editable, is focusable, and is added to the tab order as if <code class="language-markup">tabindex="0"</code> were set. <code class="language-markup">Contenteditable</code> is an enumerated attribute supporting the values <code class="language-markup">true</code> and <code class="language-markup">false</code>, with a default value of <code class="language-markup">inherit</code> if the attribute is not present or has an invalid value.</p>
+      <h4>Custom attributes </h4>
+        <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
+        <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
 
-          <p><b>Note:</b> Use landmarks sparingly. Too many landmark roles make it difficult for screen readers to understand the overall layout of the page. </p>
-        <h3>On-Page SEO</h3>
+  <h2>User Interaction and Web APIs</h2>
+    <h3>PWAs</h3>
 
-      <h2>HTML Elements and Syntax</h2>
-        <h3>Document Metadata</h3>
-        <h3>Main Elements</h3>
-          <h4>Sectioning elements </h4>
-          <h4>Sectioning root elements </h4>
-          <h4>Content sectioning-related elements </h4>
-          <h4>Headings and Text </h4>
-            <p>As previously seen in Chapter 2, section 4, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
-            <p>Paragraphs are marked up with the <code class="language-markup">&lt;p&gt;</code> tag. </p>  
-            <p>For quotes and citations the corresponding elements are <code class="language-markup">&lt;blockquote&gt;</code>, <code class="language-markup">&lt;q&gt;</code>, and <code class="language-markup">&lt;cite&gt;</code>. <code class="language-markup">&lt;blockquote&gt;</code> displays a quote which is its own block, whereas <code class="language-markup">&lt;q&gt;</code> displays an inline quote. The <code class="language-markup">&lt;cite&gt;</code> element displays a visible citation on screen; using instead the attribute <code class="language-markup">cite</code> makes the citation only visible to crawlers. </p>        
-          <h4>Grouping </h4>
-          <h4>Links </h4>
-          <h4>Navigation </h4>
-          <h4>Tables </h4>
-          <h4>Forms </h4>
-          <h4>Graphics </h4>
-          <h4>Multimedia </h4>
-        <h3>Templates</h3>
-        <h3>Custom Elements and Shadow DOM</h3>
-        <h3>Other Elements</h3>
-          <h4>Styling elements</h4>
-          <h4>Inline text elements</h4>
-          <h4>Full list of elements</h4>
-        <h3>Attributes</h3>
-          <p>Attributes are names and name/value pairs appearing in the opening tag of an element, changing its behavior or providing metadata. Attributes are normally formed by a name and a value; values should always be quoted.</p>
-          <h4>Boolean attributes </h4>
-            <p>If a boolean attribute is present, it is <em>always true</em>, if it is absent, then it is <em>false</em>. The list of boolean attributes is the following: </p>
-            <ul class="multi-column">
-              <li>autofocus</li>
-              <li>inert</li>
-              <li>checked</li>
-              <li>disabled</li>
-              <li>required</li>
-              <li>reversed</li>
-              <li>allowfullscreen</li>
-              <li>default</li>
-              <li>loop</li>
-              <li>autoplay</li>
-              <li>controls</li>
-              <li>muted</li>
-              <li>readonly</li>
-              <li>multiple</li>
-              <li>selected</li>
-            </ul>
-            <pre><code class="language-markup">
-              &lt;input disabled&gt;
-              &lt;input disabled="disabled"&gt;
-              &lt;input disabled="false"&gt; &lt;!-- still true! --&gt;
-              &lt;input disabled="0"&gt;     &lt;!-- still true! --&gt;
-            </code></pre>
-            When toggling between true and false, add and remove the attribute altogether with JavaScript rather than toggling the value.
-          <h4>Enumerated attributes </h4>
-            <p>Some attributes, called enumerated attributes, take on a finite set of states. Like boolean attributes, they have a default value if the attribute is present but the value is missing. Unlike boolean attributes, though, omitting the attribute doesn't mean it's false, and attributes aren't automatically "true" if present. In most cases with enumerated attributes, missing and invalid values are the same. For example, if the <code class="language-markup">attribute</code> on an <code class="language-markup">&lt;input&gt;</code> is missing, present but without a value, or has an invalid value, it defaults to <code class="language-markup">text</code>. </p>
-          <h4>Global attributes </h4>
-            <p>Global attributes are attributes that can be set on any HTML element, including elements in the <code class="language-markup">&lt;head&gt;</code>. There are more than <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes#list_of_global_attributes" type="_blank">30 global attributes</a>. </p>
-            <h5><code class="language-markup">id</code> </h5>
-              <p>The global attribute <code class="language-markup">id</code> is used to define a unique identifier for an element. Its value is a string with no spaces, and it should always be unique. Stick to a naming convention, as <code class="language-markup">id</code> values are case sensitive. </p>
-              <p>If a <code class="language-markup">href</code> attribute has as a value the <code class="language-markup">id</code> of an element preceded by <code class="language-markup">#</code>, then upon interacting with the hyperlink the page will scroll to the position of that element. </p>
-              <p>In CSS, you can target each section using an <code class="language-markup">id</code> selector. </p>
-            <h5><code class="language-markup">class</code> </h5>
-              <p>The <code class="language-markup">class</code> attribute provides an additional way of targeting elements with CSS (and JavaScript), but serves no other purpose in HTML. </p>
-            <h5><code class="language-markup">style</code> </h5>
-              <p>The <code class="language-markup">style</code> attribute enables applying inline styles, which are styles applied to the single element on which the attribute is set. The <code class="language-markup">style</code> attribute takes as its value CSS property value pairs, with the value's syntax being the same as the contents of a CSS style block: properties are followed by a colon, just like in CSS, and semicolons end each declaration, coming after the value. While <code class="language-markup">style</code> is indeed a global attribute, using it is not recommended. Rather, define styles in a separate file or files. That said, it can come in handy during development to enable quick styling such as for testing purposes. </p>
-            <h5><code class="language-markup">tabindex</code> </h5>
-              <p>The <code class="language-markup">tabindex</code> attribute can be added to any element to enable it to receive focus. The <code class="language-markup">tabindex</code> value defines whether it gets added to the tab order, and, optionally, into a non-default tabbing order. This attribute takes as its value an integer. A negative value (the convention is to use <code class="language-markup">-1</code>) makes an element capable of receiving focus, such as via JavaScript, but does not add the element to the tabbing sequence. A tabindex value of <code class="language-markup">0</code> makes the element focusable and reachable via tabbing, adding it to the default tab order of the page in source code order. A value of <code class="language-markup">1</code> or more puts the element into a prioritized focus sequence and is not recommended.</p>
-            <h5><code class="language-markup">role</code> </h5>
-              <p>The <code class="language-markup">role</code> attribute is part of the ARIA specification. As seen previously in Chapter 2, section 6, it can be used to provide semantic meaning to content, enabling screen readers to inform site users of an object's expected user interaction. There are a few common UI widgets, such as <code class="language-markup">comboboxes</code>, <code class="language-markup">menubars</code>, <code class="language-markup">tablists</code>, and <code class="language-markup">treegrids</code>, that have no native HTML equivalent; in such cases, using the <code class="language-markup">role</code> attribute can help the AOM of the document. </p>
-            <h5><code class="language-markup">contenteditable</code> </h5>
-              <p>An element with the <code class="language-markup">contenteditable</code> attribute set to <code class="language-markup">true</code> is editable, is focusable, and is added to the tab order as if <code class="language-markup">tabindex="0"</code> were set. <code class="language-markup">Contenteditable</code> is an enumerated attribute supporting the values <code class="language-markup">true</code> and <code class="language-markup">false</code>, with a default value of <code class="language-markup">inherit</code> if the attribute is not present or has an invalid value.</p>
-          <h4>Custom attributes </h4>
-            <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
-            <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
+  <h2>Common Patterns & Pitfalls</h2>
+    <h3>Metadata Keywords</h3>
+    <h3><i>Divitis</i> and <i>Classitis</i></h3>
+</main>
+</div>
 
-      <h2>User Interaction and Web APIs</h2>
-        <h3>PWAs</h3>
+<footer>
+<p>&copy;2025 Javier Bellido Roldan</p>
+</footer>
 
-      <h2>Common Patterns & Pitfalls</h2>
-        <h3>Metadata Keywords</h3>
-        <h3><i>Divitis</i> and <i>Classitis</i></h3>
-        
-    </main>
-    </div>
-
-     <footer>
-      <p>&copy;2025 Javier Bellido Roldan</p>
-     </footer>
-
-     <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js" defer></script>
-     <script src="./js/prism.js"></script>
-     <script src="./js/toc.js"></script>
-  </body>
+<script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js" defer></script>
+<script src="./js/prism.js"></script>
+<script src="./js/toc.js"></script>
+</body>
 </html>

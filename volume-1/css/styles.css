@@ -82,3 +82,8 @@ columns: 3; /* Change this number to adjust the number of columns */
 -moz-columns: 3;
 list-style-position: inside;
 }
+h5{
+  font-size: medium;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
