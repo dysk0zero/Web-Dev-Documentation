@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>The HTML5 Audit Handbook</title>
+    <title>HTML5 Handbook</title>
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="The HTML Audit Handbook: a technical guide to auditing, optimizing, and reviewing HTML code in accordance with modern standards, best practices for performance, and accessibility. Includes a checklist, examples, and references to MDN, and WHATWG." />
     <link rel="stylesheet" href="./css/styles.css" />
@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <h1> "Contemporary Web Technical Auditing" &mdash; The Full Auditing Reference Handbook</h1>
+      <h1> "Contemporary Web Dev Auditing" &mdash; Full Web Reference Handbook</h1>
       <p> A collection to audit modern websites &mdash; Last updated on 18. August 2025</p>
       <nav>
         <a href="https://docs.jbroldan.dev">Home</a>
@@ -37,8 +37,6 @@
         <h2>Vol. 1: HTML5</h2>
       </header>
 
-
-      
       <h2>Introduction</h2>
         <h3>What is HTML5?</h3>
           <p><strong>HTML5</strong> is an umbrella term that refers to the latest <a href="https://html.spec.whatwg.org/dev/" target="_blank">living standard of HTML</a>, maintained by WHATWG; as well as to a series of modern web technologies standards, such as the <a href="https://dom.spec.whatwg.org/" target="_blank">the DOM standard</a>, <a href="https://compat.spec.whatwg.org/" target="_blank">the compatibility standard</a>, or the <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch standard, among many others.</a> </p>
@@ -97,6 +95,7 @@
           <p>The document element of this tree is the html element, which is the element always found in that position in HTML documents. It contains two elements, head and body.</p>
           <p>This DOM tree can be manipulated from scripts in the page. Scripts (typically in JavaScript) are small programs that can be embedded using the script element or using event handler content attributes. Each element in the DOM tree is represented by an object, and these objects have APIs so that they can be manipulated. </p>
           <p>HTML documents represent a media-independent description of interactive content. HTML documents might be rendered to a screen, or through a speech synthesizer, or on a braille display. To influence exactly how such rendering takes place, authors can use a styling language such as CSS.</p>
+          <p>Similar to the DOM,the <strong>CSS Object Model</strong> (CSSOM) is a set of APIs that allow JavaScript to manipulate the CSS of a document, allowing users to read and modify CSS style dynamically. </p>
         <h3>HTML Conformance Checker: v.Nu</h3>
           <p>HTML conformance checkers, also called validators, are tools that help you catch unintended mistakes in HTML, CSS, and SVG. Running a conformance checker as a first audit layer is highly recommended, since they are a lightweight and easy tool to detect what otherwise would pass unnoticed. Of all conformance checkers v.Nu (Nu Html Checker) is the only one that supports up to date HTML5 consistently.</p>
           <p>Authors can run v.Nu from the <a href="https://validator.w3.org/nu/" target="_blank">Official W3 Website</a>, or locally downloading it from <a href="https://github.com/validator/validator" target="_blank">GitHub</a>.</p>
@@ -277,8 +276,7 @@
           <h4>Microdata </h4>
           <p><strong>Microdata</strong> is used to nest metadata within existing content on web pages. Search engines and web crawlers can extract and process microdata from a web page and use it to provide a richer browsing experience for users. microdata consists of a group of name-value pairs. The groups are called items, and each name-value pair is a property. Items and properties are represented by regular elements. Authors can create items using the <code class="language-markup">itemscope</code> attribute, and add properties using the <code class="language-markup">itemprop</code> attribute. </p>
           <p>Nowadays the use of microdata is not recommended for purely SEO-purposes, and the use of JSON-LD is encouraged instead. </p>
-        <h3>The CSSOM and AOM </h3>
-          <p>Similar to the DOM,the <strong>CSS Object Model</strong> (CSSOM) is a set of APIs that allow JavaScript to manipulate the CSS of a document, allowing users to read and modify CSS style dynamically. </p>
+        <h3>The AOM </h3>
           <p>The <strong>Accessibility Object Model</strong>, or AOM, is an accessibility tree based on the DOM tree semantics. It is used by accessibility APIs to provide a document representation that can be understood by text-assisted technologies. The AOM contains information on element properties and interactivity. There are four semantic properties in an accessibility tree object: </p>
           <ul>
             <li>Name</li>
@@ -320,6 +318,9 @@
           <h4>Sectioning root elements </h4>
           <h4>Content sectioning-related elements </h4>
           <h4>Headings and Text </h4>
+            <p>As previously seen in Chapter 2, section 4, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
+            <p>Paragraphs are marked up with the <code class="language-markup">&lt;p&gt;</code> tag. </p>  
+            <p>For quotes and citations the corresponding elements are <code class="language-markup">&lt;blockquote&gt;</code>, <code class="language-markup">&lt;q&gt;</code>, and <code class="language-markup">&lt;cite&gt;</code>. <code class="language-markup">&lt;blockquote&gt;</code> displays a quote which is its own block, whereas <code class="language-markup">&lt;q&gt;</code> displays an inline quote. The <code class="language-markup">&lt;cite&gt;</code> element displays a visible citation on screen; using instead the attribute <code class="language-markup">cite</code> makes the citation only visible to crawlers. </p>        
           <h4>Grouping </h4>
           <h4>Links </h4>
           <h4>Navigation </h4>
@@ -334,10 +335,54 @@
           <h4>Inline text elements</h4>
           <h4>Full list of elements</h4>
         <h3>Attributes</h3>
+          <p>Attributes are names and name/value pairs appearing in the opening tag of an element, changing its behavior or providing metadata. Attributes are normally formed by a name and a value; values should always be quoted.</p>
           <h4>Boolean attributes </h4>
+            <p>If a boolean attribute is present, it is <em>always true</em>, if it is absent, then it is <em>false</em>. The list of boolean attributes is the following: </p>
+            <ul class="multi-column">
+              <li>autofocus</li>
+              <li>inert</li>
+              <li>checked</li>
+              <li>disabled</li>
+              <li>required</li>
+              <li>reversed</li>
+              <li>allowfullscreen</li>
+              <li>default</li>
+              <li>loop</li>
+              <li>autoplay</li>
+              <li>controls</li>
+              <li>muted</li>
+              <li>readonly</li>
+              <li>multiple</li>
+              <li>selected</li>
+            </ul>
+            <pre><code class="language-markup">
+              &lt;input disabled&gt;
+              &lt;input disabled="disabled"&gt;
+              &lt;input disabled="false"&gt; &lt;!-- still true! --&gt;
+              &lt;input disabled="0"&gt;     &lt;!-- still true! --&gt;
+            </code></pre>
+            When toggling between true and false, add and remove the attribute altogether with JavaScript rather than toggling the value.
           <h4>Enumerated attributes </h4>
+            <p>Some attributes, called enumerated attributes, take on a finite set of states. Like boolean attributes, they have a default value if the attribute is present but the value is missing. Unlike boolean attributes, though, omitting the attribute doesn't mean it's false, and attributes aren't automatically "true" if present. In most cases with enumerated attributes, missing and invalid values are the same. For example, if the <code class="language-markup">attribute</code> on an <code class="language-markup">&lt;input&gt;</code> is missing, present but without a value, or has an invalid value, it defaults to <code class="language-markup">text</code>. </p>
           <h4>Global attributes </h4>
+            <p>Global attributes are attributes that can be set on any HTML element, including elements in the <code class="language-markup">&lt;head&gt;</code>. There are more than <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes#list_of_global_attributes" type="_blank">30 global attributes</a>. </p>
+            <h5><code class="language-markup">id</code> </h5>
+              <p>The global attribute <code class="language-markup">id</code> is used to define a unique identifier for an element. Its value is a string with no spaces, and it should always be unique. Stick to a naming convention, as <code class="language-markup">id</code> values are case sensitive. </p>
+              <p>If a <code class="language-markup">href</code> attribute has as a value the <code class="language-markup">id</code> of an element preceded by <code class="language-markup">#</code>, then upon interacting with the hyperlink the page will scroll to the position of that element. </p>
+              <p>In CSS, you can target each section using an <code class="language-markup">id</code> selector. </p>
+            <h5><code class="language-markup">class</code> </h5>
+              <p>The <code class="language-markup">class</code> attribute provides an additional way of targeting elements with CSS (and JavaScript), but serves no other purpose in HTML. </p>
+            <h5><code class="language-markup">style</code> </h5>
+              <p>The <code class="language-markup">style</code> attribute enables applying inline styles, which are styles applied to the single element on which the attribute is set. The <code class="language-markup">style</code> attribute takes as its value CSS property value pairs, with the value's syntax being the same as the contents of a CSS style block: properties are followed by a colon, just like in CSS, and semicolons end each declaration, coming after the value. While <code class="language-markup">style</code> is indeed a global attribute, using it is not recommended. Rather, define styles in a separate file or files. That said, it can come in handy during development to enable quick styling such as for testing purposes. </p>
+            <h5><code class="language-markup">tabindex</code> </h5>
+              <p>The <code class="language-markup">tabindex</code> attribute can be added to any element to enable it to receive focus. The <code class="language-markup">tabindex</code> value defines whether it gets added to the tab order, and, optionally, into a non-default tabbing order. This attribute takes as its value an integer. A negative value (the convention is to use <code class="language-markup">-1</code>) makes an element capable of receiving focus, such as via JavaScript, but does not add the element to the tabbing sequence. A tabindex value of <code class="language-markup">0</code> makes the element focusable and reachable via tabbing, adding it to the default tab order of the page in source code order. A value of <code class="language-markup">1</code> or more puts the element into a prioritized focus sequence and is not recommended.</p>
+            <h5><code class="language-markup">role</code> </h5>
+              <p>The <code class="language-markup">role</code> attribute is part of the ARIA specification. As seen previously in Chapter 2, section 6, it can be used to provide semantic meaning to content, enabling screen readers to inform site users of an object's expected user interaction. There are a few common UI widgets, such as <code class="language-markup">comboboxes</code>, <code class="language-markup">menubars</code>, <code class="language-markup">tablists</code>, and <code class="language-markup">treegrids</code>, that have no native HTML equivalent; in such cases, using the <code class="language-markup">role</code> attribute can help the AOM of the document. </p>
+            <h5><code class="language-markup">contenteditable</code> </h5>
+              <p>An element with the <code class="language-markup">contenteditable</code> attribute set to <code class="language-markup">true</code> is editable, is focusable, and is added to the tab order as if <code class="language-markup">tabindex="0"</code> were set. <code class="language-markup">Contenteditable</code> is an enumerated attribute supporting the values <code class="language-markup">true</code> and <code class="language-markup">false</code>, with a default value of <code class="language-markup">inherit</code> if the attribute is not present or has an invalid value.</p>
           <h4>Custom attributes </h4>
+            <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
+            <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
 
       <h2>User Interaction and Web APIs</h2>
         <h3>PWAs</h3>

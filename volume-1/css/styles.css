@@ -76,3 +76,9 @@ li + li{
     display: block;
     max-width: 500px; /* desktop default */
   }
+.multi-column{
+columns: 3; /* Change this number to adjust the number of columns */
+-webkit-columns: 3;
+-moz-columns: 3;
+list-style-position: inside;
+}

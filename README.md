@@ -1,4 +1,4 @@
-# Web Dev documentation
+# Web Dev Documentation
 
 This repository hosts a full set of **HTML5, Accessibility, and Performance** documentation, served via [docs.jbroldan.dev](https://docs.jbroldan.dev).
 
