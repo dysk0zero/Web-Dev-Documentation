@@ -305,6 +305,7 @@
 
       <p><b>Note:</b> Use landmarks sparingly. Too many landmark roles make it difficult for screen readers to understand the overall layout of the page. </p>
     <h3>On-Page SEO</h3>
+      <p>TBA</p>
 
   <h2>HTML Elements and Syntax</h2>
     <h3>Metadata</h3>
@@ -404,6 +405,15 @@
         <p><code class="language-markup">&lt;header&gt;</code> represents self-contained content, with an optional caption which is specified using the <code class="language-markup">&lt;figcaption&gt;</code> element. </p>
         <p><code class="language-markup">&lt;blockquote&gt;</code> is the block quotation element. Other quotation elements can be found under <a href="#text-content">Text Content</a>. </p>
       <h4>Sectioning-Related Elements </h4>
+        <p>To add even more confusion to HTML5 syntax, there are a set of elements that technically are not sectioning elements, but in practice they behave very similarly. Those elements are <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code>, <code class="language-markup">&lt;footer&gt;</code>, and <code class="language-markup">&lt;address&gt;</code>. </p>
+        <h5><code class="language-markup">&lt;main&gt;</code> </h5>
+          <p><code class="language-markup">&lt;main&gt;</code> represents the dominant content of the <code class="language-markup">&lt;body&gt;</code> of a document. A document mustn't have more than one <code class="language-markup">&lt;main&gt;</code> element. <code class="language-markup">&lt;main&gt;</code> doesn't contribute to the document's outline; therefore, it doesn't affect the DOM structure and is strictly informative. </p>
+        <h5><code class="language-markup">&lt;header&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;header&gt;</code> element represents introductory content, typically a group of introductory or navigational aids. It may contain some heading elements but also a logo, a search form, an author name, and other elements. When not nested within sectioning content or <code class="language-markup">&lt;main&gt;</code>, then the <code class="language-markup">&lt;header&gt;</code> element automatically adopts the <code class="language-markup">banner</code> landmark role. Otherwise, when nested within said elements, it loses its landmark status and represents a group of introductory or navigational aids for the surrounding section. </p>
+        <h5><code class="language-markup">&lt;footer&gt;</code> </h5>
+          <p>Similarly, the <code class="language-markup">&lt;footer&gt;</code> element represents a footer for its nearest ancestor sectioning content or sectioning root element. It typically contains information about the author of the section, copyright data or links to related documents. When the nearest ancestor is the <code class="language-markup">&lt;body&gt;</code> element the <code class="language-markup">&lt;footer&gt;</code> applies to the whole page and it is considered a landmark. </p>
+        <h5><code class="language-markup">&lt;address&gt;</code> </h5>
+          <p><code class="language-markup">&lt;address&gt;</code> indicates that the enclosed HTML provides contact information for a person or people, or for an organization. It is advised to include information about the author in an <code class="language-markup">&lt;address&gt;</code> element that can be included into the <code class="language-markup">&lt;footer&gt;</code> element. The <code class="language-markup">&lt;address&gt;</code> element should include the name of the person, people, or organization to which the contact information refers. </p>
     <h3>Text Content</h3>
       <h4>Headings & Paragraphs </h4>
         <p>As previously seen in <a href="#section-headings">Section Headings</a>, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
@@ -413,6 +423,7 @@
       <h4>Inline Text</h4>
         <p>HTML includes many elements that provide text semantics for documentation. Among others, the most important elements&mdash;that have not been previously discussed in this text&mdash; are <code class="language-markup">&lt;data&gt;</code>, <code class="language-markup">&lt;time&gt;</code>, <code class="language-markup">&lt;code&gt;</code>, or <code class="language-markup">&lt;pre&gt;</code>. </p>
       <h4>HTML Entities</h4>
+        <p>A character reference is an escape sequence of characters that is used to represent another character in the rendered web page. Because HTML reserves certain characters, one must use character references, also called entities, to display them. The reserved HTML characters are <code class="language-markup">&lt;</code>, <code class="language-markup">&gt;</code>, and <code class="language-markup">&copy;</code>, and their respective equivalent entities are <code class="language-markup">&amp;lt;</code>, <code class="language-markup">&amp;gt;</code>, and <code class="language-markup">&amp;copy;</code>. </p>
     <h3>Grouping & Lists </h3>
     <h3>Links </h3>
       <p>Links represent a connection between two resources, one of which is the current document. Links can be created by <code class="language-markup">&lt;a&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, <code class="language-markup">&lt;area&gt;</code>, and <code class="language-markup">&lt;form&gt;</code>. This section will only cover the <code class="language-markup">&lt;a&gt;</code> element in depth. </p>
@@ -536,7 +547,8 @@
 </div>
 
 <footer>
-<p>&copy;2025 Javier Bellido Roldan</p>
+  <p>&copy;2025 </p>
+  <address>Javier Bellido Roldan </address>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js" defer></script>

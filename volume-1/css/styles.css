@@ -87,3 +87,12 @@ h5{
   font-weight: 600;
   letter-spacing: 2px;
 }
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+address{
+  font-style: normal;
+}
