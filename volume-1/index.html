@@ -440,8 +440,8 @@
           <p>A description list consist of a <code class="language-markup">&lt;dl&gt;</code> element containing a series of description terms (<code class="language-markup">&lt;dt&gt;</code>) and their description details (<code class="language-markup">&lt;dd&gt;</code>). They are made up of key/value pairs, with <code class="language-markup">&lt;dl&gt;</code> being the parent container of <code class="language-markup">&lt;dt&gt;</code> and <code class="language-markup">&lt;dd&gt;</code>. </p>
     <h3>Links </h3>
       <p>Links represent a connection between two resources, one of which is the current document. Links can be created by <code class="language-markup">&lt;a&gt;</code>, <code class="language-markup">&lt;link&gt;</code>, <code class="language-markup">&lt;area&gt;</code>, and <code class="language-markup">&lt;form&gt;</code>. This section will only cover the <code class="language-markup">&lt;a&gt;</code> element in depth. </p>
-        <p>The <code class="language-markup">&lt;a&gt;</code> element creates a hyperlink to a given web address via URL. While not required, the <code class="language-markup">href</code> attribute is found in almost all <code class="language-markup">&lt;a&gt;</code> tags. </p>
-        <p>The <code class="language-markup">href</code> attribute can link to any URL schema supported by modern browsers, including <code class="language-markup">tel:</code>, <code class="language-markup">mailto:</code>, and <code class="language-markup">sms:</code>. It can also link to other elements of the document using <code class="language-markup">#</code> followed by the <code class="language-markup">id</code> attribute of said element. For accessibility purposes authors can use a <code class="language-markup">hreflang</code> element to indicate to screen-read devices the language of the linked URL. </p>
+      <p>The <code class="language-markup">&lt;a&gt;</code> element creates a hyperlink to a given web address via URL. While not required, the <code class="language-markup">href</code> attribute is found in almost all <code class="language-markup">&lt;a&gt;</code> tags. </p>
+      <p>The <code class="language-markup">href</code> attribute can link to any URL schema supported by modern browsers, including <code class="language-markup">tel:</code>, <code class="language-markup">mailto:</code>, and <code class="language-markup">sms:</code>. It can also link to other elements of the document using <code class="language-markup">#</code> followed by the <code class="language-markup">id</code> attribute of said element. For accessibility purposes authors can use a <code class="language-markup">hreflang</code> element to indicate to screen-read devices the language of the linked URL. </p>
 <pre><code class="language-markup">
 &lt;a href="https://docs.jbroldan.dev"&gt;Access my documentation webpage! &lt;/a&gt;
 &lt;a href="#links"&gt;Links section. &lt;/a&gt;
@@ -450,45 +450,94 @@
 &lt;a href="tel:8005551212"&gt;Call Me&lt;/a&gt;
 
 </code></pre>
-          <p>The <code class="language-markup">&lt;a&gt;</code> element allows a long list of other global attributes, from which one should highlight the <code class="language-markup">download</code>, <code class="language-markup">rel</code>, <code class="language-markup">target</code>, <code class="language-markup">type</code> and <code class="language-markup">ping</code> attributes. </p>
-          <p>The <code class="language-markup">download</code> attribute causes the browser to link to a downloadable resource. Using a <code class="language-markup">filename</code> value gives a name to the downloaded resource; without it, the browser will suggest a filename/extension to the user. </p>
-          <p>The <code class="language-markup">rel</code> attribute controls what kinds of links the link creates, defining the relationship between the current document and the resource linked to in the hyperlink. It is a valid attribute for any link element, but not all its possible values are allowed for every element. Differently from a <code class="language-markup">class</code>  name, which does not express semantics, the <code class="language-markup">rel</code>  attribute must express tokens that are semantically valid for both machines and humans. The <code class="language-markup">rel</code> attribute is of extreme importance for metadata and routing in the HTML document. You can find the full list of <code class="language-markup">rel</code> values on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#value" target="_blank" rel="External" >MDN</a>. The <code class="language-markup">rel</code> values that are the most relevant for the <code class="language-markup">&lt;a&gt;</code> element are: </p>
-          <dl>
-            <dt><code class="language-markup">nofollow</code></dt>
-            <dd>Indicates that the publisher does not endorse the referenced document. Spiders won't follow this link. </dd>
-            <dt><code class="language-markup">external</code></dt>
-            <dd>Indicates that the link directs to an external URL. </dd>
-            <dt><code class="language-markup">prev</code> and <code class="language-markup">next</code> </dt>
-            <dd>Indicate that the links point to the previous and next document in a series. </dd>
-            <dt><code class="language-markup">alternate</code></dt>
-            <dd>Indicates that the link follows an alternate representation of the current document. </dd>
-          </dl>  
-          <p>The <code class="language-markup">target</code> attribute tells the browser where to display the linked URL; it is an enumerated attribute that can take the following values: </p>
-          <dl>
-            <dt><code class="language-markup">_self</code></dt>
-            <dd>Default value. Opens the new link in the current browser context. </dd>
-            <dt><code class="language-markup">_blank</code></dt>
-            <dd>Opens the new link in a new browser page. </dd>
-            <dt><code class="language-markup">_parent</code></dt>
-            <dd>Opens the parent browsing context of the current one. </dd>
-            <dt><code class="language-markup">_top</code></dt>
-            <dd>Opens the topmost browsing context ancestor of the current one. </dd>
-            <dt><code class="language-markup">_unfencedTop</code></dt>
-            <dd>Allows embedded fenced frames to navigate the top-level frame. </dd>
-          </dl>
-          <p>The <code class="language-markup">type</code> attribute can describe the linked URL content's format with a MIME type. It works as a filename extension for purely semantic purposes. </p>
+        <p>The <code class="language-markup">&lt;a&gt;</code> element allows a long list of other global attributes, from which one should highlight the <code class="language-markup">download</code>, <code class="language-markup">rel</code>, <code class="language-markup">target</code>, <code class="language-markup">type</code> and <code class="language-markup">ping</code> attributes. </p>
+        <p>The <code class="language-markup">download</code> attribute causes the browser to link to a downloadable resource. Using a <code class="language-markup">filename</code> value gives a name to the downloaded resource; without it, the browser will suggest a filename/extension to the user. </p>
+        <p>The <code class="language-markup">rel</code> attribute controls what kinds of links the link creates, defining the relationship between the current document and the resource linked to in the hyperlink. It is a valid attribute for any link element, but not all its possible values are allowed for every element. Differently from a <code class="language-markup">class</code>  name, which does not express semantics, the <code class="language-markup">rel</code>  attribute must express tokens that are semantically valid for both machines and humans. The <code class="language-markup">rel</code> attribute is of extreme importance for metadata and routing in the HTML document. You can find the full list of <code class="language-markup">rel</code> values on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#value" target="_blank" rel="External" >MDN</a>. The <code class="language-markup">rel</code> values that are the most relevant for the <code class="language-markup">&lt;a&gt;</code> element are: </p>
+        <dl>
+          <dt><code class="language-markup">nofollow</code></dt>
+          <dd>Indicates that the publisher does not endorse the referenced document. Spiders won't follow this link. </dd>
+          <dt><code class="language-markup">external</code></dt>
+          <dd>Indicates that the link directs to an external URL. </dd>
+          <dt><code class="language-markup">prev</code> and <code class="language-markup">next</code> </dt>
+          <dd>Indicate that the links point to the previous and next document in a series. </dd>
+          <dt><code class="language-markup">alternate</code></dt>
+          <dd>Indicates that the link follows an alternate representation of the current document. </dd>
+        </dl>  
+        <p>The <code class="language-markup">target</code> attribute tells the browser where to display the linked URL; it is an enumerated attribute that can take the following values: </p>
+        <dl>
+          <dt><code class="language-markup">_self</code></dt>
+          <dd>Default value. Opens the new link in the current browser context. </dd>
+          <dt><code class="language-markup">_blank</code></dt>
+          <dd>Opens the new link in a new browser page. </dd>
+          <dt><code class="language-markup">_parent</code></dt>
+          <dd>Opens the parent browsing context of the current one. </dd>
+          <dt><code class="language-markup">_top</code></dt>
+          <dd>Opens the topmost browsing context ancestor of the current one. </dd>
+          <dt><code class="language-markup">_unfencedTop</code></dt>
+          <dd>Allows embedded fenced frames to navigate the top-level frame. </dd>
+        </dl>
+        <p>The <code class="language-markup">type</code> attribute can describe the linked URL content's format with a MIME type. It works as a filename extension for purely semantic purposes. </p>
 <pre><code class="language-markup">
 &lt;a href="/es.pdf" hreflang="es-ES" rel="alternate" lang="es-ES" type="application/x-pdf" download="Manual-HTML5.pdf"&gt;Manual de HTML5 (pdf) &lt;/a&gt;
 
 </code></pre>
-          <p>Using the <code class="language-markup">ping</code> attribute in a URL, authors track user interaction when the link is clicked. It includes a space-separated list of URLs. When the link is followed, the browser will send <code class="language-markup">POST</code> requests with the body <code class="language-markup">PING</code> to these URLs.  </p>
-        <h5><code class="language-markup">&lt;link&gt;</code> </h5>
-          <p>The <code class="language-markup">&lt;link&gt;</code> element specifies relationships between the current document and an external resource. It is classified as a metadata content element. A further review of this element can be found under <a href="#metadata">Metadata</a>. </p>
-        <h5><code class="language-markup">&lt;area&gt;</code> </h5>
-          <p>The <code class="language-markup">&lt;area&gt;</code> element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext links. This element can only be used nested within a <code class="language-markup">&lt;map&gt;</code> element. You can find more information about image maps in the <a href="#graphics">Graphics section</a>. </p>
-        <h5><code class="language-markup">&lt;form&gt;</code> </h5>
-          <p>The <code class="language-markup">&lt;form&gt;</code> element represents a document section containing interactive controls for submitting information. An in-depth review of the <code class="language-markup">&lt;form&gt;</code> element and its attributes can be found under the <a href="#forms">Forms section</a>. </p>
+        <p>Using the <code class="language-markup">ping</code> attribute in a URL, authors track user interaction when the link is clicked. It includes a space-separated list of URLs. When the link is followed, the browser will send <code class="language-markup">POST</code> requests with the body <code class="language-markup">PING</code> to these URLs.  </p>
+      <h4><code class="language-markup">&lt;link&gt;</code> </h4>
+        <p>The <code class="language-markup">&lt;link&gt;</code> element specifies relationships between the current document and an external resource. It is classified as a metadata content element. A further review of this element can be found under <a href="#metadata">Metadata</a>. </p>
+      <h4><code class="language-markup">&lt;area&gt;</code> </h4>
+        <p>The <code class="language-markup">&lt;area&gt;</code> element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext links. This element can only be used nested within a <code class="language-markup">&lt;map&gt;</code> element. You can find more information about image maps in the <a href="#graphics">Graphics section</a>. </p>
+      <h4><code class="language-markup">&lt;form&gt;</code> </h4>
+        <p>The <code class="language-markup">&lt;form&gt;</code> element represents a document section containing interactive controls for submitting information. An in-depth review of the <code class="language-markup">&lt;form&gt;</code> element and its attributes can be found under the <a href="#forms">Forms section</a>. </p>
     <h3>Tables </h3>
+      <p>Tables are used for displaying tabular data with rows and columns. The <code class="language-markup">&lt;table&gt;</code> tag wraps the table content, including all the table elements. The implicit ARIA role of a <code class="language-markup">&lt;table&gt;</code> is table; assistive technologies know this element is a table structure containing data arranged in rows and columns. </p>
+      <p>Inside the <code class="language-markup">&lt;table&gt;</code>, you'll find the table headers (<code class="language-markup">&lt;thead&gt;</code>), table bodies (<code class="language-markup">&lt;tbody&gt;</code>), and, optionally, table footers (<code class="language-markup">&lt;tfoot&gt;</code>). Each of these is made up of table rows (<code class="language-markup">&lt;tr&gt;</code>). Rows contain table header (<code class="language-markup">&lt;th&gt;</code>) and table data (<code class="language-markup">&lt;td&gt;</code>) cells. In the DOM there are also two additional features: the table caption (<code class="language-markup">&lt;caption&gt;</code>) and column groups (<code class="language-markup">&lt;colgroup&gt;</code>). If the <code class="language-markup">&lt;colgroup&gt;</code> has a <code class="language-markup">span</code> attribute, it will contain table column (<code class="language-markup">&lt;col&gt;</code>) elements. </p>
+      <p>The table's children are, in order: </p>
+      <ol>
+        <li><code class="language-markup">&lt;caption&gt;</code> element </li>
+        <li><code class="language-markup">&lt;colgroup&gt;</code> elements </li>
+        <li><code class="language-markup">&lt;thread&gt;</code> elements </li>
+        <li><code class="language-markup">&lt;tbody&gt;</code> elements </li>
+        <li><code class="language-markup">&lt;tfoot&gt;</code> elements </li>
+      </ol>
+      <p></p>
+      <p>An example code of a table is the following: </p>
+      <pre><code class="language-markup">
+&lt;table&gt;
+  &lt;caption&gt;MLW Alumni&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th rowspan="2" id="name" scope="col"&gt;Name&lt;/th&gt;
+      &lt;th colspan="2" id="path"&gt;Career path&lt;/th&gt;
+      &lt;th rowspan="2" id="year"&gt;Year&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th id="past" scope="col"&gt;Past&lt;/th&gt;
+      &lt;th id="future" scope="col"&gt;Destiny&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th id="hal" scope="row"&gt;Hal Gibrah&lt;/th&gt;
+      &lt;td headers="hal path past"&gt;Calculator&lt;/td&gt;
+      &lt;td headers="hal path future"&gt;Mars rover&lt;/td&gt;
+      &lt;td&gt;2020&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th id="cathy" scope="row"&gt;Cathy Terr&lt;/th&gt;
+      &lt;td headers="cathy path past"&gt;Waste disposal&lt;/td&gt;
+      &lt;td headers="cathy path future"&gt;Automated teller&lt;/td&gt;
+      &lt;td&gt;2018&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th id="lou" scope="row"&gt;Lou Minious&lt;/th&gt;
+      &lt;td headers="lou path past"&gt;Lightbulb&lt;/td&gt;
+      &lt;td headers="lou path future"&gt;Smart bulb&lt;/td&gt;
+      &lt;td&gt;1956&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+      </code></pre>
     <h3>Forms </h3>
     <h3>Graphics </h3>
     <h3>Multimedia </h3>
