@@ -1,9 +1,8 @@
 (function() {
   const toc = document.getElementById('toc');
-  const headings = document.querySelectorAll('h2, h3, h4');
+  const headings = document.querySelectorAll('h2, h3');
   let h2Count = 0;
   let h3Count = 0;
-  let h4Count = 0;
 
   // --- numbering loop ---
   headings.forEach(heading => {
@@ -21,10 +20,6 @@
       h3Count++;
       h4Count = 0;
       heading.dataset.tocNumber = `${h2Count - 2}.${h3Count}`;
-    } else if (heading.tagName.toLowerCase() === 'h4') {
-      if (h2Count <= 2) return; // skip any h4 before the 3rd h2
-      h4Count++;
-      heading.dataset.tocNumber = `${h2Count - 2}.${h3Count}.${h4Count}`;
     }
   });
 
@@ -45,8 +40,6 @@
 
     if (heading.tagName.toLowerCase() === 'h3') {
       link.classList.add('toc-h3');
-    } else if (heading.tagName.toLowerCase() === 'h4') {
-      link.classList.add('toc-h4');
     }
 
     toc.appendChild(link);
