@@ -188,16 +188,8 @@
       <p>The <code class="language-markup">&lt;aside&gt;</code> element is for content that is indirectly or tangentially related to the document's main content. It is specially common on content-heavy sites, like blogs or newspapers. </p>
       <p>For styling purposes we will often find in this layout the <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;nav&gt;</code> and <code class="language-markup">&lt;aside&gt;</code> elements wrapped inside the same <code class="language-markup">&lt;div&gt;</code> element. This, however, doesn't have a negative impact on the SEO nor the semantics of the document. </p> 
     <h3>Sections</h3>
-      <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> In an HTML we can use certain elements to structure the content into different sections. Those elements are: </p>
-      <ul>
-        <li><code class="language-markup">&lt;section&gt;</code> </li>
-        <li><code class="language-markup">&lt;article&gt;</code> </li>
-        <li><code class="language-markup">&lt;nav&gt;</code> </li>
-        <li><code class="language-markup">&lt;aside&gt;</code> </li>
-      </ul>        
-      <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
-      <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
-      <p>An example of a properly structured document is the following: </p>
+      <p>According to the English Cambridge Dictionary, a section is <i>one of the parts that something is divided into.</i> We can section the content of the document to structure it in a way that is easier to read, maintain, and with proper semantics. </p>
+      <p>An example of a properly section structured document is the following: </p>
     
 <pre><code class="language-markup">
 &lt;body&gt;
@@ -236,7 +228,6 @@
 &lt;/body&gt;
 
 </code></pre>
-      <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in.</p>
       
     <h3>Section headings</h3>
       <p>The <code class="language-markup">&lt;h1&gt;</code> to <code class="language-markup">&lt;h6&gt;</code> HTML elements represent six levels of section headings. <code class="language-markup">&lt;h1&gt;</code> is the highest section level and <code class="language-markup">&lt;h6&gt;</code> is the lowest. By default, all heading elements create a block-level box in the layout, starting on a new line and taking up the full width available in their containing block. While using multiple <code class="language-markup">&lt;h1&gt;</code> elements on one page is allowed by the HTML standard (as long as they are not nested), this is not considered a best practice. A page should have a single <code class="language-markup">&lt;h1&gt;</code> element that describes the content of the page. </p>
@@ -376,8 +367,39 @@
 </code></pre>
     <h3>Content Sectioning</h3>
       <h4>Sectioning Elements </h4>
+        <p>In an HTML we can use certain elements to structure the content into different sections. Those elements are <code class="language-markup">&lt;section&gt;</code>, <code class="language-markup">&lt;article&gt;</code>, <code class="language-markup">&lt;nav&gt;</code>, and <code class="language-markup">&lt;aside&gt;</code> elements. </p>
+        <h5><code class="language-markup">&lt;section&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;section&gt;</code> element is used to encompass generic standalone sections of a document when there is no more specific semantic element to use. Sections should always have a heading, with very few exceptions.</p>  
+        <h5><code class="language-markup">&lt;article&gt;</code> </h5>
+          <p>An <code class="language-markup">&lt;article&gt;</code> represents a complete, or self-contained, section of content that is, in principle, independently reusable. Think of an article as you would an article in a newspaper or a post in a blog. </p>
+        <h5><code class="language-markup">&lt;nav&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;nav&gt;</code> element represents a section of a page whose purpose is to provide navigation links. <code class="language-markup">&lt;nav&gt;</code> can be used to create tables of contents, page breadcrumbs, or local and global navigation sections. </p>
+          <p>An example of a breadcrumb navigation is the following: </p>
+<pre><code class="language-markup">
+&lt;nav aria-label="breadcrumbs"&gt;
+  &lt;ol role="list"&gt;
+    &lt;li&gt;
+      &lt;a href="/"&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="/learn"&gt;Learn&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="/learn/html"&gt;Learn HTML!&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li aria-current="page"&gt;
+      Navigation
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+</code></pre>
+        <h5><code class="language-markup">&lt;aside&gt;</code> </h5>
+          <p>The <code class="language-markup">&lt;aside&gt;</code> element represents a portion of a document whose content is only indirectly related to the document's main content. Asides are frequently presented as sidebars or call-out boxes.</p>
+          
+        <p><b>Note:</b> <code class="language-markup">&lt;main&gt;</code>, <code class="language-markup">&lt;header&gt;</code> and <code class="language-markup">&lt;footer&gt;</code> are <strong>not</strong> sectioning elements, but <strong>sectioning related elements</strong>. Instead of creating sections, they provide structuring information about the content of the element they are nested in. </p>
       <h4>Sectioning Root Elements </h4>
-      <h4>Related Elements </h4>
+      <h4>Sectioning-Related Elements </h4>
     <h3>Text Content</h3>
       <h4>Headings & Paragraphs </h4>
         <p>As previously seen in <a href="#section-headings">Section Headings</a>, there are six section heading elements, with <code class="language-markup">&lt;h1&gt;</code> being most important and <code class="language-markup">&lt;h6&gt;</code> the least. </p>
