@@ -499,7 +499,11 @@
         <li><code class="language-markup">&lt;tbody&gt;</code> elements </li>
         <li><code class="language-markup">&lt;tfoot&gt;</code> elements </li>
       </ol>
-      <p></p>
+      <p><code class="language-markup">&lt;caption&gt;</code> is the preferred method of giving a name to a table and it should be the first element nested in the <code class="language-markup">&lt;table&gt;</code> element. </p>
+      <p>The content of tables is made up of up to three sections: zero or more table headers (<code class="language-markup">&lt;thread&gt;</code>) , table bodies (<code class="language-markup">&lt;tbody&gt;</code>), and table footers (<code class="language-markup">&lt;tfoot&gt;</code>). </p>
+      <p>Each table row <code class="language-markup">&lt;tr&gt;</code> contains one or more cells. If a cell is a header cell, use <code class="language-markup">&lt;th&gt;</code>. Otherwise, use <code class="language-markup">&lt;td&gt;</code>. The <code class="language-markup">&lt;th&gt;</code> cell has semantic meaning, with implicit ARIA roles of columnheader or rowheader. </p>
+      <p>It is possible to join multiple cells into a single cell. The <code class="language-markup">colspan</code> attribute is used to merge two or more adjacent cells within a single row. The <code class="language-markup">rowspan</code> attribute is used to merge cells across rows, being placed on the cell in the top row. </p>
+      <p>The <code class="language-markup">colgroup</code> element is used to define groups of columns, or <code class="language-markup">col</code> elements, within a table. They allow for limited column styling. </p>
       <p>An example code of a table is the following: </p>
       <pre><code class="language-markup">
 &lt;table&gt;
@@ -539,6 +543,9 @@
 
       </code></pre>
     <h3>Forms </h3>
+      <p>The <code class="language-markup">&lt;form&gt;</code> element represents a document section containing interactive controls for submitting information. Nested in a <code class="language-markup">&lt;form&gt;</code> you'll find all the interactive (and non-interactive) form controls that make it up. </p>
+      <p>Forms are submitted when the user activates a submit button nested within the form. When using <code class="language-markup">&lt;input&gt;</code> for buttons, the 'value' is the button's label, and is displayed in the button. When using <code class="language-markup">&lt;button&gt;</code>, the label is the text between the opening and closing <code class="language-markup">&lt;button&gt;</code> tags. </p>
+
     <h3>Graphics </h3>
       <p>Decorative images, such as background gradients on buttons or background images on sections of content or the full page, are presentational and should be applied with CSS. When an image adds context to a document, it is content and should be embedded with HTML. The main method including images is the <code class="language-markup">&lt;img&gt;</code> tag using the <code class="language-markup">src</code> attribute &mdash;to reference the image resoult&mdash; and the <code class="language-markup">alt</code> attribute to describe the image. </p>
       <p>We can extend this functionality to multiple image sources &mdash;associated to media queries&mdash; with the <code class="language-markup">srcset</code></p> attrbute, serving the most appropriate image file for each server request. This can also be done with the <code class="language-markup">&lt;picture&gt;</code> element, along with <code class="language-markup">source</code></p> children, which takes an <code class="language-markup">&lt;img&gt;</code> as a default source.</p>
@@ -608,17 +615,8 @@ sizes="(max-width: 800px) 400px, 800px" /&gt;
       <h4>Custom attributes </h4>
         <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
         <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
-  <h2>Forms</h2>
-    <p>TBA</p>
-  <h2>Images</h2>
-    <p>TBA</p>
   <h2>User Interaction and Web APIs</h2>
     <p>TBA</p>
-
-  <h2>Common Patterns & Pitfalls</h2>
-    <h3>Metadata Keywords</h3>
-    <h3><i>Divitis</i> and <i>Classitis</i></h3>
-    <h3>Heading Hierarchy</h3>
 </main>
 </div>
 
