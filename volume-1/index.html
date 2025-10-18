@@ -562,6 +562,74 @@ sizes="(max-width: 800px) 400px, 800px" /&gt;
       <p>For performance considerations most images that do not need to be loaded quickly should be loaded using the value "lazy", this saves badwidth and CPU usage. Browsers start rendering HTML when it is received, making requests for assets when encountered. This means the browser is already rendering the HTML when it encounters the <code class="language-markup">&lt;img&gt;</code> tag and makes the request. And images can take a while to load. By default, browsers don't reserve space for images other than the size required to render <code class="language-markup">alt</code> text. In the past, to avoid CLS authors used to define a certain <code class="language-markup">width</code> and <code class="language-markup">height</code> in the <code class="language-markup">&lt;img&gt;</code> tag, but this fell out of favor of CSS, since it is way less painful. Instead, the most effective way to circunvent CLS problems is by setting the aspect ratio of the image. </p>
       <p>The <code class="language-markup">&lt;img&gt;</code> element also supports <code class="language-markup">crossorigin</code>, <code class="language-markup">decoding</code>, <code class="language-markup">referrerpolicy</code>, and <code class="language-markup">fetchpriority</code> attributes. </p>    
     <h3>Multimedia </h3>
+    <h4><code class="language-markup">&lt;video&gt;</code> and <code class="language-markup">&lt;audio&gt;</code></h4>
+      <p>The <code class="language-markup">&lt;video&gt;</code> and <code class="language-markup">&lt;audio&gt;</code> elements can be used to embed media players directly with the <code class="language-markup">src</code> attribute or can be used as container elements for <code class="language-markup">&lt;source&gt;</code> elements &mdash; like the <code class="language-markup">&lt;picture&gt;</code> element. Fallback content must be included between the opening and closing tags.</p>
+      <p>The main boolean attributes they both support are:</p>
+      <ul>
+        <li><code class="language-markup">controls</code></li>
+        <li><code class="language-markup">autoplay</code></li>
+        <li><code class="language-markup">loop</code></li>
+        <li><code class="language-markup">mute</code></li>
+        <li><code class="language-markup">preload</code></li>
+      </ul>
+      <p>The <code class="language-markup">&lt;video&gt;</code> element also supports the attributes <code class="language-markup">height</code>, <code class="language-markup">width</code>, and <code class="language-markup">poster</code>.</p>
+<pre><code class="language-markup">
+&lt;video src="videos/machines.webm" poster="images/machine.jpg" controls&gt;
+  &lt;p&gt;Watch &lt;a href="https://youtube.com/link"&gt;video on Youtube&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;
+&lt;video controls poster="images/machine.jpg"&gt;
+  &lt;source src="videos/machines.webm" type="video/webm"&gt;
+  &lt;source src="videos/machines.mp4" type="video/mp4"&gt;
+  &lt;source src="videos/machines.ogv" type="video/ogg"&gt;
+  &lt;track label="English" kind="subtitles" srclang="en" src="vtt/subtitles-en.vtt" default /&gt;
+  &lt;track label="Francais" kind="subtitles" srclang="fr" src="vtt/subtitles-fr.vtt" /&gt;
+  &lt;p&gt;Watch &lt;a href="https://youtube.com/link"&gt;video on Youtube&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;
+
+</code></pre>
+      <p>By using the <code class="language-markup">type</code> attribute, we can set the encoding of the content using <code class="language-markup">codecs</code>. Content Layout Shift is another problem that media elements are susceptible to; setting a fixed aspect ratio avoids CLS.</p>
+    <h4><code class="language-markup">&lt;track&gt;</code></h4>
+      <p>The <code class="language-markup">&lt;track&gt;</code> element specify timed text tracks. The previous example includes two <code class="language-markup">&lt;track&gt;</code> elements to provide subtitles. The track files, specified in the <code class="language-markup">src</code> attribute, should be in WebVTT format (.vtt). The files should be on the same domain as the HTML document, unless the <code class="language-markup">crossorigin</code> attribute is included.</p>
+      <p>The <code class="language-markup">kind</code> attribute can have five different enumerated values:</p>
+      <ul>
+        <li><code class="language-markup">subtitles</code></li>
+        <li><code class="language-markup">captions</code></li>
+        <li><code class="language-markup">descriptions</code></li>
+        <li><code class="language-markup">chapters</code></li>
+        <li><code class="language-markup">metadata</code></li>
+      </ul>
+      <p>For best accesibility it is recommended to include both <code class="language-markup">subtitles</code> and <code class="language-markup">captions</code>, as well as the <code class="language-markup">srclang</code> attibute. </p>
+    <h4>Custom Controls</h4>
+      <p>JavaScript can be used to add custom media controls and remove the controls attribute. For example, one can add a <code class="language-markup">&lt;button&gt;</code> that toggles the play state of an audio file:</p>
+<pre><code class="language-markup">
+&lt;button id="playPause" aria-controls="idOfAudio"
+  data-pause-text="Pause audio"
+  data-play-text="Play audio"&gt;Pause audio&lt;/button&gt;
+
+</code></pre>
+    <p>To create customized controls, use <code class="language-markup">HTMLMediaElement.play()</code> and <code class="language-markup">HTMLMediaElement.pause()</code>. When toggling the play state, also toggle the text of the button:</p>
+<pre><code class="language">
+const pauseButton = document.getElementById('playPause');
+
+pauseButton.addEventListener(&quot;click&quot;, pauseAndPlay, false);
+
+function pauseAndPlay() {
+  console.log(this);
+  const media = document.getElementById(this.getAttribute('aria-controls'));
+
+  if (media.paused) {
+    media.play();
+    this.innerText = this.dataset.pauseText;
+  } else {
+    media.pause();
+    this.innerText = this.dataset.playText;
+  }
+}
+
+document.querySelector('[aria-controls]').removeAttribute('controls');
+
+</code></pre>
+    <p>By including the <code class="language-markup">controls</code> attribute, the user has a way to control the audio (or video) even if JavaScript fails. Only remove the controls attribute once a replacement button has been instantiated.</p>
     <h3>Scripting & Styling</h3>
       <p>Other important HTML elements include <code class="language-markup">&lt;style&gt;</code> or <code class="language-markup">&lt;script&gt;</code>, among many others. A full list of all HTML elements can be found at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements" target="_blank" rel="external">MDN</a>. </p>
     <h3>Templates & Custom Elements</h3>
