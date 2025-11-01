@@ -631,46 +631,80 @@ document.querySelector('[aria-controls]').removeAttribute('controls');
 </code></pre>
     <p>By including the <code class="language-markup">controls</code> attribute, the user has a way to control the audio (or video) even if JavaScript fails. Only remove the controls attribute once a replacement button has been instantiated.</p>
     <h3>Scripting & Styling</h3>
-      <p>Other important HTML elements include <code class="language-markup">&lt;style&gt;</code> or <code class="language-markup">&lt;script&gt;</code>, among many others. A full list of all HTML elements can be found at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements" target="_blank" rel="external">MDN</a>. </p>
+      <p>Other important HTML elements include <code class="language-markup">&lt;style&gt;</code> and <code class="language-markup">&lt;script&gt;</code>: </p>
+      <h4><code class="language-markup">&lt;style&gt;</code></h4>
+        <p>The <code class="language-markup">&lt;style&gt;</code> element contains style information for a document, or part of a document, in CSS. </p>
+<pre><code class="language-markup">
+&lt;style&gt;
+  p {
+    color: #26b72b;
+  }
+  code {
+    font-weight: bold;
+  }
+&lt;/style&gt;
+
+&lt;p&gt;
+  This text will be green. Inline styles take precedence over CSS included
+  externally.
+&lt;/p&gt;
+
+&lt;p style="color: blue"&gt;
+  The &lt;code&gt;style&lt;/code&gt; attribute can override it, though.
+&lt;/p&gt;
+
+</code></pre>
+
+        <h4><code class="language-markup">&lt;script&gt;</code></h4>
+        <p>The <code class="language-markup">&lt;script&gt;</code> element is used to embed executable code or data; this is typically used to embed or refer to JavaScript code. Some of its important attributes include:</p>
+          <ul>
+            <li><code class="language-markup">async</code>: The script will be fetched in parallel to parsing and executed as soon as it is available.</li>
+            <li><code class="language-markup">blocking</code>: The script will be fetched in parallel to parsing and executed after the HTML is parsed.</li>
+            <li><code class="language-markup">crossorigin</code>: The script will be fetched in parallel to parsing and executed after the HTML is parsed.</li>
+            <li><code class="language-markup">defer</code>: The script will be fetched in parallel to parsing and executed after the HTML is parsed.</li>
+            <li><code class="language-markup">fetchpriority</code>: Establishes the relative priority to use when fetching an external script. Allowed values are </li>
+            <li><code class="language-markup">referrerpolicy</code>: The script will be fetched in parallel to parsing and executed after the HTML is parsed.</li>
+            </ul>
+
+
     <h3>Templates & Custom Elements</h3>
       <p>By using HTML templates, custom elements, and the shadow DOM, we can atomize out content and create self-contained componenets that can easily integrate with other existing applications.</p>
       <p>The <code class="language-markup">&lt;template&gt;</code> element is used to declare fragments of HTML that can be later cloned and inserted into the DOM with JAvaScript. They are not rendered by default but displayed only by using JS.</p>
       <p>The <code class="language-markup">&lt;slot&gt;</code> element provides as a placeholder element inside a <code class="language-markup">&lt;template&gt;</code> element that can create a "named slot". Such an element can be use to dynamically customize and control the content of a custom element. </p>
 
 <pre><code class="language-markup">
-<template id="star-rating-template">
-  <form>
-    <fieldset>
-      <slot name="star-rating-legend">
-        <legend>Rate your experience:</legend>
-      </slot>
-      <rating>
-        <input type="radio" name="rating" value="1" aria-label="1 star" required/>
-        <input type="radio" name="rating" value="2" aria-label="2 stars"/>
-        <input type="radio" name="rating" value="3" aria-label="3 stars"/>
-        <input type="radio" name="rating" value="4" aria-label="4 stars"/>
-        <input type="radio" name="rating" value="5" aria-label="5 stars"/>
-      </rating>
-    </fieldset>
-    <button type="reset">Reset</button>
-    <button type="submit">Submit</button>
-  </form>
-</template>
+&lt;template id="star-rating-template"&gt;
+  &lt;form&gt;
+    &lt;fieldset&gt;
+      &lt;slot name="star-rating-legend"&gt;
+        &lt;legend&gt;Rate your experience:&lt;/legend&gt;
+      &lt;/slot&gt;
+      &lt;rating&gt;
+        &lt;input type="radio" name="rating" value="1" aria-label="1 star" required/&gt;
+        &lt;input type="radio" name="rating" value="2" aria-label="2 stars"/&gt;
+        &lt;input type="radio" name="rating" value="3" aria-label="3 stars"/&gt;
+        &lt;input type="radio" name="rating" value="4" aria-label="4 stars"/&gt;
+        &lt;input type="radio" name="rating" value="5" aria-label="5 stars"/&gt;
+      &lt;/rating&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="reset"&gt;Reset&lt;/button&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;
 
 </code></pre>
       <p>We can then use this custom element and dynamically control de content of the element, for example:</p>
 <pre><code class="language-markup">
-<star-rating>
-  <legend slot="star-rating-legend">Blendan Smooth</legend>
-</star-rating>
-<star-rating>
-  <legend slot="star-rating-legend">Hoover Sukhdeep</legend>
-</star-rating>
-<star-rating>
-  <legend slot="star-rating-legend">Toasty McToastface</legend>
-  <p>Is this text visible?</p>
-</star-rating>
-
+&lt;star-rating&gt;
+  &lt;legend slot="star-rating-legend"&gt;Blendan Smooth&lt;/legend&gt;
+&lt;/star-rating&gt;
+&lt;star-rating&gt;
+  &lt;legend slot="star-rating-legend"&gt;Hoover Sukhdeep&lt;/legend&gt;
+&lt;/star-rating&gt;
+&lt;star-rating&gt;
+  &lt;legend slot="star-rating-legend"&gt;Toasty McToastface&lt;/legend&gt;
+  &lt;p&gt;Is this text visible?&lt;/p&gt;
+&lt;/star-rating&gt;
 
 </code></pre>
     <h3>Attributes</h3>
@@ -723,7 +757,7 @@ document.querySelector('[aria-controls]').removeAttribute('controls');
       <h4>Custom attributes </h4>
         <p>You can create any custom attribute you want by adding the <code class="language-markup">data-</code> prefix. While browsers won't implement default behaviors for any specific <code class="language-markup">data-</code> prefixed attribute, there is a built-in dataset API to iterate through your custom attributes. Custom properties are an excellent way of communicating application-specific information via JavaScript. Add custom attributes to elements in the form of <code class="language-markup">data-name</code> and access these through the DOM using <code class="language-markup">dataset[name]</code> on the element in question. </p>
         <p>You can use <code class="language-markup">getAttribute()</code> using the full attribute name, or you can take advantage of the simpler <code class="language-markup">dataset</code> property. The <code class="language-markup">dataset</code> property returns a <code class="language-markup">DOMStringMap</code> object of each element's <code class="language-markup">data-</code> attributes. There are several custom attributes on the <code class="language-markup">&lt;blockquote&gt;</code>. </p>
-  <h2>User Interaction and Web APIs</h2>
+  <h2>Web APIs</h2>
     <p>TBA</p>
 </main>
 </div>
